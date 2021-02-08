@@ -3,7 +3,7 @@
 
 # HealthyHome
 
-[![GitHub Issues](https://img.shields.io/github/issues/healthyhomeuk/healthyhome)](https://github.com/healthyhomeuk/healtyhome/issues)
+[![GitHub Issues](https://img.shields.io/github/issues/healthyhomeuk/healthyhome)](https://github.com/healthyhomeuk/healthyhome/issues)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/healthyhomeuk/healthyhome)](https://github.com/healthyhomeuk/healthyhome/pulls)
 [![License](https://img.shields.io/github/license/healthyhomeuk/healthyhome)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
