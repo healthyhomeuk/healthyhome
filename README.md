@@ -1,3 +1,6 @@
+<p align="center"><img width=30% src="docs/images/logo.svg"></p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 # HealthyHome
 
 [![GitHub Issues](https://img.shields.io/github/issues/healthyhomeuk/healthyhome)](https://github.com/healthyhomeuk/healtyhome/issues)
@@ -12,9 +15,9 @@ HealthyHome is an open-source smart home device which monitors the indoors envir
 
 The project is made up of several software components that are placed in the repository in the following structure:
 
-- `monitoring-server/`: the monitoring server that collects and processes all the data from the server
-- `logging-server/`: the data logging server which keeps track of the realtime data using a document store and builds statistics
-- `mobile-app/`: a mobile application for phones which interfaces the users with the smart device
+-   `monitoring-server/`: the monitoring server that collects and processes all the data from the server
+-   `logging-server/`: the data logging server which keeps track of the realtime data using a document store and builds statistics
+-   `mobile-app/`: a mobile application for phones which interfaces the users with the smart device
 
 ## Contributing
 
