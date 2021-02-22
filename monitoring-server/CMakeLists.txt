@@ -21,4 +21,8 @@ enable_sanitizers(project_options)
 include(cmake/StaticAnalyzers.cmake)
 
 ## Add project
+add_library(docs INTERFACE)
 include(cmake/Project.cmake)
+
+## Add docs
+add_subdirectory(docs)
