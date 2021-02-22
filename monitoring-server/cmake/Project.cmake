@@ -3,7 +3,10 @@ add_library(Core)
 
 target_sources(Core
         PUBLIC
+        include/core/comms/I2C.h
+        include/core/comms/Packet.h
         include/core/defs.h
+        include/core/Device.h
         include/core/Event.h
         include/core/EventScheduler.h
         include/core/Message.h
