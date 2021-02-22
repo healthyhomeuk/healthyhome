@@ -5,7 +5,8 @@ target_sources(Core
         PUBLIC
         include/core/defs.h
         include/core/Event.h
-        include/core/EventScheduler.h)
+        include/core/EventScheduler.h
+        include/core/Message.h)
 
 target_link_libraries(Core
         PRIVATE
