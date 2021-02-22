@@ -5,6 +5,9 @@ project(MonitoringServer CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+## Add project options
+add_library(project_options INTERFACE)
+
 ## Add compiler warnings
 add_library(project_warnings INTERFACE)
 include(cmake/CompilerWarnings.cmake)
