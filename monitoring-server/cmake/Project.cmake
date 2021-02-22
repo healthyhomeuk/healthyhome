@@ -15,7 +15,8 @@ target_sources(Core
         include/core/Message.h
         include/core/Postman.h
         include/core/Sensor.h
-        include/core/Server.h)
+        include/core/Server.h
+        include/core/Timer.h)
 
 target_link_libraries(Core
         PRIVATE
