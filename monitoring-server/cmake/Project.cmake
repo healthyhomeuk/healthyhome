@@ -13,3 +13,5 @@ target_include_directories(Core
         include
         PRIVATE
         src)
+
+target_include_directories(docs INTERFACE include)
