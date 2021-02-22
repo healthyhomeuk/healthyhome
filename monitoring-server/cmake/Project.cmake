@@ -7,7 +7,8 @@ target_sources(Core
         include/core/Event.h
         include/core/EventScheduler.h
         include/core/Message.h
-        include/core/Postman.h)
+        include/core/Postman.h
+        include/core/Sensor.h)
 
 target_link_libraries(Core
         PRIVATE
