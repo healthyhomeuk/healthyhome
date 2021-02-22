@@ -5,6 +5,7 @@ target_sources(Core
         PUBLIC
         include/core/comms/I2C.h
         include/core/comms/Packet.h
+        include/core/events/MessageDelivery.h
         include/core/defs.h
         include/core/Device.h
         include/core/Event.h
