@@ -5,5 +5,9 @@ project(MonitoringServer CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+
+## Add static analyzers
+include(cmake/StaticAnalyzers.cmake)
+
 ## Add project
 include(cmake/Project.cmake)
