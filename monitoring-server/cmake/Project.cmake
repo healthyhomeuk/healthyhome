@@ -4,7 +4,8 @@ add_library(Core)
 target_sources(Core
         PUBLIC
         include/core/defs.h
-        include/core/Event.h)
+        include/core/Event.h
+        include/core/EventScheduler.h)
 
 target_link_libraries(Core
         PRIVATE
