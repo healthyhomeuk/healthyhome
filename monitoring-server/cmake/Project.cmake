@@ -33,3 +33,5 @@ target_include_directories(Core
         src)
 
 target_include_directories(docs INTERFACE include)
+
+add_subdirectory(libs)
