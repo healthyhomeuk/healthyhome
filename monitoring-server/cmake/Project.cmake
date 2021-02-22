@@ -35,3 +35,4 @@ target_include_directories(Core
 target_include_directories(docs INTERFACE include)
 
 add_subdirectory(libs)
+add_subdirectory(platforms)
