@@ -13,6 +13,10 @@ add_library(project_warnings INTERFACE)
 include(cmake/CompilerWarnings.cmake)
 set_project_warnings(project_warnings)
 
+## Add sanitizers
+include(cmake/Sanitizers.cmake)
+enable_sanitizers(project_options)
+
 ## Add static analyzers
 include(cmake/StaticAnalyzers.cmake)
 
