@@ -1,11 +1,19 @@
-<p align="center"><img width=30% src="docs/images/logo.svg"></p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<p align="center"></p>
 
-# HealthyHome
-
-[![GitHub Issues](https://img.shields.io/github/issues/healthyhomeuk/healthyhome)](https://github.com/healthyhomeuk/healthyhome/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/healthyhomeuk/healthyhome)](https://github.com/healthyhomeuk/healthyhome/pulls)
-[![License](https://img.shields.io/github/license/healthyhomeuk/healthyhome)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+<h1 align="center">
+<img width="64" src="docs/images/logo.svg">
+  HealthyHome
+  <br>
+  <a href="https://github.com/healthyhomeuk/healthyhome/issues"><img src="https://img.shields.io/github/issues/healthyhomeuk/healthyhome" alt="GitHub Issues"></a>
+  <a href="https://github.com/healthyhomeuk/healthyhome/pulls"><img src="https://img.shields.io/github/issues-pr/healthyhomeuk/healthyhome" alt="GitHub Pull Requests"></a>
+  <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/github/license/healthyhomeuk/healthyhome" alt="License"></a>
+  <br>
+  <a href="https://www.youtube.com/channel/UCbA1us3-6FLa1kOZZdc1v-w"><img width="32" hspace="5" src="docs/images/youtube.svg"></img></a>
+  <a href="https://www.facebook.com/ukhealthyhome"><img width="32" hspace="5" src="docs/images/facebook.svg"></img></a>
+  <a href="https://www.instagram.com/healthyhome_uk/"><img width="32" hspace="5" src="docs/images/instagram.svg"></img></a>
+  <a href="https://twitter.com/healthyhome_uk"><img width="32" hspace="5" src="docs/images/twitter.svg"></img></a>
+</h1> 
+<!--Icons made by https://www.freepik.com Freepik from "https://www.flaticon.com/-->
 
 ## Overview
 
