@@ -39,7 +39,12 @@ namespace Core {
          * @brief Callback to process the event.
          * @return Operation status code.
          */
-        virtual Core::StatusCode process() = 0;
+        virtual StatusCode process() = 0;
+
+        /**
+         * @brief Default deconstructor
+         */
+        virtual ~Event() = default;
     };
 
 }

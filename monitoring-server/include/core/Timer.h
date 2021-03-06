@@ -78,6 +78,11 @@ namespace Core {
          * @return Status operation code.
          */
         virtual StatusCode setCallback(Callback &cb) = 0;
+
+        /**
+         * @brief Default deconstructor
+         */
+        virtual ~Timer() = default;
     };
 
 }

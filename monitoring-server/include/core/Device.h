@@ -66,6 +66,11 @@ namespace Core {
          * @return Operation status code
          */
         virtual StatusCode handleMessage(Message &message) = 0;
+
+        /**
+         * @brief Default deconstructor
+         */
+        virtual ~Device() = default;
     };
 
 }

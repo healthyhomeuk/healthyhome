@@ -113,6 +113,11 @@ namespace Core {
          * @param payload The payload to serialize the Message to.
          */
         virtual StatusCode serialize(void *payload) = 0;
+
+        /**
+         * @brief Default deconstructor
+         */
+        virtual ~Message() = default;
     };
 
 }

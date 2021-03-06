@@ -111,6 +111,11 @@ namespace Core::Comms {
          * @param buffer The buffer to serialize the Packet to.
          */
         virtual StatusCode serialize(uint8_t *buffer) = 0;
+
+        /**
+         * @brief Default deconstructor
+         */
+        virtual ~Packet() = default;
     };
 
 }

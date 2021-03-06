@@ -52,6 +52,11 @@ namespace Core {
          * @retval E_CONFLICT If a message factory with the recipient and subject was already registered.
          */
         virtual StatusCode registerMessageFactory(Message::Entity entity, Message::Factory *factory) = 0;
+
+        /**
+         * @brief Default deconstructor
+         */
+        virtual ~Postman() = default;
     };
 
 }
