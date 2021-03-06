@@ -28,7 +28,9 @@
   "devDependencies": {
     "@babel/core": "~7.9.0",
     "babel-jest": "~25.2.6",
+    "better-docs": "^2.3.2",
     "jest": "~25.2.6",
+    "jsdoc": "^3.6.6",
     "react-test-renderer": "~16.13.1"
   },
   "jest": {
