@@ -24,6 +24,7 @@
 #ifndef CORE_EVENTS_STOP_SERVER_H
 #define CORE_EVENTS_STOP_SERVER_H
 
+#include <core/defs.h>
 #include <core/Event.h>
 
 namespace Core::Events {

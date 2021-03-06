@@ -27,6 +27,7 @@
 #include <unordered_map>
 #include <string>
 
+#include <core/defs.h>
 #include <core/Device.h>
 #include <core/EventScheduler.h>
 #include <core/Postman.h>

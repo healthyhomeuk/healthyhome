@@ -24,6 +24,9 @@
 #ifndef CORE_SENSOR_H
 #define CORE_SENSOR_H
 
+#include <core/defs.h>
+#include <core/Message.h>
+
 namespace Core {
 
     /**

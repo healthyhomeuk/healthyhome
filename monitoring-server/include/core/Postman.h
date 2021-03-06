@@ -24,6 +24,7 @@
 #ifndef CORE_POSTMAN_H
 #define CORE_POSTMAN_H
 
+#include <core/defs.h>
 #include <core/Message.h>
 
 namespace Core {
