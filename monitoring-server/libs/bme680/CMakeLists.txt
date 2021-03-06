@@ -16,3 +16,5 @@ set_target_properties(BME680 PROPERTIES LINKER_LANGUAGE CXX)
 target_include_directories(BME680 PUBLIC include)
 
 target_include_directories(docs INTERFACE include)
+
+add_subdirectory(tests)

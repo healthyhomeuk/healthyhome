@@ -16,3 +16,5 @@ set_target_properties(SN-GCJA5 PROPERTIES LINKER_LANGUAGE CXX)
 target_include_directories(SN-GCJA5 PUBLIC include)
 
 target_include_directories(docs INTERFACE include)
+
+add_subdirectory(tests)
