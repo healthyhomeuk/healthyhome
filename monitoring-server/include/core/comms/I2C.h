@@ -24,6 +24,7 @@
 #ifndef CORE_COMMS_I2C_H
 #define CORE_COMMS_I2C_H
 
+#include <core/defs.h>
 #include <core/comms/Packet.h>
 
 namespace Core::Comms {

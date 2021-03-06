@@ -24,6 +24,7 @@
 #ifndef CORE_EVENT_SCHEDULER_H
 #define CORE_EVENT_SCHEDULER_H
 
+#include <core/defs.h>
 #include <core/Event.h>
 
 namespace Core {

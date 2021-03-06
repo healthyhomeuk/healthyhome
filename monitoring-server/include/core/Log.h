@@ -27,6 +27,8 @@
 #include <iostream>
 #include <string>
 
+#include <core/defs.h>
+
 namespace Core {
 
     /**

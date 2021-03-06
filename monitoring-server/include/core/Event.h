@@ -24,7 +24,7 @@
 #ifndef CORE_EVENT_H
 #define CORE_EVENT_H
 
-#include "defs.h"
+#include <core/defs.h>
 
 namespace Core {
 

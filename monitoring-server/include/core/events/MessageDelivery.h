@@ -24,6 +24,7 @@
 #ifndef CORE_EVENTS_MESSAGE_DELIVERY_H
 #define CORE_EVENTS_MESSAGE_DELIVERY_H
 
+#include <core/defs.h>
 #include <core/Event.h>
 #include <core/Message.h>
 

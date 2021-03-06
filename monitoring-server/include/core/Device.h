@@ -25,6 +25,9 @@
 #define CORE_DEVICE_H
 
 #include <vector>
+
+#include <core/defs.h>
+#include <core/Message.h>
 #include <core/Sensor.h>
 
 namespace Core {

@@ -26,6 +26,8 @@
 
 #include <cstdint>
 
+#include <core/defs.h>
+
 namespace Core::Comms {
 
     /**
