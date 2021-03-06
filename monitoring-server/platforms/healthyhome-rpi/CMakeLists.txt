@@ -16,3 +16,16 @@ target_link_libraries(healthyhome-rpi
 target_include_directories(healthyhome-rpi PUBLIC include)
 
 target_include_directories(docs INTERFACE include)
+
+if (ENABLE_TESTING)
+    add_executable(healthyhome-rpi_tests)
+
+    set_target_properties(healthyhome-rpi_tests PROPERTIES LINKER_LANGUAGE CXX)
+
+    target_link_libraries(healthyhome-rpi_tests
+            PRIVATE
+            Catch2::Catch2
+            Core)
+
+    add_test(NAME HealthyHomeRpiTests COMMAND healthyhome-rpi_tests)
+endif()

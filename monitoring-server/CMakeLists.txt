@@ -20,6 +20,9 @@ enable_sanitizers(project_options)
 ## Add static analyzers
 include(cmake/StaticAnalyzers.cmake)
 
+## Add testing
+include(cmake/Testing.cmake)
+
 ## Add project
 add_library(docs INTERFACE)
 include(cmake/Project.cmake)
