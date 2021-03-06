@@ -51,6 +51,11 @@ namespace Core::Comms {
          * @return Status operation code.
          */
         virtual StatusCode write(unsigned char deviceId, unsigned char command, Packet &packet) = 0;
+
+        /**
+         * @brief Default deconstructor
+         */
+        virtual ~I2C() = default;
     };
 
 }

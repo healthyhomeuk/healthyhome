@@ -71,6 +71,11 @@ namespace Core {
          * @return Status code of the operation.
          */
         virtual StatusCode stop() = 0;
+
+        /**
+         * @brief Default deconstructor
+         */
+        virtual ~EventScheduler() = default;
     };
 
 }
