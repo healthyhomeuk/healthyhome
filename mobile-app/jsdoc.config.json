@@ -8,7 +8,7 @@
         "includePattern": ".js$",
         "excludePattern": "(node_modules/|docs)"
     },
-    "plugins": ["plugins/markdown", "better-docs/component"],
+    "plugins": ["plugins/markdown"],
     "templates": {
         "cleverLinks": true,
         "monospaceLinks": true
