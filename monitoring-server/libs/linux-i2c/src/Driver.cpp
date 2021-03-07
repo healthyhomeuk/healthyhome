@@ -19,6 +19,9 @@
 
 extern "C" {
 
+#include <linux/i2c-dev.h>
+#include <linux/i2c.h>
+#include <sys/ioctl.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
@@ -32,6 +35,9 @@ extern "C" {
 #define FILE_PATTERN "/dev/i2c-%d"
 #define MAX_DEVICE_ID 99
 #define FILE_NAME_LENGTH (sizeof(FILE_PATTERN)+1)
+#define I2C_M_WR 0x0000
+
+#define MAX_BUFFER_LENGTH UINT16_C(0xFF)
 
 using namespace LinuxI2C;
 
@@ -61,4 +67,71 @@ Driver::~Driver() {
         close(fd);
         fd = -1;
     }
+}
+
+Core::StatusCode Driver::read(unsigned char deviceId,
+                              unsigned char command,
+                              Core::Comms::Packet &packet)
+{
+    if (fd == -1) {
+        return Core::E_GENERIC;
+    }
+    
+    auto size = packet.getBufferSize();
+
+    if (size == 0 || size > MAX_BUFFER_LENGTH) {
+        return Core::E_PARAMS;
+    }
+
+    uint8_t buffer[MAX_BUFFER_LENGTH];
+
+    i2c_msg messages[2] = {
+        { deviceId, I2C_M_WR, 1, &command },
+        { deviceId, I2C_M_RD, static_cast<uint16_t>(size), buffer },
+    };
+
+    i2c_rdwr_ioctl_data data = { messages, 2 };
+
+    if (ioctl(fd, I2C_RDWR, &data) != 2) {
+        // TODO: log strerror(errno);
+        return Core::E_GENERIC;
+    }
+
+    return packet.deserialize(buffer);
+}
+
+Core::StatusCode Driver::write(unsigned char deviceId,
+                               unsigned char command,
+                               Core::Comms::Packet &packet)
+{
+    if (fd == -1) {
+        return Core::E_GENERIC;
+    }
+
+    Core::StatusCode res;
+    auto size = packet.getBufferSize();
+
+    if (size == 0 || size > MAX_BUFFER_LENGTH-1) {
+        return Core::E_PARAMS;
+    }
+
+    uint8_t buffer[MAX_BUFFER_LENGTH];
+
+    buffer[0] = command;
+    if((res = packet.serialize(buffer+1)) != Core::SUCCESS) {
+        return res;
+    }
+
+    i2c_msg messages[1] = {
+        { deviceId, I2C_M_WR, static_cast<uint16_t>(size+1), buffer },
+    };
+
+    i2c_rdwr_ioctl_data data = { messages, 1 };
+
+    if (ioctl(fd, I2C_RDWR, &data) != 1) {
+        // TODO: log strerror(errno);
+        return Core::E_GENERIC;
+    }
+
+    return Core::SUCCESS;
 }
