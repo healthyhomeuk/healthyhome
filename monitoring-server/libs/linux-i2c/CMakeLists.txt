@@ -3,7 +3,9 @@ add_library(linux_i2c)
 
 target_sources(linux_i2c
         PUBLIC
-        include/linux-i2c/Driver.h)
+        include/linux-i2c/Driver.h
+
+        src/Driver.cpp)
 
 target_link_libraries(linux_i2c
         PRIVATE
