@@ -57,7 +57,20 @@ namespace Core {
          * returned if the operation was not performed
          * due to a conflict with the given resource.
          */
-        E_CONFLICT
+        E_CONFLICT,
+        /**
+         * returned if the provided parameters are
+         * out of bounds.
+         */
+        E_OUT_OF_BOUNDS,
+        /**
+         * returned if the given parameters are invalid
+         */
+        E_PARAMS,
+        /**
+         * returned for any other error.
+         */
+        E_GENERIC,
     };
 
 }
