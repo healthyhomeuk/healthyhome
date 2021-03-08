@@ -73,6 +73,17 @@ namespace Core {
         E_GENERIC,
     };
 
+    /**
+     * @brief Scheduling priority levels
+     * @headerfile core/defs.h <core/defs.h>
+     */
+    enum PriorityLevel {
+        LOWEST,  ///< Lowest priority level
+        LOW,     ///< Low priority level
+        MEDIUM,  ///< Medium priority level
+        HIGH,    ///< High priority level
+        HIGHEST, ///< Highest priority level
+    };
 }
 
 #endif // CORE_DEFS_H
