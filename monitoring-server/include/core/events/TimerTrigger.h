@@ -44,6 +44,8 @@ namespace Core::Events {
         explicit TimerTrigger(Timer &timer);
 
         StatusCode process() override;
+
+        PriorityLevel getPriorityLevel() override;
     };
 
 }

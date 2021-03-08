@@ -35,6 +35,8 @@ namespace Core::Events {
     class StopServer : Event {
     public:
         StatusCode process() final;
+        
+        PriorityLevel getPriorityLevel() override;
     };
 
 }

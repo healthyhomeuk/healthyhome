@@ -43,6 +43,8 @@ namespace Core::Events {
         explicit MessageDelivery(Message &message);
 
         StatusCode process() override;
+
+        PriorityLevel getPriorityLevel() override;
     };
 
 }

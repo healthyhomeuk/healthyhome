@@ -42,6 +42,12 @@ namespace Core {
         virtual StatusCode process() = 0;
 
         /**
+         * @brief Getter for the priority level
+         * @return Priority level
+         */
+        virtual PriorityLevel getPriorityLevel() = 0;
+
+        /**
          * @brief Default deconstructor
          */
         virtual ~Event() = default;
