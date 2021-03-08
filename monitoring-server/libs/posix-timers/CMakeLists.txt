@@ -1,6 +1,11 @@
 if (UNIX)
     add_library(posix_timers)
 
+    target_sources(posix_timers
+            PUBLIC
+            include/posix-timers/Factory.h
+            include/posix-timers/Timer.h)
+
     target_link_libraries(posix_timers
             PRIVATE
             Core
