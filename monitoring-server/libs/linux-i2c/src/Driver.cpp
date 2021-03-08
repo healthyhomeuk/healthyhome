@@ -33,11 +33,11 @@ extern "C" {
 #include <linux-i2c/Driver.h>
 
 #define FILE_PATTERN "/dev/i2c-%d"
-#define MAX_DEVICE_ID 99
 #define FILE_NAME_LENGTH (sizeof(FILE_PATTERN)+1)
 #define I2C_M_WR 0x0000
 
-#define MAX_BUFFER_LENGTH UINT16_C(0xFF)
+constexpr uint8_t  MAX_DEVICE_ID     = 99;
+constexpr uint16_t MAX_BUFFER_LENGTH = 0xFF;
 
 using namespace LinuxI2C;
 
@@ -62,7 +62,8 @@ Core::StatusCode Driver::open(int deviceId)
     return Core::SUCCESS;
 }
 
-Driver::~Driver() {
+Driver::~Driver()
+{
     if (fd > -1) {
         close(fd);
         fd = -1;
