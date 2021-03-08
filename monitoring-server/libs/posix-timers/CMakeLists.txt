@@ -4,7 +4,10 @@ if (UNIX)
     target_sources(posix_timers
             PUBLIC
             include/posix-timers/Factory.h
-            include/posix-timers/Timer.h)
+            include/posix-timers/Timer.h
+
+            src/Factory.cpp
+            src/Timer.cpp)
 
     target_link_libraries(posix_timers
             PRIVATE
