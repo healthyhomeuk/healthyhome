@@ -24,6 +24,8 @@
 #ifndef CORE_TIMER_H
 #define CORE_TIMER_H
 
+#include <memory>
+
 #include <core/defs.h>
 
 namespace Core {
@@ -33,6 +35,11 @@ namespace Core {
      */
     class Timer {
     public:
+        /**
+         * @brief Definition of a timer factory
+         */
+        using Factory = std::unique_ptr<Timer>();
+
         /**
          * @brief Definition of a timer callback
          */
