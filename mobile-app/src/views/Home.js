@@ -1,5 +1,6 @@
+import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import Home from './views/Home';
+import { StyleSheet, Text, View } from 'react-native';
 
 /*
  * This file is part of the HealthyHome project monitoring server
@@ -20,10 +21,29 @@ import Home from './views/Home';
  */
 
 /**
- * Renders all the components of the app.
+ * Renders the home screen.
  */
-export default function App() {
-  return (
-    <Home></Home>
-  );
+function Home() {
+    return(
+        <View style= {styles.container}>
+            <Text style={styles.text}>This is the home screen.</Text>
+            <StatusBar style="auto" />
+        </View>
+    )
 }
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#f2ffea'
+    },
+    text: {
+      color: '#101010',
+      fontSize: 24,
+      fontWeight: 'bold'
+    }
+  })
+
+export default Home;
