@@ -33,7 +33,7 @@ namespace Core::Events {
     /**
      * @brief TimerTrigger event
      */
-    class TimerTrigger : Event {
+    class TimerTrigger : public Event {
         Timer &timer;
 
     public:

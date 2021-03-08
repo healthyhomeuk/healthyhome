@@ -32,7 +32,7 @@ namespace Core::Events {
     /**
      * @brief StopServer event
      */
-    class StopServer : Event {
+    class StopServer : public Event {
     public:
         StatusCode process() final;
         
