@@ -33,8 +33,9 @@ namespace Core::Events {
     /**
      * @brief MessageDelivery event
      */
-    class MessageDelivery : Event {
+    class MessageDelivery : public Event {
         Message &message;
+
     public:
         /**
          * @brief MessageDelivery event constructor
