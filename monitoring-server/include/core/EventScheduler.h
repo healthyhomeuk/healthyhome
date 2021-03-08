@@ -24,6 +24,8 @@
 #ifndef CORE_EVENT_SCHEDULER_H
 #define CORE_EVENT_SCHEDULER_H
 
+#include <memory>
+
 #include <core/defs.h>
 #include <core/Event.h>
 
@@ -53,7 +55,7 @@ namespace Core {
          *
          * @return Status code of the operation.
          */
-        virtual StatusCode push(Event &event) = 0;
+        virtual StatusCode push(std::unique_ptr<Event> event) = 0;
 
         /**
          * @brief Scheduler startup method.
