@@ -1,6 +1,9 @@
 import React from 'react';
+import Data from './views/Data';
 import Home from './views/Home';
-
+import Settings from './views/Settings';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 /*
  * This file is part of the HealthyHome project monitoring server
  * available at <https://www.github.com/healthyhomeuk/healthyhome>.
@@ -20,10 +23,21 @@ import Home from './views/Home';
  */
 
 /**
+ * @constant {NavBar}
+ */
+const NavBar = createBottomTabNavigator();
+
+/**
  * Renders all the components of the app.
  */
 export default function App() {
   return (
-    <Home></Home>
+    <NavigationContainer>
+      <NavBar.Navigator>
+        <NavBar.Screen name ="Settings" component={Settings}/>
+        <NavBar.Screen name ="Home" component={Home}/>
+        <NavBar.Screen name ="Data" component={Data}/>
+      </NavBar.Navigator>
+    </NavigationContainer>
   );
 }
