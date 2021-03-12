@@ -1,10 +1,3 @@
-import React from 'react';
-import Data from '../views/Data';
-import Home from '../views/Home';
-import Settings from '../views/Settings';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Ionicons  from 'react-native-vector-icons/Ionicons';
-
 /*
  * This file is part of the HealthyHome project monitoring server
  * available at <https://www.github.com/healthyhomeuk/healthyhome>.
@@ -23,39 +16,56 @@ import Ionicons  from 'react-native-vector-icons/Ionicons';
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import React from "react";
+import Data from "../views/Data";
+import Home from "../views/Home";
+import Settings from "../views/Settings";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Ionicons from "react-native-vector-icons/Ionicons";
+
 /**
+ * Bottom Tab Navigator
  * @constant {NavBar}
  */
 const NavBar = createBottomTabNavigator();
 /**
- * 
+ * This component renders the navigation bar.
  * @returns {NavBar.Navigator}
  */
-function MainNavigationBar(){
-    return(
-    <NavBar.Navigator
-    initialRouteName="Home" tabBarOptions={{activeTintColor: 'black', inactiveTintColor: 'gray', style:{backgroundColor:'#f2ffea'}}}
-    screenOptions={({route}) => ({
-      tabBarIcon: ({focused, color}) => {
-        let iconName;
-
-        if (route.name === 'Home') {
-              iconName = focused? 'home': 'home-outline';
-
-            } else if (route.name === 'Settings') {
-              iconName = focused ? 'settings' : 'settings-outline';
-              
-            } else{
-              iconName = focused ? 'analytics' : 'analytics-outline';
-            }
-        return <Ionicons name={iconName} size={28} color={color} />
-      }
-    })}>
-     <NavBar.Screen name ="Settings" component={Settings}/>
-     <NavBar.Screen name ="Home" component={Home}/>
-     <NavBar.Screen name ="Data" component={Data}/>
-   </NavBar.Navigator>
-    )
+function MainNavigationBar() {
+    return (
+        <NavBar.Navigator
+            initialRouteName="Home"
+            tabBarOptions={{
+                activeTintColor: "black",
+                inactiveTintColor: "gray",
+                style: { backgroundColor: "#f2ffea" },
+            }}
+            screenOptions={({ route }) => ({ tabBarIcon: tabBarIcon(route) })}
+        >
+            <NavBar.Screen name="Settings" component={Settings} />
+            <NavBar.Screen name="Home" component={Home} />
+            <NavBar.Screen name="Data" component={Data} />
+        </NavBar.Navigator>
+    );
 }
+
+/**
+ * Renders the icons for the navbar.
+ * @param {RouteProp<Record<string, object>, string>} route
+ * @returns {Ionicons}
+ */
+const tabBarIcon = (route) => ({ focused, color }) => {
+    let iconName;
+
+    if (route.name === "Home") {
+        iconName = focused ? "home" : "home-outline";
+    } else if (route.name === "Settings") {
+        iconName = focused ? "settings" : "settings-outline";
+    } else {
+        iconName = focused ? "analytics" : "analytics-outline";
+    }
+    return <Ionicons name={iconName} size={28} color={color} />;
+};
 
 export default MainNavigationBar;

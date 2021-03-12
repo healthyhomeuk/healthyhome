@@ -1,7 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
 /*
  * This file is part of the HealthyHome project monitoring server
  * available at <https://www.github.com/healthyhomeuk/healthyhome>.
@@ -20,30 +16,34 @@ import { StyleSheet, Text, View } from 'react-native';
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+
 /**
  * Renders the data screen, where data is displayed historically.
  */
 function Data() {
-    return(
-        <View style= {styles.container}>
+    return (
+        <View style={styles.container}>
             <Text style={styles.text}>This is the Data screen.</Text>
             <StatusBar style="auto" />
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#f2ffea'
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#f2ffea",
     },
     text: {
-      color: '#101010',
-      fontSize: 24,
-      fontWeight: 'bold'
-    }
-  })
+        color: "#101010",
+        fontSize: 24,
+        fontWeight: "bold",
+    },
+});
 
 export default Data;
