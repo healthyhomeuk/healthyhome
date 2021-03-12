@@ -24,103 +24,101 @@
 #ifndef CORE_MESSAGE_H
 #define CORE_MESSAGE_H
 
-#include <string>
-
 #include <core/defs.h>
+#include <string>
 
 namespace Core {
 
+/**
+ * @brief Message interface for the Postman messages.
+ * @headerfile core/Message.h <core/Message.h>
+ *
+ * The operation is similar to Core::Comms::Packet. Check its
+ * example for usage. The only difference is characterised by
+ * the serialization/deserialization that may accept any kind
+ * of data instead of just bytes, and the extra fields.
+ */
+class Message {
+public:
     /**
-     * @brief Message interface for the Postman messages.
-     * @headerfile core/Message.h <core/Message.h>
-     *
-     * The operation is similar to Core::Comms::Packet. Check its
-     * example for usage. The only difference is characterised by
-     * the serialization/deserialization that may accept any kind
-     * of data instead of just bytes, and the extra fields.
+     * @brief Communication entity type.
      */
-    class Message {
-    public:
-
-        /**
-         * @brief Communication entity type.
-         */
-        enum EntityType {
-            SERVER, ///< Server entity
-            DEVICE, ///< Device entity
-            SENSOR, ///< Sensor entity
-        };
-
-        /**
-         * @brief Definition of a message entity.
-         */
-        using Entity = std::pair<EntityType, std::string>;
-
-        /**
-         * @brief Definition of a message factory.
-         *
-         * This method enables the Postman to envelope all the incoming
-         * messages into the correct Message-implementing class.
-         */
-        using Factory = Message &();
-
-        /**
-         * @brief Getter that returns the sending/receiving
-         *        entity identifier.
-         *
-         * This is required when advertising messages and to identify
-         * the expected recipient of a Message for incoming messages.
-         *
-         * @return A pair containing the entity type and the entity
-         *         identifier.
-         */
-        virtual Entity getEntity() = 0;
-
-        /**
-         * @brief Getter that returns the subject
-         */
-        virtual std::string getSubject() = 0;
-
-        /**
-         * @brief Getter that returns size in bytes of the payload
-         */
-        virtual size_t getPayloadSize() = 0;
-
-        /**
-         * @brief Deserialization method
-         *
-         * @warning The implementation of this method is Postman-dependent,
-         *          which means that the Postman implementation should also
-         *          implement the deserialization methods for all the server
-         *          Messages.
-         *
-         * This method is meant to read a payload of a commonly known type
-         * and convert its values to the Message's corresponding ones.
-         *
-         * @param payload The payload to deserialize the Message from.
-         */
-        virtual StatusCode deserialize(const void *payload) = 0;
-
-        /**
-         * @brief Serialization method
-         *
-         * @warning The implementation of this method is Postman-dependent,
-         *          which means that the Postman implementation should also
-         *          implement the serialization methods for all the server
-         *          Messages.
-         *
-         * This method is meant to write all of the Message data to the
-         * given payload pointer of a commonly known type.
-         *
-         * @param payload The payload to serialize the Message to.
-         */
-        virtual StatusCode serialize(void *payload) = 0;
-
-        /**
-         * @brief Default deconstructor
-         */
-        virtual ~Message() = default;
+    enum EntityType {
+        SERVER, ///< Server entity
+        DEVICE, ///< Device entity
+        SENSOR, ///< Sensor entity
     };
+
+    /**
+     * @brief Definition of a message entity.
+     */
+    using Entity = std::pair<EntityType, std::string>;
+
+    /**
+     * @brief Definition of a message factory.
+     *
+     * This method enables the Postman to envelope all the incoming
+     * messages into the correct Message-implementing class.
+     */
+    using Factory = Message&();
+
+    /**
+     * @brief Getter that returns the sending/receiving
+     *        entity identifier.
+     *
+     * This is required when advertising messages and to identify
+     * the expected recipient of a Message for incoming messages.
+     *
+     * @return A pair containing the entity type and the entity
+     *         identifier.
+     */
+    virtual Entity getEntity() = 0;
+
+    /**
+     * @brief Getter that returns the subject
+     */
+    virtual std::string getSubject() = 0;
+
+    /**
+     * @brief Getter that returns size in bytes of the payload
+     */
+    virtual size_t getPayloadSize() = 0;
+
+    /**
+     * @brief Deserialization method
+     *
+     * @warning The implementation of this method is Postman-dependent,
+     *          which means that the Postman implementation should also
+     *          implement the deserialization methods for all the server
+     *          Messages.
+     *
+     * This method is meant to read a payload of a commonly known type
+     * and convert its values to the Message's corresponding ones.
+     *
+     * @param payload The payload to deserialize the Message from.
+     */
+    virtual StatusCode deserialize(const void* payload) = 0;
+
+    /**
+     * @brief Serialization method
+     *
+     * @warning The implementation of this method is Postman-dependent,
+     *          which means that the Postman implementation should also
+     *          implement the serialization methods for all the server
+     *          Messages.
+     *
+     * This method is meant to write all of the Message data to the
+     * given payload pointer of a commonly known type.
+     *
+     * @param payload The payload to serialize the Message to.
+     */
+    virtual StatusCode serialize(void* payload) = 0;
+
+    /**
+     * @brief Default deconstructor
+     */
+    virtual ~Message() = default;
+};
 
 }
 

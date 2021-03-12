@@ -21,7 +21,7 @@
 
 using namespace Core::Events;
 
-TimerTrigger::TimerTrigger(Timer &_timer) : timer(_timer) {}
+TimerTrigger::TimerTrigger(Timer& _timer) : timer(_timer) { }
 
 inline Core::StatusCode TimerTrigger::process()
 {

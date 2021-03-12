@@ -24,29 +24,29 @@
 #ifndef CORE_EVENTS_MESSAGE_DELIVERY_H
 #define CORE_EVENTS_MESSAGE_DELIVERY_H
 
-#include <core/defs.h>
 #include <core/Event.h>
 #include <core/Message.h>
+#include <core/defs.h>
 
 namespace Core::Events {
 
+/**
+ * @brief MessageDelivery event
+ */
+class MessageDelivery : public Event {
+    Message& message;
+
+public:
     /**
-     * @brief MessageDelivery event
+     * @brief MessageDelivery event constructor
+     * @param message Reference to the message that has been received
      */
-    class MessageDelivery : public Event {
-        Message &message;
+    explicit MessageDelivery(Message& message);
 
-    public:
-        /**
-         * @brief MessageDelivery event constructor
-         * @param message Reference to the message that has been received
-         */
-        explicit MessageDelivery(Message &message);
+    StatusCode process() override;
 
-        StatusCode process() override;
-
-        PriorityLevel getPriorityLevel() override;
-    };
+    PriorityLevel getPriorityLevel() override;
+};
 
 }
 

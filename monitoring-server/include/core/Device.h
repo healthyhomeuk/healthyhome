@@ -24,58 +24,57 @@
 #ifndef CORE_DEVICE_H
 #define CORE_DEVICE_H
 
+#include <core/Message.h>
+#include <core/Sensor.h>
+#include <core/defs.h>
 #include <memory>
 #include <vector>
 
-#include <core/defs.h>
-#include <core/Message.h>
-#include <core/Sensor.h>
-
 namespace Core {
 
+/**
+ * @brief Interface required to be implemented for any sensorial
+ *        device.
+ * @headerfile core/Device.h <core/Device.h>
+ */
+class Device {
+public:
     /**
-     * @brief Interface required to be implemented for any sensorial
-     *        device.
-     * @headerfile core/Device.h <core/Device.h>
+     * @brief Sets the device up for operation
+     * @return Operation status code
      */
-    class Device {
-    public:
-        /**
-         * @brief Sets the device up for operation
-         * @return Operation status code
-         */
-        virtual StatusCode setup() = 0;
+    virtual StatusCode setup() = 0;
 
-        /**
-         * @brief Halts the sensor for operation
-         * @return Operation status ode
-         */
-        virtual StatusCode halt() = 0;
+    /**
+     * @brief Halts the sensor for operation
+     * @return Operation status ode
+     */
+    virtual StatusCode halt() = 0;
 
-        /**
-         * @brief Getter for the device identifier.
-         * @return The device identifier.
-         */
-        virtual const char *getName() = 0;
+    /**
+     * @brief Getter for the device identifier.
+     * @return The device identifier.
+     */
+    virtual const char* getName() = 0;
 
-        /**
-         * @brief Getter for the Sensor references.
-         * @return The vector containing the Sensor references.
-         */
-        virtual std::vector<std::shared_ptr<Sensor>> getSensors() = 0;
+    /**
+     * @brief Getter for the Sensor references.
+     * @return The vector containing the Sensor references.
+     */
+    virtual std::vector<std::shared_ptr<Sensor>> getSensors() = 0;
 
-        /**
-         * @brief Callback for incoming messages
-         * @param message Reference to the message to handle
-         * @return Operation status code
-         */
-        virtual StatusCode handleMessage(Message &message) = 0;
+    /**
+     * @brief Callback for incoming messages
+     * @param message Reference to the message to handle
+     * @return Operation status code
+     */
+    virtual StatusCode handleMessage(Message& message) = 0;
 
-        /**
-         * @brief Default deconstructor
-         */
-        virtual ~Device() = default;
-    };
+    /**
+     * @brief Default deconstructor
+     */
+    virtual ~Device() = default;
+};
 
 }
 

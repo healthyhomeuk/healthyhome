@@ -31,32 +31,32 @@
  * @brief Namespace for the Panasonic SN-GCJA5 library.
  */
 namespace SNGCJA5 {
+/**
+ * @brief Concrete class for the  Panasonic SN-GCJA5 device.
+ * @headerfile sn-gcja5/Device.h <sn-gcja5/Device.h>
+ */
+class Device : public Core::Device {
+public:
     /**
-     * @brief Concrete class for the  Panasonic SN-GCJA5 device.
-     * @headerfile sn-gcja5/Device.h <sn-gcja5/Device.h>
+     * @brief Configuration for the SN-GCJA5 Device.
      */
-    class Device : public Core::Device {
-    public:
-        /**
-         * @brief Configuration for the SN-GCJA5 Device.
-         */
-        struct Configuration {
-            Core::Comms::I2C *i2c; ///< Reference to an I2C implementation.
-        };
-
-        Device() = default;
-
-        /**
-         * @brief Constructor for a SN-GCJA5 Device.
-         * @param config configuration data structure.
-         */
-        explicit Device(Configuration config);
-
-        const char *getName() override;
-
-    private:
-        Configuration config;
+    struct Configuration {
+        Core::Comms::I2C* i2c; ///< Reference to an I2C implementation.
     };
+
+    Device() = default;
+
+    /**
+     * @brief Constructor for a SN-GCJA5 Device.
+     * @param config configuration data structure.
+     */
+    explicit Device(Configuration config);
+
+    const char* getName() override;
+
+private:
+    Configuration config;
+};
 
 }
 

@@ -26,64 +26,64 @@
 
 namespace Core {
 
+/**
+ * @brief Operations status codes type
+ * @headerfile core/defs.h <core/defs.h>
+ *
+ * This enumerator helps keeping consistency in
+ * operation statuses throughout the whole project.
+ * Any method that performs an operation a returns
+ * a status code, should use this enumerator type.
+ *
+ * Usage example:
+ * \code{.cpp}
+ * Core::StatusCode computation(int a, b) {
+ *     // perform super long computation
+ *     return Core::SUCCESS;
+ * }
+ * \endcode
+ */
+enum StatusCode {
     /**
-     * @brief Operations status codes type
-     * @headerfile core/defs.h <core/defs.h>
-     *
-     * This enumerator helps keeping consistency in
-     * operation statuses throughout the whole project.
-     * Any method that performs an operation a returns
-     * a status code, should use this enumerator type.
-     *
-     * Usage example:
-     * \code{.cpp}
-     * Core::StatusCode computation(int a, b) {
-     *     // perform super long computation
-     *     return Core::SUCCESS;
-     * }
-     * \endcode
+     * returned if the operation was successful.
      */
-    enum StatusCode {
-        /**
-         * returned if the operation was successful.
-         */
-        SUCCESS,
-        /**
-         * returned if the operation was not performed
-         * due to the given resource being busy.
-         */
-        E_BUSY,
-        /**
-         * returned if the operation was not performed
-         * due to a conflict with the given resource.
-         */
-        E_CONFLICT,
-        /**
-         * returned if the provided parameters are
-         * out of bounds.
-         */
-        E_OUT_OF_BOUNDS,
-        /**
-         * returned if the given parameters are invalid
-         */
-        E_PARAMS,
-        /**
-         * returned for any other error.
-         */
-        E_GENERIC,
-    };
+    SUCCESS,
+    /**
+     * returned if the operation was not performed
+     * due to the given resource being busy.
+     */
+    E_BUSY,
+    /**
+     * returned if the operation was not performed
+     * due to a conflict with the given resource.
+     */
+    E_CONFLICT,
+    /**
+     * returned if the provided parameters are
+     * out of bounds.
+     */
+    E_OUT_OF_BOUNDS,
+    /**
+     * returned if the given parameters are invalid
+     */
+    E_PARAMS,
+    /**
+     * returned for any other error.
+     */
+    E_GENERIC,
+};
 
-    /**
-     * @brief Scheduling priority levels
-     * @headerfile core/defs.h <core/defs.h>
-     */
-    enum PriorityLevel {
-        LOWEST,  ///< Lowest priority level
-        LOW,     ///< Low priority level
-        MEDIUM,  ///< Medium priority level
-        HIGH,    ///< High priority level
-        HIGHEST, ///< Highest priority level
-    };
+/**
+ * @brief Scheduling priority levels
+ * @headerfile core/defs.h <core/defs.h>
+ */
+enum PriorityLevel {
+    LOWEST,  ///< Lowest priority level
+    LOW,     ///< Low priority level
+    MEDIUM,  ///< Medium priority level
+    HIGH,    ///< High priority level
+    HIGHEST, ///< Highest priority level
+};
 }
 
 #endif // CORE_DEFS_H

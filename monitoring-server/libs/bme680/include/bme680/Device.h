@@ -31,32 +31,32 @@
  * @brief Namespace for the Bosch Sensortec BME680 library.
  */
 namespace BME680 {
+/**
+ * @brief Concrete class for the Bosch Sensortec BME680 device.
+ * @headerfile bme680/Device.h <bme680/Device.h>
+ */
+class Device : public Core::Device {
+public:
     /**
-     * @brief Concrete class for the Bosch Sensortec BME680 device.
-     * @headerfile bme680/Device.h <bme680/Device.h>
+     * @brief Configuration for the BME680 Device.
      */
-    class Device : public Core::Device {
-    public:
-        /**
-         * @brief Configuration for the BME680 Device.
-         */
-        struct Configuration {
-            Core::Comms::I2C *i2c; ///< Reference to an I2C implementation.
-        };
-
-        Device() = default;
-
-        /**
-         * @brief Constructor for a BME680 Device.
-         * @param config configuration data structure.
-         */
-        explicit Device(Configuration config);
-
-        const char *getName() override;
-
-    private:
-        Configuration config;
+    struct Configuration {
+        Core::Comms::I2C* i2c; ///< Reference to an I2C implementation.
     };
+
+    Device() = default;
+
+    /**
+     * @brief Constructor for a BME680 Device.
+     * @param config configuration data structure.
+     */
+    explicit Device(Configuration config);
+
+    const char* getName() override;
+
+private:
+    Configuration config;
+};
 
 }
 

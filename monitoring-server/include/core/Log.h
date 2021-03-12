@@ -24,80 +24,79 @@
 #ifndef CORE_LOG_H
 #define CORE_LOG_H
 
+#include <core/defs.h>
 #include <iostream>
 #include <string>
 
-#include <core/defs.h>
-
 namespace Core {
 
+/**
+ * @brief Data logging facility
+ */
+class Log {
+public:
     /**
-     * @brief Data logging facility
+     * @brief Logging levels
      */
-    class Log {
-    public:
-        /**
-         * @brief Logging levels
-         */
-        enum Level {
-            DEBUG,
-            INFO,
-            WARNING,
-            ERROR,
-        };
-
-        /**
-         * @brief Sets the global Log instance up.
-         * @param level sets the minimum logging level
-         * @param out output stream for the logs.
-         * @param err output stream for the errors.
-         */
-        static StatusCode setup(Level level, std::ostream &out, std::ostream &err);
-
-        /**
-         * @brief Output warnings to error stream (DEFAULT: true)
-         * @param condition yes/true or no/false
-         */
-        static void logWarningsToErrStream(bool condition);
-
-        /**
-         * @name Logging methods
-         * @{
-         */
-
-        /**
-         * @brief Log debugging information
-         * @param message message to log
-         */
-        static void debug(std::string message);
-
-        /**
-         * @brief Log generic information
-         * @param message message to log
-         */
-        static void info(std::string message);
-
-        /**
-         * @brief Log warnings
-         * @param message message to log
-         */
-        static void warn(std::string message);
-
-        /**
-         * @brief Log errors
-         * @param message message to log
-         */
-        static void error(std::string message);
-
-        /**
-         * @}
-         */
-    private:
-        static Log instance = Log(cout, cerr);
-        std::ostream &out, err;
-        Level level;
-        bool warningsToErrStream = true;
+    enum Level {
+        DEBUG,
+        INFO,
+        WARNING,
+        ERROR,
     };
+
+    /**
+     * @brief Sets the global Log instance up.
+     * @param level sets the minimum logging level
+     * @param out output stream for the logs.
+     * @param err output stream for the errors.
+     */
+    static StatusCode setup(Level level, std::ostream& out, std::ostream& err);
+
+    /**
+     * @brief Output warnings to error stream (DEFAULT: true)
+     * @param condition yes/true or no/false
+     */
+    static void logWarningsToErrStream(bool condition);
+
+    /**
+     * @name Logging methods
+     * @{
+     */
+
+    /**
+     * @brief Log debugging information
+     * @param message message to log
+     */
+    static void debug(std::string message);
+
+    /**
+     * @brief Log generic information
+     * @param message message to log
+     */
+    static void info(std::string message);
+
+    /**
+     * @brief Log warnings
+     * @param message message to log
+     */
+    static void warn(std::string message);
+
+    /**
+     * @brief Log errors
+     * @param message message to log
+     */
+    static void error(std::string message);
+
+    /**
+     * @}
+     */
+private:
+    static Log instance = Log(cout, cerr);
+    std::ostream &out, err;
+    Level level;
+    bool warningsToErrStream = true;
+};
 
 }
 

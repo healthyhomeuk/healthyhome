@@ -18,52 +18,53 @@
  */
 
 extern "C" {
-#include <cstdlib>
-#include <unistd.h>
-#include <cstdio>
-#include <csignal>
-#include <pthread.h>
 #include <cerrno>
+#include <csignal>
+#include <cstdio>
+#include <cstdlib>
+#include <pthread.h>
+#include <unistd.h>
 }
 
-#include <memory>
-#include <stdexcept>
-
 #include <core/events/TimerTrigger.h>
+#include <memory>
 #include <posix-timers/Factory.h>
+#include <stdexcept>
 
 using namespace PosixTimers;
 
-Factory::Factory(Core::EventScheduler &_scheduler, int _signalId)
-    : signalId(_signalId), scheduler(_scheduler)
+Factory::Factory(Core::EventScheduler& _scheduler, int _signalId) :
+    signalId(_signalId), scheduler(_scheduler)
 {
     if (_signalId < SIGRTMIN || _signalId > SIGRTMAX) {
         throw std::invalid_argument("received invalid signal id");
     }
 
     struct sigaction sa = {};
-    sa.sa_flags = SA_SIGINFO;
-    sa.sa_sigaction = signalHandler;
+    sa.sa_flags         = SA_SIGINFO;
+    sa.sa_sigaction     = signalHandler;
     sigemptyset(&sa.sa_mask);
     sigaction(_signalId, &sa, nullptr);
 }
 
-void Factory::signalHandler(int sig, siginfo_t *si, void *ctx)
+void Factory::signalHandler(int sig, siginfo_t* si, void* ctx)
 {
-    (void)sig;
-    (void)ctx;
+    (void) sig;
+    (void) ctx;
 
     if (si->si_value.sival_ptr == nullptr) {
         // todo: catch error!
         return;
     }
 
-    auto *timer = static_cast<Timer *>(si->si_value.sival_ptr);
+    auto* timer = static_cast<Timer*>(si->si_value.sival_ptr);
 
-    std::unique_ptr<Core::Event> event = std::make_unique<Core::Events::TimerTrigger>(*timer);
+    std::unique_ptr<Core::Event> event
+        = std::make_unique<Core::Events::TimerTrigger>(*timer);
     timer->factory.scheduler.push(std::move(event));
 }
 
-std::unique_ptr<Timer> Factory::makeTimer() {
+std::unique_ptr<Timer> Factory::makeTimer()
+{
     return std::unique_ptr<Timer>(new Timer(*this));
 }

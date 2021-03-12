@@ -28,48 +28,50 @@ extern "C" {
 #include <ctime>
 }
 
-#include <posix-timers/Factory.h>
 #include <core/Timer.h>
+#include <posix-timers/Factory.h>
 
 namespace PosixTimers {
 
-    class Factory;
+class Factory;
 
-    /**
-     * @brief Posix Timer class
-     * @headerfile posix-timers/Timer.h <posix-timers/Timer.h>
-     *
-     * Posix Timer class implementing the Core::Timer abstract class.
-     * This class provides full timer functionality based off the POSIX
-     * API.
-     */
-    class Timer : public Core::Timer {
+/**
+ * @brief Posix Timer class
+ * @headerfile posix-timers/Timer.h <posix-timers/Timer.h>
+ *
+ * Posix Timer class implementing the Core::Timer abstract class.
+ * This class provides full timer functionality based off the POSIX
+ * API.
+ */
+class Timer : public Core::Timer {
     friend class PosixTimers::Factory;
-    private:
-        timer_t timerId;
-        int interval_s = 0;
-        int interval_ns = 0;
-        bool running = false;
 
-        Core::Timer::Callback cb;
+private:
+    timer_t timerId;
+    int interval_s  = 0;
+    int interval_ns = 0;
+    bool running    = false;
 
-        explicit Timer(PosixTimers::Factory &factory);
-        PosixTimers::Factory &factory;
-    public:
-        Timer() = delete;
+    Core::Timer::Callback cb;
 
-        Core::StatusCode setup() override;
-        Core::StatusCode remove() override;
+    explicit Timer(PosixTimers::Factory& factory);
+    PosixTimers::Factory& factory;
 
-        Core::StatusCode trigger() override;
+public:
+    Timer() = delete;
 
-        int getInterval() override;
-        Core::StatusCode setInterval(int interval) override;
+    Core::StatusCode setup() override;
+    Core::StatusCode remove() override;
 
-        Core::StatusCode setCallback(Core::Timer::Callback callback) override;
+    Core::StatusCode trigger() override;
 
-        ~Timer() override;
-    };
+    int getInterval() override;
+    Core::StatusCode setInterval(int interval) override;
+
+    Core::StatusCode setCallback(Core::Timer::Callback callback) override;
+
+    ~Timer() override;
+};
 
 }
 

@@ -19,24 +19,22 @@
 
 extern "C" {
 
+#include <fcntl.h>
 #include <linux/i2c-dev.h>
 #include <linux/i2c.h>
 #include <sys/ioctl.h>
 #include <sys/stat.h>
-#include <fcntl.h>
 #include <unistd.h>
-
 }
 
 #include <cstdio>
-
 #include <linux-i2c/Driver.h>
 
-#define FILE_PATTERN "/dev/i2c-%d"
-#define FILE_NAME_LENGTH (sizeof(FILE_PATTERN)+1)
-#define I2C_M_WR 0x0000
+#define FILE_PATTERN     "/dev/i2c-%d"
+#define FILE_NAME_LENGTH (sizeof(FILE_PATTERN) + 1)
+#define I2C_M_WR         0x0000
 
-constexpr uint8_t  MAX_DEVICE_ID     = 99;
+constexpr uint8_t MAX_DEVICE_ID      = 99;
 constexpr uint16_t MAX_BUFFER_LENGTH = 0xFF;
 
 using namespace LinuxI2C;
@@ -70,14 +68,15 @@ Driver::~Driver()
     }
 }
 
-Core::StatusCode Driver::read(unsigned char deviceId,
-                              unsigned char command,
-                              Core::Comms::Packet &packet)
+Core::StatusCode Driver::read(
+    unsigned char deviceId,
+    unsigned char command,
+    Core::Comms::Packet& packet)
 {
     if (fd == -1) {
         return Core::E_GENERIC;
     }
-    
+
     auto size = packet.getBufferSize();
 
     if (size == 0 || size > MAX_BUFFER_LENGTH) {
@@ -101,9 +100,10 @@ Core::StatusCode Driver::read(unsigned char deviceId,
     return packet.deserialize(buffer);
 }
 
-Core::StatusCode Driver::write(unsigned char deviceId,
-                               unsigned char command,
-                               Core::Comms::Packet &packet)
+Core::StatusCode Driver::write(
+    unsigned char deviceId,
+    unsigned char command,
+    Core::Comms::Packet& packet)
 {
     if (fd == -1) {
         return Core::E_GENERIC;
@@ -112,19 +112,19 @@ Core::StatusCode Driver::write(unsigned char deviceId,
     Core::StatusCode res;
     auto size = packet.getBufferSize();
 
-    if (size == 0 || size > MAX_BUFFER_LENGTH-1) {
+    if (size == 0 || size > MAX_BUFFER_LENGTH - 1) {
         return Core::E_PARAMS;
     }
 
     uint8_t buffer[MAX_BUFFER_LENGTH];
 
     buffer[0] = command;
-    if((res = packet.serialize(buffer+1)) != Core::SUCCESS) {
+    if ((res = packet.serialize(buffer + 1)) != Core::SUCCESS) {
         return res;
     }
 
     i2c_msg messages[1] = {
-        { deviceId, I2C_M_WR, static_cast<uint16_t>(size+1), buffer },
+        { deviceId, I2C_M_WR, static_cast<uint16_t>(size + 1), buffer },
     };
 
     i2c_rdwr_ioctl_data data = { messages, 1 };
