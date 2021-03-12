@@ -61,7 +61,7 @@ Timer::~Timer()
     timer_delete(timerId);
 }
 
-Core::StatusCode Timer::setCallback(Core::Timer::Callback &callback)
+Core::StatusCode Timer::setCallback(Core::Timer::Callback callback)
 {
     cb = callback;
     return Core::SUCCESS;

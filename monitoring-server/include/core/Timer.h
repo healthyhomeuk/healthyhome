@@ -24,6 +24,7 @@
 #ifndef CORE_TIMER_H
 #define CORE_TIMER_H
 
+#include <functional>
 #include <memory>
 
 #include <core/defs.h>
@@ -38,12 +39,12 @@ namespace Core {
         /**
          * @brief Definition of a timer factory
          */
-        using Factory = std::unique_ptr<Timer>();
+        using Factory = std::function<std::unique_ptr<Timer>()>;
 
         /**
          * @brief Definition of a timer callback
          */
-        using Callback = StatusCode();
+        using Callback = std::function<StatusCode()>;
 
         /**
          * @brief Sets the timer up and enables it.
@@ -84,7 +85,7 @@ namespace Core {
          * @param cb The callback that is called for every timer trigger.
          * @return Status operation code.
          */
-        virtual StatusCode setCallback(Callback &cb) = 0;
+        virtual StatusCode setCallback(Callback cb) = 0;
 
         /**
          * @brief Default deconstructor

@@ -51,7 +51,7 @@ namespace PosixTimers {
         int interval_ns = 0;
         bool running = false;
 
-        Core::Timer::Callback *cb = nullptr;
+        Core::Timer::Callback cb;
 
         explicit Timer(PosixTimers::Factory &factory);
         PosixTimers::Factory &factory;
@@ -66,7 +66,7 @@ namespace PosixTimers {
         int getInterval() override;
         Core::StatusCode setInterval(int interval) override;
 
-        Core::StatusCode setCallback(Core::Timer::Callback &callback) override;
+        Core::StatusCode setCallback(Core::Timer::Callback callback) override;
 
         ~Timer() override;
     };
