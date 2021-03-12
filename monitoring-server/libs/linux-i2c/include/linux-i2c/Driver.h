@@ -32,7 +32,7 @@ namespace LinuxI2C {
     /**
      * @brief Interface to use the Linux I2C device driver
      */
-    class Driver : Core::Comms::I2C {
+    class Driver : public Core::Comms::I2C {
         /**
          * @brief File descriptor
          */
