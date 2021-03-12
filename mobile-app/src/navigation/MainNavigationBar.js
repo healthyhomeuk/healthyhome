@@ -3,6 +3,7 @@ import Data from '../views/Data';
 import Home from '../views/Home';
 import Settings from '../views/Settings';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons  from 'react-native-vector-icons/Ionicons';
 
 /*
  * This file is part of the HealthyHome project monitoring server
@@ -33,7 +34,23 @@ const NavBar = createBottomTabNavigator();
 function MainNavigationBar(){
     return(
     <NavBar.Navigator
-    initialRouteName="Home" tabBarOptions={{activeTintColor: 'black', inactiveTintColor: 'gray', style:{backgroundColor:'#f2ffea'}}}>
+    initialRouteName="Home" tabBarOptions={{activeTintColor: 'black', inactiveTintColor: 'gray', style:{backgroundColor:'#f2ffea'}}}
+    screenOptions={({route}) => ({
+      tabBarIcon: ({focused, color}) => {
+        let iconName;
+
+        if (route.name === 'Home') {
+              iconName = focused? 'home': 'home-outline';
+
+            } else if (route.name === 'Settings') {
+              iconName = focused ? 'settings' : 'settings-outline';
+              
+            } else{
+              iconName = focused ? 'analytics' : 'analytics-outline';
+            }
+        return <Ionicons name={iconName} size={28} color={color} />
+      }
+    })}>
      <NavBar.Screen name ="Settings" component={Settings}/>
      <NavBar.Screen name ="Home" component={Home}/>
      <NavBar.Screen name ="Data" component={Data}/>
