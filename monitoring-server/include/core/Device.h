@@ -24,6 +24,7 @@
 #ifndef CORE_DEVICE_H
 #define CORE_DEVICE_H
 
+#include <memory>
 #include <vector>
 
 #include <core/defs.h>
@@ -61,7 +62,7 @@ namespace Core {
          * @brief Getter for the Sensor references.
          * @return The vector containing the Sensor references.
          */
-        virtual std::vector<Sensor &> getSensors() = 0;
+        virtual std::vector<std::shared_ptr<Sensor>> getSensors() = 0;
 
         /**
          * @brief Callback for incoming messages
