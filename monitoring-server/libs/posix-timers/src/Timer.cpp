@@ -105,6 +105,7 @@ Core::StatusCode Timer::remove()
         return Core::E_GENERIC;
     }
 
+    running = false;
     return Core::SUCCESS;
 }
 
@@ -123,6 +124,7 @@ Core::StatusCode Timer::setup()
         return Core::E_GENERIC;
     }
 
+    running = true;
     return Core::SUCCESS;
 }
 
