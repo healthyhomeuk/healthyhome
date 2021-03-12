@@ -28,30 +28,30 @@
 
 namespace Core {
 
+/**
+ * @brief Interface required to be implemented for any event that
+ *        requires scheduling.
+ * @headerfile core/Event.h <core/Event.h>
+ */
+class Event {
+public:
     /**
-     * @brief Interface required to be implemented for any event that
-     *        requires scheduling.
-     * @headerfile core/Event.h <core/Event.h>
+     * @brief Callback to process the event.
+     * @return Operation status code.
      */
-    class Event {
-    public:
-        /**
-         * @brief Callback to process the event.
-         * @return Operation status code.
-         */
-        virtual StatusCode process() = 0;
+    virtual StatusCode process() = 0;
 
-        /**
-         * @brief Getter for the priority level
-         * @return Priority level
-         */
-        virtual PriorityLevel getPriorityLevel() = 0;
+    /**
+     * @brief Getter for the priority level
+     * @return Priority level
+     */
+    virtual PriorityLevel getPriorityLevel() = 0;
 
-        /**
-         * @brief Default deconstructor
-         */
-        virtual ~Event() = default;
-    };
+    /**
+     * @brief Default deconstructor
+     */
+    virtual ~Event() = default;
+};
 
 }
 

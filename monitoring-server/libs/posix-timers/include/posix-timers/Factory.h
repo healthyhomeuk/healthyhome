@@ -28,54 +28,56 @@ extern "C" {
 #include <csignal>
 }
 
-#include <memory>
-
 #include <core/EventScheduler.h>
+#include <memory>
 #include <posix-timers/Timer.h>
 
 namespace PosixTimers {
-    /**
-     * @brief Timer Factory class
-     * @headerfile posix-timers/Factory.h <posix-timers/Factory.h>
-     *
-     * POSIX timers cannot be created directly but they need to be
-     * bound to a specific POSIX signal. The Factory class provides
-     * a way to make timers based on its configuration.
-     *
-     * Example:
-     * @code{.cpp}
-     * PosixTimers::Factory timersFactory{
-     *      scheduler, // server scheduler, required to push timer events
-     *      SIGRTMIN   // lowest signal of the Real-time signal range,
-     *                 // this may be any value from SIGRTMIN up to
-     *                 // SIGRTMAX.
-     * };
-     *
-     * auto timer = timersFactory.makeTimer();
-     * @endcode
-     */
-    class Factory {
+/**
+ * @brief Timer Factory class
+ * @headerfile posix-timers/Factory.h <posix-timers/Factory.h>
+ *
+ * POSIX timers cannot be created directly but they need to be
+ * bound to a specific POSIX signal. The Factory class provides
+ * a way to make timers based on its configuration.
+ *
+ * Example:
+ * @code{.cpp}
+ * PosixTimers::Factory timersFactory{
+ *      scheduler, // server scheduler, required to push timer events
+ *      SIGRTMIN   // lowest signal of the Real-time signal range,
+ *                 // this may be any value from SIGRTMIN up to
+ *                 // SIGRTMAX.
+ * };
+ *
+ * auto timer = timersFactory.makeTimer();
+ * @endcode
+ */
+class Factory {
     friend class Timer;
-    private:
-        int signalId;
-        Core::EventScheduler &scheduler;
 
-        static void signalHandler(int sig, siginfo_t *si, void *ctx);
-    public:
-        Factory() = delete;
+private:
+    int signalId;
+    Core::EventScheduler& scheduler;
 
-        /**
-         * @param scheduler Server event scheduler
-         * @param signalId Real-time signal id (must be between SIGRTMIN and SIGRTMAX)
-         */
-        explicit Factory(Core::EventScheduler &scheduler, int signalId = SIGRTMIN);
+    static void signalHandler(int sig, siginfo_t* si, void* ctx);
 
-        /**
-         * @brief Core::Timer::Factory function to make a new timer
-         * @return Smart unique pointer to a Timer object
-         */
-        std::unique_ptr<Timer> makeTimer();
-    };
+public:
+    Factory() = delete;
+
+    /**
+     * @param scheduler Server event scheduler
+     * @param signalId Real-time signal id (must be between SIGRTMIN and
+     * SIGRTMAX)
+     */
+    explicit Factory(Core::EventScheduler& scheduler, int signalId = SIGRTMIN);
+
+    /**
+     * @brief Core::Timer::Factory function to make a new timer
+     * @return Smart unique pointer to a Timer object
+     */
+    std::unique_ptr<Timer> makeTimer();
+};
 }
 
 #endif // POSIX_TIMERS_FACTORY_H

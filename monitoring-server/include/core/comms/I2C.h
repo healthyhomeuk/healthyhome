@@ -24,40 +24,48 @@
 #ifndef CORE_COMMS_I2C_H
 #define CORE_COMMS_I2C_H
 
-#include <core/defs.h>
 #include <core/comms/Packet.h>
+#include <core/defs.h>
 
 namespace Core::Comms {
 
+/**
+ * @brief Communication interface for I2C.
+ * @headerfile core/comms/I2C.h <core/comms/I2C.h>
+ */
+class I2C {
+public:
     /**
-     * @brief Communication interface for I2C.
-     * @headerfile core/comms/I2C.h <core/comms/I2C.h>
+     * @brief Method for reading a block of data.
+     * @param deviceId I2C Device 7-bit identifier
+     * @param command I2C Command 8-bit identifier
+     * @param packet A reference to the packet to read.
+     * @return Status operation code.
      */
-    class I2C {
-    public:
-        /**
-         * @brief Method for reading a block of data.
-         * @param deviceId I2C Device 7-bit identifier
-         * @param command I2C Command 8-bit identifier
-         * @param packet A reference to the packet to read.
-         * @return Status operation code.
-         */
-        virtual StatusCode read(unsigned char deviceId, unsigned char command, Packet &packet) = 0;
+    virtual StatusCode read(
+        unsigned char deviceId,
+        unsigned char command,
+        Packet& packet)
+        = 0;
 
-        /**
-         * @brief Method for writing a block of data.
-         * @param deviceId I2C Device 7-bit identifier
-         * @param command I2C Register 8-bit identifier
-         * @param packet A reference to the packet to write.
-         * @return Status operation code.
-         */
-        virtual StatusCode write(unsigned char deviceId, unsigned char command, Packet &packet) = 0;
+    /**
+     * @brief Method for writing a block of data.
+     * @param deviceId I2C Device 7-bit identifier
+     * @param command I2C Register 8-bit identifier
+     * @param packet A reference to the packet to write.
+     * @return Status operation code.
+     */
+    virtual StatusCode write(
+        unsigned char deviceId,
+        unsigned char command,
+        Packet& packet)
+        = 0;
 
-        /**
-         * @brief Default deconstructor
-         */
-        virtual ~I2C() = default;
-    };
+    /**
+     * @brief Default deconstructor
+     */
+    virtual ~I2C() = default;
+};
 
 }
 

@@ -24,46 +24,46 @@
 #ifndef CORE_SENSOR_H
 #define CORE_SENSOR_H
 
-#include <core/defs.h>
 #include <core/Message.h>
+#include <core/defs.h>
 
 namespace Core {
 
+/**
+ * @brief Interface for a sensor
+ */
+class Sensor {
+public:
     /**
-     * @brief Interface for a sensor
+     * @brief Sets the sensor up for operation
+     * @return Operation status code
      */
-    class Sensor {
-    public:
-        /**
-         * @brief Sets the sensor up for operation
-         * @return Operation status code
-         */
-        virtual StatusCode setup() = 0;
+    virtual StatusCode setup() = 0;
 
-        /**
-         * @brief Halts the sensor for operation
-         * @return Operation status ode
-         */
-        virtual StatusCode halt() = 0;
+    /**
+     * @brief Halts the sensor for operation
+     * @return Operation status ode
+     */
+    virtual StatusCode halt() = 0;
 
-        /**
-         * @brief Getter for the sensor identifier.
-         * @return The sensor identifier.
-         */
-        virtual const char *getName() = 0;
+    /**
+     * @brief Getter for the sensor identifier.
+     * @return The sensor identifier.
+     */
+    virtual const char* getName() = 0;
 
-        /**
-         * @brief Callback for incoming messages
-         * @param message Reference to the message to handle
-         * @return Operation status code
-         */
-        virtual StatusCode handleMessage(Message &message) = 0;
+    /**
+     * @brief Callback for incoming messages
+     * @param message Reference to the message to handle
+     * @return Operation status code
+     */
+    virtual StatusCode handleMessage(Message& message) = 0;
 
-        /**
-         * @brief Default deconstructor
-         */
-        virtual ~Sensor() = default;
-    };
+    /**
+     * @brief Default deconstructor
+     */
+    virtual ~Sensor() = default;
+};
 }
 
 #endif // CORE_SENSOR_H

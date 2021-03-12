@@ -24,20 +24,20 @@
 #ifndef CORE_EVENTS_STOP_SERVER_H
 #define CORE_EVENTS_STOP_SERVER_H
 
-#include <core/defs.h>
 #include <core/Event.h>
+#include <core/defs.h>
 
 namespace Core::Events {
 
-    /**
-     * @brief StopServer event
-     */
-    class StopServer : public Event {
-    public:
-        StatusCode process() final;
-        
-        PriorityLevel getPriorityLevel() override;
-    };
+/**
+ * @brief StopServer event
+ */
+class StopServer : public Event {
+public:
+    StatusCode process() final;
+
+    PriorityLevel getPriorityLevel() override;
+};
 
 }
 

@@ -24,74 +24,73 @@
 #ifndef CORE_TIMER_H
 #define CORE_TIMER_H
 
+#include <core/defs.h>
 #include <functional>
 #include <memory>
 
-#include <core/defs.h>
-
 namespace Core {
+/**
+ * @brief Interface to implement the timer functionality
+ * @headerfile core/Timer.h <core/Timer.h>
+ */
+class Timer {
+public:
     /**
-     * @brief Interface to implement the timer functionality
-     * @headerfile core/Timer.h <core/Timer.h>
+     * @brief Definition of a timer factory
      */
-    class Timer {
-    public:
-        /**
-         * @brief Definition of a timer factory
-         */
-        using Factory = std::function<std::unique_ptr<Timer>()>;
+    using Factory = std::function<std::unique_ptr<Timer>()>;
 
-        /**
-         * @brief Definition of a timer callback
-         */
-        using Callback = std::function<StatusCode()>;
+    /**
+     * @brief Definition of a timer callback
+     */
+    using Callback = std::function<StatusCode()>;
 
-        /**
-         * @brief Sets the timer up and enables it.
-         * @return Status operation code.
-         */
-        virtual StatusCode setup() = 0;
+    /**
+     * @brief Sets the timer up and enables it.
+     * @return Status operation code.
+     */
+    virtual StatusCode setup() = 0;
 
-        /**
-         * @brief Removes the timer
-         * @return Status operation code.
-         */
-        virtual StatusCode remove() = 0;
+    /**
+     * @brief Removes the timer
+     * @return Status operation code.
+     */
+    virtual StatusCode remove() = 0;
 
-        /**
-         * @brief Callback trigger
-         *
-         * This method is meant for exclusive use to the TimerTrigger
-         * event.
-         *
-         * @return Callback status operation code.
-         */
-        virtual StatusCode trigger() = 0;
+    /**
+     * @brief Callback trigger
+     *
+     * This method is meant for exclusive use to the TimerTrigger
+     * event.
+     *
+     * @return Callback status operation code.
+     */
+    virtual StatusCode trigger() = 0;
 
-        /**
-         * @brief Getter for the time interval.
-         * @return Time interval in seconds.
-         */
-        virtual int getInterval() = 0;
+    /**
+     * @brief Getter for the time interval.
+     * @return Time interval in seconds.
+     */
+    virtual int getInterval() = 0;
 
-        /**
-         * @brief Setter for the time interval in seconds.
-         * @return Status operation code.
-         */
-        virtual StatusCode setInterval(int interval) = 0;
+    /**
+     * @brief Setter for the time interval in seconds.
+     * @return Status operation code.
+     */
+    virtual StatusCode setInterval(int interval) = 0;
 
-        /**
-         * @brief Setter for the timer callback.
-         * @param cb The callback that is called for every timer trigger.
-         * @return Status operation code.
-         */
-        virtual StatusCode setCallback(Callback cb) = 0;
+    /**
+     * @brief Setter for the timer callback.
+     * @param cb The callback that is called for every timer trigger.
+     * @return Status operation code.
+     */
+    virtual StatusCode setCallback(Callback cb) = 0;
 
-        /**
-         * @brief Default deconstructor
-         */
-        virtual ~Timer() = default;
-    };
+    /**
+     * @brief Default deconstructor
+     */
+    virtual ~Timer() = default;
+};
 
 }
 

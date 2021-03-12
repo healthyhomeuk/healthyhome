@@ -24,29 +24,29 @@
 #ifndef CORE_EVENTS_TIMER_TRIGGER_H
 #define CORE_EVENTS_TIMER_TRIGGER_H
 
-#include <core/defs.h>
 #include <core/Event.h>
 #include <core/Timer.h>
+#include <core/defs.h>
 
 namespace Core::Events {
 
+/**
+ * @brief TimerTrigger event
+ */
+class TimerTrigger : public Event {
+    Timer& timer;
+
+public:
     /**
-     * @brief TimerTrigger event
+     * @brief TimerTrigger constructor
+     * @param timer Reference to the timer that has been triggered
      */
-    class TimerTrigger : public Event {
-        Timer &timer;
+    explicit TimerTrigger(Timer& timer);
 
-    public:
-        /**
-         * @brief TimerTrigger constructor
-         * @param timer Reference to the timer that has been triggered
-         */
-        explicit TimerTrigger(Timer &timer);
+    StatusCode process() override;
 
-        StatusCode process() override;
-
-        PriorityLevel getPriorityLevel() override;
-    };
+    PriorityLevel getPriorityLevel() override;
+};
 
 }
 

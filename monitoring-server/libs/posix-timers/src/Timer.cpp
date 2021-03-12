@@ -18,12 +18,12 @@
  */
 
 extern "C" {
-#include <cstdlib>
-#include <unistd.h>
-#include <cstdio>
-#include <csignal>
-#include <pthread.h>
 #include <cerrno>
+#include <csignal>
+#include <cstdio>
+#include <cstdlib>
+#include <pthread.h>
+#include <unistd.h>
 }
 
 #include <posix-timers/Factory.h>
@@ -37,21 +37,20 @@ constexpr int MICRO = 1e6;
 int setTime(timer_t tid, int s, int ns)
 {
     struct itimerspec in;
-    in.it_value.tv_sec = s;
-    in.it_value.tv_nsec = ns;
-    in.it_interval.tv_sec = s;
+    in.it_value.tv_sec     = s;
+    in.it_value.tv_nsec    = ns;
+    in.it_interval.tv_sec  = s;
     in.it_interval.tv_nsec = ns;
 
     return timer_settime(tid, 0, &in, nullptr);
 }
 
-Timer::Timer(PosixTimers::Factory &_factory)
-    : factory(_factory)
+Timer::Timer(PosixTimers::Factory& _factory) : factory(_factory)
 {
     struct sigevent sig;
     sig.sigev_value.sival_ptr = this;
-    sig.sigev_signo = factory.signalId;
-    sig.sigev_notify = SIGEV_SIGNAL;
+    sig.sigev_signo           = factory.signalId;
+    sig.sigev_notify          = SIGEV_SIGNAL;
 
     timer_create(CLOCK_REALTIME, &sig, &timerId);
 }

@@ -24,62 +24,61 @@
 #ifndef CORE_EVENT_SCHEDULER_H
 #define CORE_EVENT_SCHEDULER_H
 
-#include <memory>
-
-#include <core/defs.h>
 #include <core/Event.h>
+#include <core/defs.h>
+#include <memory>
 
 namespace Core {
 
+/**
+ * @brief Interface required to be implemented for an event scheduler.
+ * @headerfile core/EventScheduler.h <core/EventScheduler.h>
+ *
+ * The architecture of the server is event-based. What this means is
+ * that every operation is dictated by events triggering. In order for
+ * this to work, the server must be capable of scheduling the events
+ * so that they can run properly. This is a platform-dependent operation
+ * since on a Unix-based system can be implemented using the POSIX API,
+ * or any embedded system may implement their own RTOS, e.g. FreeRTOS.
+ *
+ * Because of this the server requires the scheduling to be implemented
+ * per-platform using the EventScheduler interface.
+ */
+class EventScheduler {
+public:
     /**
-     * @brief Interface required to be implemented for an event scheduler.
-     * @headerfile core/EventScheduler.h <core/EventScheduler.h>
+     * @brief Push a new event to the scheduler.
      *
-     * The architecture of the server is event-based. What this means is
-     * that every operation is dictated by events triggering. In order for
-     * this to work, the server must be capable of scheduling the events
-     * so that they can run properly. This is a platform-dependent operation
-     * since on a Unix-based system can be implemented using the POSIX API,
-     * or any embedded system may implement their own RTOS, e.g. FreeRTOS.
+     * This essential operation allows to push new events
+     * that require processing to the event scheduler.
      *
-     * Because of this the server requires the scheduling to be implemented
-     * per-platform using the EventScheduler interface.
+     * @return Status code of the operation.
      */
-    class EventScheduler {
-    public:
-        /**
-         * @brief Push a new event to the scheduler.
-         *
-         * This essential operation allows to push new events
-         * that require processing to the event scheduler.
-         *
-         * @return Status code of the operation.
-         */
-        virtual StatusCode push(std::unique_ptr<Event> event) = 0;
+    virtual StatusCode push(std::unique_ptr<Event> event) = 0;
 
-        /**
-         * @brief Scheduler startup method.
-         *
-         * This crucial method starts up the the event
-         * scheduler. This operation is generally blocking,
-         * though it will return if the scheduler is stopped.
-         *
-         * @return Status code of the operation.
-         */
-        virtual StatusCode start() = 0;
+    /**
+     * @brief Scheduler startup method.
+     *
+     * This crucial method starts up the the event
+     * scheduler. This operation is generally blocking,
+     * though it will return if the scheduler is stopped.
+     *
+     * @return Status code of the operation.
+     */
+    virtual StatusCode start() = 0;
 
-        /**
-         * @brief Scheduler stop method.
-         *
-         * @return Status code of the operation.
-         */
-        virtual StatusCode stop() = 0;
+    /**
+     * @brief Scheduler stop method.
+     *
+     * @return Status code of the operation.
+     */
+    virtual StatusCode stop() = 0;
 
-        /**
-         * @brief Default deconstructor
-         */
-        virtual ~EventScheduler() = default;
-    };
+    /**
+     * @brief Default deconstructor
+     */
+    virtual ~EventScheduler() = default;
+};
 
 }
 

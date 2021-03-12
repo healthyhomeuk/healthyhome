@@ -31,32 +31,32 @@
  * @brief Namespace for the Silicon Labs SI1145 library.
  */
 namespace SI1145 {
+/**
+ * @brief Concrete class for the Silicon Labs SI1145 device.
+ * @headerfile si1145/Device.h <si1145/Device.h>
+ */
+class Device : public Core::Device {
+public:
     /**
-     * @brief Concrete class for the Silicon Labs SI1145 device.
-     * @headerfile si1145/Device.h <si1145/Device.h>
+     * @brief Configuration for the SI1145 Device.
      */
-    class Device : public Core::Device {
-    public:
-        /**
-         * @brief Configuration for the SI1145 Device.
-         */
-        struct Configuration {
-            Core::Comms::I2C *i2c; ///< Reference to an I2C implementation.
-        };
-
-        Device() = default;
-
-        /**
-         * @brief Constructor for a SI1145 Device.
-         * @param config configuration data structure.
-         */
-        explicit Device(Configuration config);
-
-        const char *getName() override;
-
-    private:
-        Configuration config;
+    struct Configuration {
+        Core::Comms::I2C* i2c; ///< Reference to an I2C implementation.
     };
+
+    Device() = default;
+
+    /**
+     * @brief Constructor for a SI1145 Device.
+     * @param config configuration data structure.
+     */
+    explicit Device(Configuration config);
+
+    const char* getName() override;
+
+private:
+    Configuration config;
+};
 
 }
 
