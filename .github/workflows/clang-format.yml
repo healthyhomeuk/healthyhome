@@ -1,0 +1,26 @@
+name: Clang Format
+
+on:
+  push:
+    branches-ignore: [main]
+    paths:
+      - 'monitoring-server/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'monitoring-server/**'
+
+jobs:
+  clang-format:
+    name: Clang format
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Clang-format
+        run: |
+          apt-get update && apt-get install -y clang-format git
+          files=$(git diff --relative --name-only HEAD..HEAD~5 | grep -E "^.*\.(cpp|h)$")
+          [[ $? -eq 1 ]] || (echo $files | xargs clang-format -n -Werror --ferror-limit=1 -style=file)
+        working-directory: ./monitoring-server

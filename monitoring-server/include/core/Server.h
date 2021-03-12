@@ -24,9 +24,9 @@
 #ifndef CORE_SERVER_H
 #define CORE_SERVER_H
 
+#include <core/Postman.h>
 #include <core/Device.h>
 #include <core/EventScheduler.h>
-#include <core/Postman.h>
 #include <core/defs.h>
 #include <string>
 #include <unordered_map>
