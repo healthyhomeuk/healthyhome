@@ -25,16 +25,16 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 
 /**
  * Bottom Tab Navigator
- * @constant {NavBar}
+ * @constant {Tab}
  */
-const NavBar = createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 /**
  * This component renders the navigation bar.
- * @returns {NavBar.Navigator}
+ * @returns {Tab.Navigator}
  */
-function MainNavigationBar() {
+function NavBar() {
     return (
-        <NavBar.Navigator
+        <Tab.Navigator
             initialRouteName="Home"
             tabBarOptions={{
                 activeTintColor: "black",
@@ -43,10 +43,10 @@ function MainNavigationBar() {
             }}
             screenOptions={({ route }) => ({ tabBarIcon: tabBarIcon(route) })}
         >
-            <NavBar.Screen name="Settings" component={Settings} />
-            <NavBar.Screen name="Home" component={Home} />
-            <NavBar.Screen name="Data" component={Data} />
-        </NavBar.Navigator>
+            <Tab.Screen name="Settings" component={Settings} />
+            <Tab.Screen name="Home" component={Home} />
+            <Tab.Screen name="Data" component={Data} />
+        </Tab.Navigator>
     );
 }
 
@@ -68,4 +68,4 @@ const tabBarIcon = (route) => ({ focused, color }) => {
     return <Ionicons name={iconName} size={28} color={color} />;
 };
 
-export default MainNavigationBar;
+export default NavBar;
