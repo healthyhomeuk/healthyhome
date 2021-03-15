@@ -1,6 +1,6 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import MainNavigationBar from "./navigation/MainNavigationBar";
+import NavBar from "./components/Navbar";
 
 /**
  * Renders all the components of the app.
@@ -8,7 +8,7 @@ import MainNavigationBar from "./navigation/MainNavigationBar";
 export default function App() {
     return (
         <NavigationContainer>
-            <MainNavigationBar />
+            <NavBar />
         </NavigationContainer>
     );
 }
