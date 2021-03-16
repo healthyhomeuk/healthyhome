@@ -19,6 +19,18 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+import screenHeader from "../components/Header";
+
+const HomeStack = createStackNavigator();
+
+function HomeStackScreen() {
+    return (
+        <HomeStack.Navigator screenOptions={screenHeader}>
+            <HomeStack.Screen name="Home" component={Home} />
+        </HomeStack.Navigator>
+    );
+}
 
 /**
  * Renders the home screen.
@@ -46,4 +58,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Home;
+export default HomeStackScreen;

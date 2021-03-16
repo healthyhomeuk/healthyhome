@@ -16,46 +16,44 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
-import screenHeader from "../components/Header";
-
-const DataStack = createStackNavigator();
-
-function DataStackScreen() {
-    return (
-        <DataStack.Navigator screenOptions={screenHeader}>
-            <DataStack.Screen name="Data" component={Data} />
-        </DataStack.Navigator>
-    );
-}
 
 /**
- * Renders the data screen, where data is displayed historically.
+ * This component renders the header of the app.
+ * @returns {View}
  */
-function Data() {
+function Header() {
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>This is the Data screen.</Text>
-            <StatusBar style="auto" />
+        <View style={styles.headerStyle}>
+            <Text style={styles.headerTextStyle}>HealthyHome</Text>
         </View>
     );
 }
 
+function screenHeader() {
+    return {
+        headerTitle: () => <Header />,
+        headerStyle: {
+            backgroundColor: "#f2ffea",
+        },
+    };
+}
+
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "center",
+    headerStyle: {
+        width: "100%",
+        height: "100%",
+        flexDirection: "row",
         alignItems: "center",
+        justifyContent: "center",
         backgroundColor: "#f2ffea",
     },
-    text: {
-        color: "#101010",
-        fontSize: 24,
-        fontWeight: "bold",
+    headerTextStyle: {
+        fontFamily: "Futura",
+        fontSize: 20,
+        color: "black",
+        letterSpacing: 0.5,
     },
 });
-
-export default DataStackScreen;
+export default screenHeader;
