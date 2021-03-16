@@ -17,9 +17,9 @@
  */
 
 import React from "react";
-import Data from "../views/Data";
-import Home from "../views/Home";
-import Settings from "../views/Settings";
+import DataStackScreen from "../views/Data";
+import HomeStackScreen from "../views/Home";
+import SettingsStackScreen from "../views/Settings";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
@@ -43,9 +43,9 @@ function NavBar() {
             }}
             screenOptions={({ route }) => ({ tabBarIcon: tabBarIcon(route) })}
         >
-            <Tab.Screen name="Settings" component={Settings} />
-            <Tab.Screen name="Home" component={Home} />
-            <Tab.Screen name="Data" component={Data} />
+            <Tab.Screen name="Settings" component={SettingsStackScreen} />
+            <Tab.Screen name="Home" component={HomeStackScreen} />
+            <Tab.Screen name="Data" component={DataStackScreen} />
         </Tab.Navigator>
     );
 }

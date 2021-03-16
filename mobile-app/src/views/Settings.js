@@ -19,6 +19,17 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+import screenHeader from "../components/Header";
+const SettingsStack = createStackNavigator();
+
+function SettingsStackScreen() {
+    return (
+        <SettingsStack.Navigator screenOptions={screenHeader}>
+            <SettingsStack.Screen name="Home" component={Settings} />
+        </SettingsStack.Navigator>
+    );
+}
 
 /**
  * Renders the Settings screen.
@@ -46,4 +57,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Settings;
+export default SettingsStackScreen;
