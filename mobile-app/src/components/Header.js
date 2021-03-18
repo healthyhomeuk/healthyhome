@@ -25,7 +25,7 @@ import { StyleSheet, Text, View } from "react-native";
  */
 function Header() {
     return (
-        <View style={styles.headerStyle}>
+        <View style={styles.headerView}>
             <Text style={styles.headerTextStyle}>HealthyHome</Text>
         </View>
     );
@@ -36,12 +36,13 @@ function screenHeader() {
         headerTitle: () => <Header />,
         headerStyle: {
             backgroundColor: "#f2ffea",
+            height: 100,
         },
     };
 }
 
 const styles = StyleSheet.create({
-    headerStyle: {
+    headerView: {
         width: "100%",
         height: "100%",
         flexDirection: "row",
