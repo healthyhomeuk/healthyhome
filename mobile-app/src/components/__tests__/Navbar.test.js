@@ -6,11 +6,11 @@ import NavBar from "../Navbar";
 
 describe("NavBar", () => {
     it("renders the correct screen", async () => {
-        const { getByText } = render(
+        const { getAllByText } = render(
             <NavigationContainer>
                 <NavBar />
             </NavigationContainer>
         );
-        await waitFor(() => getByText("Home"));
+        await waitFor(() => getAllByText("Home"));
     });
 });

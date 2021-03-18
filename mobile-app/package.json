@@ -5,7 +5,7 @@
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "react-native start",
-    "test": "jest",
+    "test": "jest --watch",
     "docs": "jsdoc -c jsdoc.config.json"
   },
   "dependencies": {
