@@ -20,13 +20,18 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-import screenHeader from "../components/Header";
+import Header from "../components/Header";
 
 const DataStack = createStackNavigator();
 
 function DataStackScreen() {
     return (
-        <DataStack.Navigator screenOptions={screenHeader}>
+        <DataStack.Navigator
+            screenOptions={{
+                headerTitle: () => <Header />,
+                headerStyle: styles.headerStyle,
+            }}
+        >
             <DataStack.Screen name="Data" component={Data} />
         </DataStack.Navigator>
     );
@@ -45,6 +50,10 @@ function Data() {
 }
 
 const styles = StyleSheet.create({
+    headerStyle: {
+        backgroundColor: "#f2ffea",
+        height: 100,
+    },
     container: {
         flex: 1,
         justifyContent: "center",

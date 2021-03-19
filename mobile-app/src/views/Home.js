@@ -19,14 +19,19 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
-import screenHeader from "../components/Header";
+import { createStackNavigator, HeaderTitle } from "@react-navigation/stack";
+import Header from "../components/Header";
 
 const HomeStack = createStackNavigator();
 
 function HomeStackScreen() {
     return (
-        <HomeStack.Navigator screenOptions={screenHeader}>
+        <HomeStack.Navigator
+            screenOptions={{
+                headerTitle: () => <Header />,
+                headerStyle: styles.headerStyle,
+            }}
+        >
             <HomeStack.Screen name="Home" component={Home} />
         </HomeStack.Navigator>
     );
@@ -45,6 +50,10 @@ function Home() {
 }
 
 const styles = StyleSheet.create({
+    headerStyle: {
+        backgroundColor: "#f2ffea",
+        height: 100,
+    },
     container: {
         flex: 1,
         justifyContent: "center",
