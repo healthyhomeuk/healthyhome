@@ -31,16 +31,6 @@ function Header() {
     );
 }
 
-function screenHeader() {
-    return {
-        headerTitle: () => <Header />,
-        headerStyle: {
-            backgroundColor: "#f2ffea",
-            height: 100,
-        },
-    };
-}
-
 const styles = StyleSheet.create({
     headerView: {
         width: "100%",
@@ -57,4 +47,4 @@ const styles = StyleSheet.create({
         letterSpacing: 0.5,
     },
 });
-export default screenHeader;
+export default Header;
