@@ -21,8 +21,15 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Header from "../components/Header";
+
+/**
+ * @constant { Stack }
+ */
 const SettingsStack = createStackNavigator();
 
+/**
+ * Renders the Settings component wrapped with the Stack component
+ */
 function SettingsStackScreen() {
     return (
         <SettingsStack.Navigator
@@ -31,7 +38,7 @@ function SettingsStackScreen() {
                 headerStyle: styles.headerStyle,
             }}
         >
-            <SettingsStack.Screen name="Home" component={Settings} />
+            <SettingsStack.Screen name="Settings" component={Settings} />
         </SettingsStack.Navigator>
     );
 }

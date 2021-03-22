@@ -22,8 +22,15 @@ import { StyleSheet, Text, View } from "react-native";
 import { createStackNavigator, HeaderTitle } from "@react-navigation/stack";
 import Header from "../components/Header";
 
+/**
+ * Stack component to wrap around the screen and render Header
+ * @constant { Stack }
+ */
 const HomeStack = createStackNavigator();
 
+/**
+ * Renders the Home component wrapped with the Stack component
+ */
 function HomeStackScreen() {
     return (
         <HomeStack.Navigator

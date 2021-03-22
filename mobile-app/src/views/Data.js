@@ -22,8 +22,15 @@ import { StyleSheet, Text, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Header from "../components/Header";
 
+/**
+ * Stack component to wrap around the screen and render Header
+ * @constant { Stack }
+ */
 const DataStack = createStackNavigator();
 
+/**
+ * Renders the Data component wrapped with the Stack component
+ */
 function DataStackScreen() {
     return (
         <DataStack.Navigator

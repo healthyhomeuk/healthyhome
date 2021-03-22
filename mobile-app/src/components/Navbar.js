@@ -25,7 +25,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 
 /**
  * Bottom Tab Navigator
- * @constant {Tab}
+ * @constant { Tab }
  */
 const Tab = createBottomTabNavigator();
 /**
