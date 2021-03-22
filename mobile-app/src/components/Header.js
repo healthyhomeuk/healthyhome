@@ -17,7 +17,8 @@
  */
 
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
+import Style from "../assets/Style";
 
 /**
  * This component renders the header of the app.
@@ -25,26 +26,10 @@ import { StyleSheet, Text, View } from "react-native";
  */
 function Header() {
     return (
-        <View style={styles.headerView}>
-            <Text style={styles.headerTextStyle}>HealthyHome</Text>
+        <View style={Style.headerContainer}>
+            <Text style={Style.headerTitle}>HealthyHome</Text>
         </View>
     );
 }
 
-const styles = StyleSheet.create({
-    headerView: {
-        width: "100%",
-        height: "100%",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#f2ffea",
-    },
-    headerTextStyle: {
-        fontFamily: "Futura",
-        fontSize: 20,
-        color: "black",
-        letterSpacing: 0.5,
-    },
-});
 export default Header;

@@ -18,8 +18,9 @@
 
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { createStackNavigator, HeaderTitle } from "@react-navigation/stack";
+import { Text, View } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+import Style from "../assets/Style";
 import Header from "../components/Header";
 
 /**
@@ -36,7 +37,7 @@ function HomeStackScreen() {
         <HomeStack.Navigator
             screenOptions={{
                 headerTitle: () => <Header />,
-                headerStyle: styles.headerStyle,
+                headerStyle: Style.headerStyle,
             }}
         >
             <HomeStack.Screen name="Home" component={Home} />
@@ -49,29 +50,11 @@ function HomeStackScreen() {
  */
 function Home() {
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>This is the home screen.</Text>
+        <View style={Style.container}>
+            <Text style={Style.text}>This is the home screen.</Text>
             <StatusBar style="auto" />
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    headerStyle: {
-        backgroundColor: "#f2ffea",
-        height: 100,
-    },
-    container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#f2ffea",
-    },
-    text: {
-        color: "#101010",
-        fontSize: 24,
-        fontWeight: "bold",
-    },
-});
 
 export default HomeStackScreen;

@@ -20,6 +20,7 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
+import Style from "../assets/Style";
 import Header from "../components/Header";
 
 /**
@@ -35,7 +36,7 @@ function SettingsStackScreen() {
         <SettingsStack.Navigator
             screenOptions={{
                 headerTitle: () => <Header />,
-                headerStyle: styles.headerStyle,
+                headerStyle: Style.headerStyle,
             }}
         >
             <SettingsStack.Screen name="Settings" component={Settings} />
@@ -48,29 +49,11 @@ function SettingsStackScreen() {
  */
 function Settings() {
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>This is the Settings screen.</Text>
+        <View style={Style.container}>
+            <Text style={Style.text}>This is the Settings screen.</Text>
             <StatusBar style="auto" />
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    headerStyle: {
-        backgroundColor: "#f2ffea",
-        height: 100,
-    },
-    container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#f2ffea",
-    },
-    text: {
-        color: "#101010",
-        fontSize: 24,
-        fontWeight: "bold",
-    },
-});
 
 export default SettingsStackScreen;
