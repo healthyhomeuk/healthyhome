@@ -22,6 +22,7 @@ import { Text, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Style from "../assets/Style";
 import Header from "../components/Header";
+import Card from "../components/Card";
 
 /**
  * Stack component to wrap around the screen and render Header
@@ -51,7 +52,9 @@ function HomeStackScreen() {
 function Home() {
     return (
         <View style={Style.container}>
-            <Text style={Style.text}>This is the home screen.</Text>
+            <Card>
+                <Text style={Style.text}>This is the home screen.</Text>
+            </Card>
             <StatusBar style="auto" />
         </View>
     );
