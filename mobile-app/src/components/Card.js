@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         marginHorizontal: 4,
         marginVertical: 4,
-        width: 0.9 * windowWidth,
-        height: 0.6 * windowHeight,
+        maxWidth: 0.9 * windowWidth,
+        maxHeight: 0.6 * windowHeight,
     },
     cardContent: {
         marginHorizontal: 18,
