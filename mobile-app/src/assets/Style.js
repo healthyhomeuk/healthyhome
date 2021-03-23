@@ -4,6 +4,10 @@ import { StyleSheet } from "react-native";
  * Creates a StyleSheet style reference from the given object.
  */
 export default StyleSheet.create({
+    scrollContainer: {
+        flex: 1,
+        backgroundColor: "#f2ffea",
+    },
     container: {
         flex: 1,
         justifyContent: "center",
@@ -16,6 +20,14 @@ export default StyleSheet.create({
         fontWeight: "bold",
     },
 
+    title: {
+        flex: 1,
+        color: "#101010",
+        fontSize: 24,
+        fontWeight: "bold",
+        marginHorizontal: 24,
+        marginVertical: 12,
+    },
     headerTitle: {
         fontFamily: "Futura",
         fontSize: 20,
