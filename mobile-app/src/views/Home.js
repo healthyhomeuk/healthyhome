@@ -23,6 +23,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Style from "../assets/Style";
 import Header from "../components/Header";
 import Card from "../components/Card";
+import AirQuality from "../components/AirQuality";
 
 /**
  * Stack component to wrap around the screen and render Header
@@ -53,7 +54,7 @@ function Home() {
     return (
         <View style={Style.container}>
             <Card>
-                <Text style={Style.text}>This is the home screen.</Text>
+                <AirQuality value={101} />
             </Card>
             <StatusBar style="auto" />
         </View>
