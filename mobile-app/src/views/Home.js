@@ -18,7 +18,7 @@
 
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, ScrollView } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Style from "../assets/Style";
 import Header from "../components/Header";
@@ -52,12 +52,21 @@ function HomeStackScreen() {
  */
 function Home() {
     return (
-        <View style={Style.container}>
-            <Card>
-                <AirQuality value={101} />
-            </Card>
-            <StatusBar style="auto" />
-        </View>
+        <ScrollView style={{ flex: 1, backgroundColor: "#f2ffea" }}>
+            <View style={Style.container}>
+                <Card>
+                    <AirQuality value={101} />
+                </Card>
+                <StatusBar style="auto" />
+            </View>
+            <View style={Style.container}>
+                <View style={{ flex: 1, flexDirection: "row" }}>
+                    <Text style={Style.title}>Other Data</Text>
+                </View>
+
+                <StatusBar style="auto" />
+            </View>
+        </ScrollView>
     );
 }
 

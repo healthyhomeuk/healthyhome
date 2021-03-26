@@ -13,6 +13,7 @@ export default StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#f2ffea",
+        marginVertical: 20,
     },
     text: {
         color: "#101010",
