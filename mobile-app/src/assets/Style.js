@@ -19,7 +19,6 @@ export default StyleSheet.create({
         fontSize: 24,
         fontWeight: "bold",
     },
-
     title: {
         flex: 1,
         color: "#101010",
