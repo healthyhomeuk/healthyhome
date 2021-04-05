@@ -165,20 +165,12 @@ public:
     static void registerSensor(std::string sensorId, Sensor& sensor);
 
     /**
+     * @copydoc Postman::registerMessageFactory
      * @brief Proxy method to Postman::registerMessageFactory
-     *
-     * Registers a Message::Factory method to generate incoming messages.
-     *
-     * @param entity The recipient entity of the incoming message.
-     * @param factory The pointer to a message factory method.
-     * @return Status of the operation.
-     * @retval SUCCESS If the message factory has been registered successfully.
-     * @retval E_CONFLICT If a message factory with the recipient and subject
-     * was already registered.
      */
-    static StatusCode registerMessageFactory(
-        Message::Entity entity,
-        Message::Factory* factory);
+    static void registerMessageFactory(
+        Message::Identity identity,
+        Message::Factory factory);
     /**
      * @}
      */

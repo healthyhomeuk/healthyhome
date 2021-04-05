@@ -25,6 +25,8 @@
 #define CORE_MESSAGE_H
 
 #include <core/defs.h>
+#include <functional>
+#include <memory>
 #include <string>
 
 namespace Core {
@@ -55,12 +57,17 @@ public:
     using Entity = std::pair<EntityType, std::string>;
 
     /**
+     * @brief Definition of a message identity.
+     */
+    using Identity = std::tuple<EntityType, std::string, std::string>;
+
+    /**
      * @brief Definition of a message factory.
      *
      * This method enables the Postman to envelope all the incoming
      * messages into the correct Message-implementing class.
      */
-    using Factory = Message&();
+    using Factory = std::function<std::unique_ptr<Message>()>;
 
     /**
      * @brief Getter that returns the sending/receiving
@@ -72,17 +79,17 @@ public:
      * @return A pair containing the entity type and the entity
      *         identifier.
      */
-    virtual Entity getEntity() = 0;
+    virtual Entity getEntity() const = 0;
 
     /**
      * @brief Getter that returns the subject
      */
-    virtual std::string getSubject() = 0;
+    virtual std::string getSubject() const = 0;
 
     /**
-     * @brief Getter that returns size in bytes of the payload
+     * @brief Getter that returns the identity
      */
-    virtual size_t getPayloadSize() = 0;
+    virtual Identity getIdentity() const = 0;
 
     /**
      * @brief Deserialization method
