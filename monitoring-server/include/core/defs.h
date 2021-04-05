@@ -24,6 +24,8 @@
 #ifndef CORE_DEFS_H
 #define CORE_DEFS_H
 
+#include <assert.h>
+
 namespace Core {
 
 /**
@@ -88,6 +90,112 @@ enum PriorityLevel {
     HIGH,    ///< High priority level
     HIGHEST, ///< Highest priority level
 };
+
+/**
+ * @brief Defines a server entity
+ */
+#define SERVER_ENTITY \
+    {                 \
+        SERVER, ""    \
+    }
+
+/**
+ * @brief Defines a device entity with specified name
+ */
+#define DEVICE_ENTITY(name) \
+    {                       \
+        DEVICE, name        \
+    }
+
+/**
+ * @brief Defines a sensor entity with specified name
+ */
+#define SENSOR_ENTITY(name) \
+    {                       \
+        SENSOR, name        \
+    }
+
+/**
+ * @brief Creates a Message identity given entity and subject
+ */
+#define MAKE_IDENTITY(entity, subject) \
+    std::make_tuple(entity.first, entity.second, subject)
+
+/**
+ * @brief Shortcut to set a static Entity property
+ */
+#define SET_ENTITY inline static const Entity ENTITY
+/**
+ * @brief Shortcut to set a static subject property
+ */
+#define SET_SUBJECT inline static const char* SUBJECT
+/**
+ * @brief Shortcut to set a static Identity property
+ */
+#define SET_IDENTITY inline static const Identity IDENTITY
+
+/**
+ * @brief Defines a static serializer and its implementation
+ *
+ * A static serializer is a serializer that is due to be implemented
+ * outside the library at the executable level to satisfy the choice of
+ * Postman.
+ */
+#define STATIC_SERIALIZER(className)                                      \
+    inline static std::function<void(const className&, void*)> SERIALIZER \
+        = nullptr;                                                        \
+                                                                          \
+    void serialize(void* payload) const override                          \
+    {                                                                     \
+        assert(SERIALIZER != nullptr);                                    \
+        SERIALIZER(*this, payload);                                       \
+    }
+
+/**
+ * @brief Defines a static deserializer and its implementation
+ *
+ * A static deserializer is a deserializer that is due to be implemented
+ * outside the library at the executable level to satisfy the choice of
+ * Postman.
+ */
+#define STATIC_DESERIALIZER(className)                                      \
+    inline static std::function<void(className&, const void*)> DESERIALIZER \
+        = nullptr;                                                          \
+                                                                            \
+    void deserialize(const void* payload) override                          \
+    {                                                                       \
+        assert(DESERIALIZER != nullptr);                                    \
+        DESERIALIZER(*this, payload);                                       \
+    }
+
+/**
+ * @brief Creates common getters and setters to every Message
+ */
+#define MAKE_MESSAGE(className)                     \
+    SET_IDENTITY = MAKE_IDENTITY(ENTITY, SUBJECT);  \
+                                                    \
+    className() = default;                          \
+                                                    \
+    static std::unique_ptr<Core::Message> factory() \
+    {                                               \
+        return std::make_unique<className>();       \
+    }                                               \
+                                                    \
+    Entity getEntity() const override               \
+    {                                               \
+        return ENTITY;                              \
+    }                                               \
+                                                    \
+    std::string getSubject() const override         \
+    {                                               \
+        return SUBJECT;                             \
+    }                                               \
+                                                    \
+    Identity getIdentity() const override           \
+    {                                               \
+        return IDENTITY;                            \
+    }
+
 }
 
 #endif // CORE_DEFS_H
