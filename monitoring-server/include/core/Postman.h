@@ -57,6 +57,12 @@ public:
         = 0;
 
     /**
+     * @brief Callback for Core::Events::MessageDelivery
+     * @param message request message to deliver
+     */
+    virtual void deliverMessage(std::unique_ptr<Core::Message> message) = 0;
+
+    /**
      * @brief Default deconstructor
      */
     virtual ~Postman() = default;

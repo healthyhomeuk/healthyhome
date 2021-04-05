@@ -27,6 +27,8 @@
 #include <core/Event.h>
 #include <core/Message.h>
 #include <core/defs.h>
+#include <functional>
+#include <memory>
 
 namespace Core::Events {
 
@@ -34,18 +36,26 @@ namespace Core::Events {
  * @brief MessageDelivery event
  */
 class MessageDelivery : public Event {
-    Message& message;
-
 public:
     /**
+     * @brief Definition of a delivery function pointer.
+     */
+    using DeliveryFn = std::function<void(std::unique_ptr<Message>)>;
+
+    /**
      * @brief MessageDelivery event constructor
+     * @param fn Function pointer to the function that will process the delivery
      * @param message Reference to the message that has been received
      */
-    explicit MessageDelivery(Message& message);
+    explicit MessageDelivery(DeliveryFn fn, std::unique_ptr<Message> message);
 
     StatusCode process() override;
 
     PriorityLevel getPriorityLevel() const override;
+
+private:
+    DeliveryFn deliver;
+    std::unique_ptr<Message> message;
 };
 
 }
