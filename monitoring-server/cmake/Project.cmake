@@ -9,6 +9,7 @@ target_sources(Core
         include/core/events/StopServer.h
         include/core/events/TimerTrigger.h
         include/core/messages/Devices.h
+        include/core/messages/Sensors.h
         include/core/defs.h
         include/core/Device.h
         include/core/Event.h
@@ -22,6 +23,7 @@ target_sources(Core
         include/core/Timer.h
 
         src/messages/Devices.cpp
+        src/messages/Sensors.cpp
         src/TimerTrigger.cpp)
 
 target_link_libraries(Core
