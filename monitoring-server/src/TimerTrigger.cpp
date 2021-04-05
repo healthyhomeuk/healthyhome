@@ -28,7 +28,7 @@ inline Core::StatusCode TimerTrigger::process()
     return timer.trigger();
 }
 
-Core::PriorityLevel TimerTrigger::getPriorityLevel()
+Core::PriorityLevel TimerTrigger::getPriorityLevel() const
 {
     return MEDIUM;
 }

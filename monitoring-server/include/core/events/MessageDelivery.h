@@ -45,7 +45,7 @@ public:
 
     StatusCode process() override;
 
-    PriorityLevel getPriorityLevel() override;
+    PriorityLevel getPriorityLevel() const override;
 };
 
 }

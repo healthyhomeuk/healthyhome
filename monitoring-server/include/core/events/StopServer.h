@@ -36,7 +36,7 @@ class StopServer : public Event {
 public:
     StatusCode process() final;
 
-    PriorityLevel getPriorityLevel() override;
+    PriorityLevel getPriorityLevel() const override;
 };
 
 }
