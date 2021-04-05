@@ -97,9 +97,8 @@ public:
      *
      * @param config the Configuration struct containing a complete server
      *               configuration.
-     * @return Whether the setup was successful or not.
      */
-    static StatusCode setup(Configuration config);
+    static void setup(std::unique_ptr<Configuration> config);
 
     /**
      * @brief Server startup.
@@ -184,8 +183,8 @@ public:
      * @}
      */
 private:
-    bool isSetup = false;
-    Configuration config;
+    std::unique_ptr<Configuration> config;
+
     std::unordered_map<std::string, Sensor&> sensors;
 
     Server() = default;
