@@ -45,7 +45,7 @@ public:
      * @brief Getter for the priority level
      * @return Priority level
      */
-    virtual PriorityLevel getPriorityLevel() = 0;
+    virtual PriorityLevel getPriorityLevel() const = 0;
 
     /**
      * @brief Default deconstructor
