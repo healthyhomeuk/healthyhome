@@ -17,7 +17,44 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-int main(int argc, char** argv)
+#include <core/Server.h>
+#include <core/events/StopServer.h>
+#include <evtq/Scheduler.h>
+#include <linux-i2c/Driver.h>
+#include <posix-timers/Factory.h>
+#include <zmq-postman/Postman.h>
+
+static LinuxI2C::Driver i2c;
+static EvtQ::Scheduler scheduler { 2 };
+static ZmqPostman::Postman postman { {
+    "ipc:///var/run/monitd/broadcast.sock",
+    "ipc:///var/run/monitd/entrypoint.sock",
+    scheduler,
+} };
+static PosixTimers::Factory timersFactory { scheduler };
+
+void signalHandler(int)
 {
+    std::unique_ptr<Core::Event> event
+        = std::make_unique<Core::Events::StopServer>();
+    scheduler.push(std::move(event));
+}
+
+int main()
+{
+    auto res = Core::SUCCESS;
+    signal(SIGINT, signalHandler);
+    signal(SIGTERM, signalHandler);
+
+    res = i2c.open(1);
+    assert(res == Core::SUCCESS);
+
+    postman.setup();
+
+    auto config = new Core::Server::Configuration { scheduler, postman, {} };
+    Core::Server::setup(std::unique_ptr<Core::Server::Configuration>(config));
+
+    Core::Server::start();
+
     return 0;
 }
