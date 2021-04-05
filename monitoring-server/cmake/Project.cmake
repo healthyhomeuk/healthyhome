@@ -24,6 +24,7 @@ target_sources(Core
 
         src/messages/Devices.cpp
         src/messages/Sensors.cpp
+        src/StopServer.cpp
         src/TimerTrigger.cpp)
 
 target_link_libraries(Core
