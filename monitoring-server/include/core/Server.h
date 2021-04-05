@@ -190,6 +190,9 @@ private:
     Server() = default;
 
     static Server& getInstance();
+
+    std::unique_ptr<Message> handleServerMessage(
+        std::unique_ptr<Message> message);
 };
 
 }
