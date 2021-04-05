@@ -171,9 +171,17 @@ public:
     static void registerMessageFactory(
         Message::Identity identity,
         Message::Factory factory);
+
+    ~Server();
     /**
      * @}
      */
+
+    Server(const Server&) = delete;
+    Server(Server&&)      = delete;
+    Server& operator=(const Server&) = delete;
+    Server& operator=(Server&&) = delete;
+
 private:
     std::unique_ptr<Configuration> config;
 
