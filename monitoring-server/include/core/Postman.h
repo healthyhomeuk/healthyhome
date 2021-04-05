@@ -40,20 +40,18 @@ public:
     /**
      * @brief Advertising method
      * @param message Message to advertise.
-     * @return Status of the operation.
+     * @throws std::exception
      */
-    virtual StatusCode advertise(Message& message) = 0;
+    virtual void advertise(const Message& message) = 0;
 
     /**
      * @brief Registers a Message::Factory method to generate incoming messages.
      * @param entity The recipient entity of the incoming message.
      * @param factory The pointer to a message factory method.
-     * @return Status of the operation.
-     * @retval SUCCESS If the message factory has been registered successfully.
-     * @retval E_CONFLICT If a message factory with the recipient and subject
-     * was already registered.
+     * @throws Core::Exception::Conflict if the given entity is already
+     *  registered.
      */
-    virtual StatusCode registerMessageFactory(
+    virtual void registerMessageFactory(
         Message::Entity entity,
         Message::Factory* factory)
         = 0;

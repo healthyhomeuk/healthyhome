@@ -160,12 +160,10 @@ public:
      * @brief Registers a sensor for incoming requests.
      * @param sensorId A sensor unique identifier.
      * @param sensor The Sensor reference.
-     * @return Status of the operation.
-     * @retval SUCCESS If the sensor has been registered successfully.
-     * @retval E_CONFLICT If a sensor with the same identifier was already
-     * registered.
+     * @throws Core::Exception::Conflict If a sensor with the same identifier
+     * was already registered.
      */
-    static StatusCode registerSensor(const char* sensorId, Sensor& sensor);
+    static void registerSensor(std::string sensorId, Sensor& sensor);
 
     /**
      * @brief Proxy method to Postman::registerMessageFactory

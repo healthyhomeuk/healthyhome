@@ -97,7 +97,7 @@ public:
      *
      * @param payload The payload to deserialize the Message from.
      */
-    virtual StatusCode deserialize(const void* payload) = 0;
+    virtual void deserialize(const void* payload) = 0;
 
     /**
      * @brief Serialization method
@@ -112,7 +112,7 @@ public:
      *
      * @param payload The payload to serialize the Message to.
      */
-    virtual StatusCode serialize(void* payload) = 0;
+    virtual void serialize(void* payload) const = 0;
 
     /**
      * @brief Default deconstructor
