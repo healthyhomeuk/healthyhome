@@ -12,6 +12,7 @@ target_sources(Core
         include/core/Device.h
         include/core/Event.h
         include/core/EventScheduler.h
+        include/core/exceptions.h
         include/core/Log.h
         include/core/Message.h
         include/core/Postman.h
