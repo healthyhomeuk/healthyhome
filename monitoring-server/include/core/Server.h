@@ -139,12 +139,12 @@ public:
      * the Postman class with an entrypoint to handle any of
      * the incoming messages.
      *
-     * @param message reference to an object implementing Message.
+     * @param message smart pointer to an object implementing Message.
      *
-     * @return Operation status code
-     * @retval SUCCESS Success
+     * @return the outgoing message from the handler.
      */
-    static StatusCode handleMessage(Message& message);
+    static std::unique_ptr<Message> handleMessage(
+        std::unique_ptr<Message> message);
     /**
      * @}
      */

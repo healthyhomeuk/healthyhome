@@ -53,11 +53,13 @@ public:
     virtual const char* getName() = 0;
 
     /**
-     * @brief Callback for incoming messages
-     * @param message Reference to the message to handle
-     * @return Operation status code
+     * @brief Handles an incoming message from the Postman.
+     * @param message smart pointer to an object implementing Message.
+     * @return the outgoing message from the handler.
      */
-    virtual StatusCode handleMessage(Message& message) = 0;
+    virtual std::unique_ptr<Message> handleMessage(
+        std::unique_ptr<Message> message)
+        = 0;
 
     /**
      * @brief Default deconstructor
