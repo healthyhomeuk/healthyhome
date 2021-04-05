@@ -186,6 +186,7 @@ public:
 private:
     bool isSetup = false;
     Configuration config;
+    std::unordered_map<std::string, Sensor&> sensors;
 
     Server() = default;
 
