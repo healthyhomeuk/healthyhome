@@ -5,3 +5,4 @@ add_subdirectory(sn-gcja5)
 
 add_subdirectory(linux-i2c)
 add_subdirectory(posix-timers)
+add_subdirectory(event-queue)

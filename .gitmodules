@@ -1,0 +1,3 @@
+[submodule "monitoring-server/libs/event-queue/vendor/concurrentqueue"]
+	path = monitoring-server/libs/event-queue/vendor/concurrentqueue
+	url = https://github.com/cameron314/concurrentqueue.git
