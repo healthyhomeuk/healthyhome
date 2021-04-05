@@ -59,9 +59,9 @@ public:
 
     /**
      * @brief Getter for the Sensor references.
-     * @return The vector containing the Sensor references.
+     * @return The map containing the Sensor names and references.
      */
-    virtual std::vector<std::shared_ptr<Sensor>> getSensors() = 0;
+    virtual std::unordered_map<std::string, Sensor&> getSensors() = 0;
 
     /**
      * @brief Callback for incoming messages
