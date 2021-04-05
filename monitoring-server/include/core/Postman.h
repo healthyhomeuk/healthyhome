@@ -46,14 +46,14 @@ public:
 
     /**
      * @brief Registers a Message::Factory method to generate incoming messages.
-     * @param entity The recipient entity of the incoming message.
+     * @param identity The recipient identity of the incoming message.
      * @param factory The pointer to a message factory method.
      * @throws Core::Exception::Conflict if the given entity is already
      *  registered.
      */
     virtual void registerMessageFactory(
-        Message::Entity entity,
-        Message::Factory* factory)
+        Message::Identity identity,
+        Message::Factory factory)
         = 0;
 
     /**
