@@ -68,6 +68,10 @@ enum StatusCode {
      */
     E_PARAMS,
     /**
+     * returned if the requested resource was not found
+     */
+    E_NOT_FOUND,
+    /**
      * returned for any other error.
      */
     E_GENERIC,
