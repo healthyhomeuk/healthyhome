@@ -66,7 +66,7 @@ struct Devices : public Message {
      *
      * @param devices Devices mapping
      */
-    explicit Devices(std::unordered_map<std::string, Device&> devices);
+    explicit Devices(std::unordered_map<std::string, Device&>& devices);
 };
 
 }

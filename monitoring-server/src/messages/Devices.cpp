@@ -21,11 +21,9 @@
 
 using namespace Core::Messages;
 
-Devices::Devices(std::unordered_map<std::string, Device&> devices)
+Devices::Devices(std::unordered_map<std::string, Device&>& devices)
 {
-    transform(
-        devices.begin(),
-        devices.end(),
-        devicesNames.begin(),
-        [](auto pair) { return pair.first; });
+    for (auto& [name, _] : devices) {
+        devicesNames.push_back(name);
+    }
 }
