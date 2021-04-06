@@ -18,12 +18,13 @@
 
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Text, View, ScrollView } from "react-native";
+import { Text, View, ScrollView, FlatList } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Style from "../assets/Style";
 import Header from "../components/Header";
 import Card from "../components/Card";
 import AirQuality from "../components/AirQuality";
+import { levels, getStyleFromLevel } from "../components/SensorData";
 
 /**
  * Stack component to wrap around the screen and render Header
@@ -47,25 +48,57 @@ function HomeStackScreen() {
     );
 }
 
+const levelGetters = {
+    co2: (value) => (value < 60 ? levels.GOOD : levels.BAD),
+    pm25: (value) => (value < 20 ? levels.GOOD : levels.BAD),
+    pm10: (value) => (value < 60 ? levels.GOOD : levels.BAD),
+    iaq: (value) =>
+        value < 60 ? levels.GOOD : value < 90 ? levels.MEDIUM : levels.BAD,
+};
+
+const data = [
+    { name: "co2", value: 1000 },
+    { name: "pm25", value: 14 },
+    { name: "pm10", value: 56 },
+    { name: "iaq", value: 77 },
+];
+
+const dataProps = data.map((datum) => {
+    const get = levelGetters[datum.name];
+    return {
+        ...datum,
+        fetchLevel: get ? get(datum.value) : levels.UNKNOWN,
+    };
+});
+
 /**
  * Renders the home screen.
  */
 function Home() {
+    const iaq = dataProps.find((element) => element.name === "iaq");
     return (
         <ScrollView style={{ flex: 1, backgroundColor: "#f2ffea" }}>
             <View style={Style.container}>
-                <Card>
-                    <AirQuality value={101} />
-                </Card>
-                <StatusBar style="auto" />
+                <Card {...iaq} isRectangle />
             </View>
             <View style={Style.container}>
                 <View style={{ flex: 1, flexDirection: "row" }}>
                     <Text style={Style.title}>Other Data</Text>
                 </View>
-
-                <StatusBar style="auto" />
+                <View
+                    style={{
+                        flex: 1,
+                        flexDirection: "row",
+                        flexWrap: "wrap",
+                        justifyContent: "center",
+                    }}
+                >
+                    {dataProps.map((props) => (
+                        <Card {...props} />
+                    ))}
+                </View>
             </View>
+            <StatusBar style="auto" />
         </ScrollView>
     );
 }

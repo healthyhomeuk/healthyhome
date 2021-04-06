@@ -17,8 +17,10 @@
  */
 
 import React from "react";
-import { StyleSheet, View, Dimensions } from "react-native";
+import { StyleSheet, View, Dimensions, Text } from "react-native";
 import Style from "../assets/Style";
+import { levels, getStyleFromLevel } from "./SensorData";
+import AirQuality from "./AirQuality";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -28,10 +30,18 @@ const windowHeight = Dimensions.get("window").height;
  * @param {View} props
  * @returns {View}
  */
-function Card(props) {
+function Card({ fetchLevel, value, isRectangle }) {
+    const shape = isRectangle ? styles.rectangle : styles.square;
+
     return (
-        <View style={styles.card}>
-            <View style={styles.cardContent}>{props.children}</View>
+        <View style={[getStyleFromLevel(fetchLevel), styles.card, shape]}>
+            <View style={[styles.cardContent]}>
+                {isRectangle ? (
+                    <AirQuality value={value} level={fetchLevel} />
+                ) : (
+                    <Text style={{ color: "white" }}>{value}</Text>
+                )}
+            </View>
         </View>
     );
 }
@@ -44,18 +54,26 @@ export default Card;
 const styles = StyleSheet.create({
     card: {
         borderRadius: 24,
+        marginHorizontal: 4,
+        marginVertical: 4,
+    },
+    cardContent: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    square: {
+        width: 0.45 * windowWidth,
+        height: 0.45 * windowWidth,
+    },
+    rectangle: {
+        width: 0.9 * windowWidth,
+        height: 0.5 * windowHeight,
         elevation: 3,
-        backgroundColor: "#fff",
-        shadowOffset: { width: 1, height: 1 },
+        shadowOffset: { width: 2, height: 2 },
         shadowColor: "#333",
         shadowOpacity: 0.3,
         shadowRadius: 2,
-        marginHorizontal: 4,
-        marginVertical: 4,
-        width: 0.9 * windowWidth,
-        height: 0.6 * windowHeight,
-    },
-    cardContent: {
-        alignItems: "center",
+        backgroundColor: "#fff",
     },
 });
