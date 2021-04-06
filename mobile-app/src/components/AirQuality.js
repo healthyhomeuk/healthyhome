@@ -48,6 +48,7 @@ function AirQuality({ level, value }) {
     return (
         <View style={styles.airQualityContainer}>
             <Text style={Style.title}>Indoor Air Quality</Text>
+            <ArcGradient />
             <Text style={styles.airQualityValue}>{value}</Text>
             <View style={[styles.airQualityStatus, getStyleFromLevel(level)]}>
                 <Text style={styles.airQualityText}>
