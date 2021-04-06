@@ -40,7 +40,7 @@ Core::StatusCode Scheduler::start()
     running = true;
 
     for (idx = 0; idx < num_threads; idx++)
-        threads[idx] = std::thread(&Scheduler::runWorker, this);
+        threads.push_back(std::thread(&Scheduler::runWorker, this));
 
     for (idx = 0; idx < num_threads; idx++)
         threads[idx].join();
