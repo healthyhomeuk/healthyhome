@@ -18,45 +18,41 @@
 
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
+import { levels, getStyleFromLevel } from "./SensorData";
+import ArcGradient from "./ArcGradient";
 import Style from "../assets/Style";
 
 const message = {
-    goodQuality: {
-        text: "Looking good!",
-        color: "#87c26a",
-    },
-    mediumQuality: {
-        text: "It's okay.",
-        color: "#efc954",
-    },
-    badQuality: {
-        text: "Immediate changes required!",
-        color: "#c84c4c",
-    },
+    goodQuality: "Looking good!",
+    mediumQuality: "It's okay.",
+    badQuality: "Immediate changes required!",
+};
+
+const messageGetters = (level) => {
+    switch (level) {
+        case levels.GOOD:
+            return message.goodQuality;
+        case levels.MEDIUM:
+            return message.mediumQuality;
+        case levels.BAD:
+            return message.badQuality;
+        default:
+            return "";
+    }
 };
 /**
  * Renders air quality.
  */
-function AirQuality(props) {
-    let quality;
-    if (props.value <= 60) {
-        quality = message.goodQuality;
-    } else if (props.value <= 100) {
-        quality = message.mediumQuality;
-    } else {
-        quality = message.badQuality;
-    }
+function AirQuality({ level, value }) {
+    console.log(messageGetters(level));
     return (
         <View style={styles.airQualityContainer}>
             <Text style={Style.title}>Indoor Air Quality</Text>
-            <Text style={styles.airQualityValue}>{props.value}</Text>
-            <View
-                style={{
-                    ...styles.airQualityStatus,
-                    backgroundColor: quality.color,
-                }}
-            >
-                <Text style={styles.airQualityText}>{quality.text}</Text>
+            <Text style={styles.airQualityValue}>{value}</Text>
+            <View style={[styles.airQualityStatus, getStyleFromLevel(level)]}>
+                <Text style={styles.airQualityText}>
+                    {messageGetters(level)}
+                </Text>
             </View>
         </View>
     );
@@ -85,7 +81,7 @@ const styles = StyleSheet.create({
         marginVertical: 12,
     },
     airQualityValue: {
-        flex: 1,
+        position: "absolute",
         color: "#101010",
         fontSize: 50,
         fontWeight: "bold",
