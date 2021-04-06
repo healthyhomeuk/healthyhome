@@ -66,7 +66,7 @@ struct Sensors : public Message {
      *
      * @param sensors Sensors mapping
      */
-    explicit Sensors(std::unordered_map<std::string, Sensor&> sensors);
+    explicit Sensors(std::unordered_map<std::string, Sensor&>& sensors);
 };
 
 }

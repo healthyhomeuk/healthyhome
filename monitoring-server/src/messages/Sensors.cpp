@@ -21,11 +21,9 @@
 
 using namespace Core::Messages;
 
-Sensors::Sensors(std::unordered_map<std::string, Sensor&> sensors)
+Sensors::Sensors(std::unordered_map<std::string, Sensor&>& sensors)
 {
-    transform(
-        sensors.begin(),
-        sensors.end(),
-        sensorsNames.begin(),
-        [](auto pair) { return pair.first; });
+    for (auto& [name, _] : sensors) {
+        sensorsNames.push_back(name);
+    }
 }
