@@ -25,13 +25,11 @@ using namespace Core::Messages;
 
 static void serializer(const Sensors& self, void* payload)
 {
-    auto msgs = ZmqPostman::Postman::castPayload(payload);
+    auto* msgs = ZmqPostman::Postman::castPayload(payload);
 
     std::string listOfSensors;
 
-    for (std::vector<std::string>::const_iterator ptr
-         = self.sensorsNames.begin();
-         ptr != self.sensorsNames.end();
+    for (auto ptr = self.sensorsNames.begin(); ptr != self.sensorsNames.end();
          ptr++) {
         listOfSensors += *ptr;
 
@@ -40,13 +38,13 @@ static void serializer(const Sensors& self, void* payload)
         }
     }
 
-    msgs["list"] = listOfSensors;
+    msgs->emplace("list", listOfSensors);
 }
 
 static void deserializer(Sensors&, const void* payload)
 {
-    auto msgs = ZmqPostman::Postman::castPayload(payload);
-    if (msgs.size() != 0) {
+    auto* msgs = ZmqPostman::Postman::castPayload(payload);
+    if (msgs->size() != 0) {
         throw Core::Exception::InvalidArgument { "invalid request body" };
     }
 }

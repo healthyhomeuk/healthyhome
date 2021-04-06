@@ -75,9 +75,9 @@ public:
     /**
      * @brief Casts a ZeroMQ payload.
      */
-    static Message::Body& castPayload(void* payload);
+    static Message::Body* castPayload(void* payload);
     /// @copydoc Postman::castPayload(void*)
-    static const Message::Body& castPayload(const void* payload);
+    static const Message::Body* castPayload(const void* payload);
 
     ~Postman() override;
 
