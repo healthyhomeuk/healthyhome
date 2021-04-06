@@ -25,13 +25,11 @@ using namespace Core::Messages;
 
 static void serializer(const Devices& self, void* payload)
 {
-    auto msgs = ZmqPostman::Postman::castPayload(payload);
+    auto* msgs = ZmqPostman::Postman::castPayload(payload);
 
     std::string listOfDevices;
 
-    for (std::vector<std::string>::const_iterator ptr
-         = self.devicesNames.begin();
-         ptr != self.devicesNames.end();
+    for (auto ptr = self.devicesNames.begin(); ptr != self.devicesNames.end();
          ptr++) {
         listOfDevices += *ptr;
 
@@ -40,13 +38,13 @@ static void serializer(const Devices& self, void* payload)
         }
     }
 
-    msgs["list"] = listOfDevices;
+    msgs->emplace("list", listOfDevices);
 }
 
 static void deserializer(Devices&, const void* payload)
 {
-    auto msgs = ZmqPostman::Postman::castPayload(payload);
-    if (msgs.size() != 0) {
+    auto* msgs = ZmqPostman::Postman::castPayload(payload);
+    if (msgs->size() != 0) {
         throw Core::Exception::InvalidArgument { "invalid request body" };
     }
 }
