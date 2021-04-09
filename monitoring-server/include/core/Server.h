@@ -172,6 +172,9 @@ public:
         Message::Identity identity,
         Message::Factory factory);
 
+    /**
+     * @brief Destructor
+     */
     ~Server();
     /**
      * @}
