@@ -4,14 +4,15 @@ target_sources(healthyhome-rpi
         PUBLIC
         src/messages/Devices.cpp
         src/messages/Sensors.cpp
+        src/messages/sn-gcja5/PM25Message.cpp
+        src/messages/sn-gcja5/PM100Message.cpp
+        src/messages/sn-gcja5/StatusMessage.cpp
         src/main.cpp)
 
 target_link_libraries(healthyhome-rpi
         PRIVATE
 
         Core
-        BME680
-        SI1145
         SN-GCJA5
         linux_i2c
         zmq_postman
