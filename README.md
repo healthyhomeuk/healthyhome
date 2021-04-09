@@ -8,7 +8,6 @@
   <a href="https://github.com/healthyhomeuk/healthyhome/pulls"><img src="https://img.shields.io/github/issues-pr/healthyhomeuk/healthyhome" alt="GitHub Pull Requests"></a>
   <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/github/license/healthyhomeuk/healthyhome" alt="License"></a>
   <br>
-  <a href="https://www.youtube.com/channel/UCbA1us3-6FLa1kOZZdc1v-w"><img width="32" hspace="5" src="docs/images/youtube.svg"></img></a>
   <a href="https://www.facebook.com/ukhealthyhome"><img width="32" hspace="5" src="docs/images/facebook.svg"></img></a>
   <a href="https://www.instagram.com/healthyhome_uk/"><img width="32" hspace="5" src="docs/images/instagram.svg"></img></a>
   <a href="https://twitter.com/healthyhome_uk"><img width="32" hspace="5" src="docs/images/twitter.svg"></img></a>
