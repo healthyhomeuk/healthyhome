@@ -18,14 +18,18 @@
  */
 
 /**
- * @file sn-gcja5/Device.h
+ * @file libs/sn-gcja5/include/sn-gcja5/Device.h
  */
 
 #ifndef SNGCJA5_DEVICE_H
 #define SNGCJA5_DEVICE_H
 
 #include <core/Device.h>
+#include <core/Sensor.h>
+#include <core/Timer.h>
 #include <core/comms/I2C.h>
+#include <sn-gcja5/PM100Sensor.h>
+#include <sn-gcja5/PM25Sensor.h>
 
 /**
  * @brief Namespace for the Panasonic SN-GCJA5 library.
@@ -38,24 +42,32 @@ namespace SNGCJA5 {
 class Device : public Core::Device {
 public:
     /**
-     * @brief Configuration for the SN-GCJA5 Device.
-     */
-    struct Configuration {
-        Core::Comms::I2C* i2c; ///< Reference to an I2C implementation.
-    };
-
-    Device() = default;
-
-    /**
      * @brief Constructor for a SN-GCJA5 Device.
      * @param config configuration data structure.
      */
     explicit Device(Configuration config);
 
     const char* getName() override;
+    Core::StatusCode setup() override;
+    Core::StatusCode halt() override;
+    std::unordered_map<std::string, Core::Sensor&> getSensors() override;
+    std::unique_ptr<Core::Message> handleMessage(
+        std::unique_ptr<Core::Message> message) override;
 
 private:
     Configuration config;
+
+    Core::StatusCode readSensor();
+
+    std::unique_ptr<Core::Timer> timer;
+
+    SensorStatus sensorStatus;
+    PDLDStatus pdStatus;
+    PDLDStatus ldStatus;
+    FanStatus fanStatus;
+
+    PM25Sensor pm25;
+    PM100Sensor pm100;
 };
 
 }
