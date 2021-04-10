@@ -28,3 +28,5 @@ set_target_properties(zmq_postman PROPERTIES LINKER_LANGUAGE CXX)
 target_include_directories(zmq_postman PUBLIC include)
 
 target_include_directories(docs INTERFACE include)
+
+add_subdirectory(tests)
