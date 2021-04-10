@@ -25,20 +25,17 @@ using namespace SNGCJA5;
 
 static void serializer(const StatusMessage& self, void* payload)
 {
-    auto* msgs = ZmqPostman::Postman::castPayload(payload);
-
-    msgs->emplace("sensor", std::to_string(self.sensor));
-    msgs->emplace("ld", std::to_string(self.ld));
-    msgs->emplace("pd", std::to_string(self.pd));
-    msgs->emplace("fan", std::to_string(self.fan));
+    auto* msgs = ZmqPostman::MessageBody::castPayload(payload);
+    msgs->putTagged("sensor", self.sensor);
+    msgs->putTagged("ld", self.ld);
+    msgs->putTagged("pd", self.pd);
+    msgs->putTagged("fan", self.fan);
 }
 
 static void deserializer(StatusMessage&, const void* payload)
 {
-    auto* msgs = ZmqPostman::Postman::castPayload(payload);
-    if (msgs->size() != 0) {
-        throw Core::Exception::InvalidArgument { "invalid request body" };
-    }
+    auto* msgs = ZmqPostman::MessageBody::castPayload(payload);
+    msgs->assertSizeIs(0, "unexpected request body");
 }
 
 static Core::StatusCode setup = [] {

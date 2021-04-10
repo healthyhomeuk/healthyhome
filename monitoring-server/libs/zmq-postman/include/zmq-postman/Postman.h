@@ -26,8 +26,8 @@
 #include <core/Message.h>
 #include <core/Postman.h>
 #include <thread>
-#include <unordered_map>
 #include <zmq-postman/Message.h>
+#include <zmq-postman/MessageBody.h>
 #include <zmq-postman/defs.h>
 #include <zmq.hpp>
 
@@ -73,12 +73,8 @@ public:
     void deliverMessage(std::unique_ptr<Core::Message> message) override;
 
     /**
-     * @brief Casts a ZeroMQ payload.
+     * @brief Deconstructor
      */
-    static Message::Body* castPayload(void* payload);
-    /// @copydoc Postman::castPayload(void*)
-    static const Message::Body* castPayload(const void* payload);
-
     ~Postman() override;
 
 private:

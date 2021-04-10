@@ -25,7 +25,7 @@ using namespace Core::Messages;
 
 static void serializer(const Sensors& self, void* payload)
 {
-    auto* msgs = ZmqPostman::Postman::castPayload(payload);
+    auto* msgs = ZmqPostman::MessageBody::castPayload(payload);
 
     std::string listOfSensors;
 
@@ -43,10 +43,8 @@ static void serializer(const Sensors& self, void* payload)
 
 static void deserializer(Sensors&, const void* payload)
 {
-    auto* msgs = ZmqPostman::Postman::castPayload(payload);
-    if (msgs->size() != 0) {
-        throw Core::Exception::InvalidArgument { "invalid request body" };
-    }
+    auto* msgs = ZmqPostman::MessageBody::castPayload(payload);
+    msgs->assertSizeIs(0, "unexpected request body");
 }
 
 static Core::StatusCode setup = [] {

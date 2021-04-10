@@ -7,10 +7,12 @@ target_sources(zmq_postman
         include/zmq-postman/defs.h
         include/zmq-postman/BadRequestMessage.h
         include/zmq-postman/Message.h
+        include/zmq-postman/MessageBody.h
         include/zmq-postman/NotFoundMessage.h
         include/zmq-postman/Postman.h
 
         src/Message.cpp
+        src/MessageBody.cpp
         src/Postman.cpp)
 
 target_link_libraries(zmq_postman
