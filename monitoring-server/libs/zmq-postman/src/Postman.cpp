@@ -142,13 +142,3 @@ bool Postman::hasReplied()
 {
     return delivered;
 }
-
-Message::Body* Postman::castPayload(void* payload)
-{
-    return static_cast<ZmqPostman::Message::Body*>(payload);
-}
-
-const Message::Body* Postman::castPayload(const void* payload)
-{
-    return static_cast<const ZmqPostman::Message::Body*>(payload);
-}

@@ -24,10 +24,9 @@ using namespace SNGCJA5;
 
 static void serializer(const PM100Message& self, void* payload)
 {
-    auto* msgs = ZmqPostman::Postman::castPayload(payload);
-
-    msgs->emplace("particleCount", std::to_string(self.particleCount));
-    msgs->emplace("density", std::to_string(self.density));
+    auto* msgs = ZmqPostman::MessageBody::castPayload(payload);
+    msgs->putTagged("particleCount", self.particleCount);
+    msgs->putTagged("density", self.density);
 }
 
 static void deserializer(PM100Message&, const void*) { }

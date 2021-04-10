@@ -22,7 +22,6 @@
 
 #include <core/Message.h>
 #include <iterator>
-#include <unordered_map>
 #include <zmq-postman/defs.h>
 #include <zmq.hpp>
 #include <zmq_addon.hpp>
@@ -34,11 +33,6 @@ namespace ZmqPostman {
  */
 class Message : public zmq::multipart_t {
 public:
-    /**
-     * @brief Request/response body definition
-     */
-    using Body = std::unordered_map<std::string, std::string>;
-
     Message() = default;
     /**
      * @brief Constructs ZeroMQ message from Core::Message

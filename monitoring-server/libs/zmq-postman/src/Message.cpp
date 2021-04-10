@@ -20,6 +20,7 @@
 #include <core/Message.h>
 #include <core/exceptions.h>
 #include <zmq-postman/Message.h>
+#include <zmq-postman/MessageBody.h>
 #include <zmq-postman/defs.h>
 
 using namespace ZmqPostman;
@@ -29,9 +30,9 @@ Message::Message(const Core::Message& msg) : Message()
     auto [entityType, entityName] = msg.getEntity();
 
     auto subject = msg.getSubject();
-    Body body;
+    MessageBody body;
 
-    pushstr(ENTITY_TYPES[entityType]);
+    addstr(ENTITY_TYPES[entityType]);
     if (entityType != Core::Message::SERVER) {
         addstr(entityName);
     }
@@ -71,7 +72,7 @@ std::unique_ptr<Core::Message> Message::parse(const Factories& factories)
     auto subject  = popstr();
     auto identity = std::make_tuple(entityType, entityName, subject);
 
-    Body body;
+    MessageBody body;
     auto bodySize = this->size();
     if (bodySize > 0) {
         if (bodySize % 2 != 0) {
