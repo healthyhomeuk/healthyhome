@@ -87,7 +87,13 @@ function calculateDotPosition(value, min, max) {
 export default function SvgComponent({ value }) {
     const [dotX, dotY, dotRadius] = calculateDotPosition(value, min, max);
     return (
-        <Svg width={sizeX} height={sizeY} fill="none" viewBox={viewBox}>
+        <Svg
+            width={sizeX}
+            height={sizeY}
+            fill="none"
+            viewBox={viewBox}
+            style={{ marginVertical: 20 }}
+        >
             <Defs>
                 <ClipPath id="clip">
                     <Path d={path} />

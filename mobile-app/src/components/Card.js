@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     },
     rectangle: {
         width: 0.9 * windowWidth,
-        height: 0.5 * windowHeight,
+        height: "100%",
         elevation: 3,
         shadowOffset: { width: 2, height: 2 },
         shadowColor: "#333",
