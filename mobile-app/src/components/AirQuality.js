@@ -48,8 +48,7 @@ function AirQuality({ level, value }) {
     return (
         <View style={styles.airQualityContainer}>
             <Text style={Style.title}>Indoor Air Quality</Text>
-            <ArcGradient />
-            <Text style={styles.airQualityValue}>{value}</Text>
+            <ArcGradient value={value} />
             <View style={[styles.airQualityStatus, getStyleFromLevel(level)]}>
                 <Text style={styles.airQualityText}>
                     {messageGetters(level)}
@@ -61,9 +60,11 @@ function AirQuality({ level, value }) {
 
 const styles = StyleSheet.create({
     airQualityContainer: {
+        flex: 1,
+        flexDirection: "column",
         width: "100%",
         height: "100%",
-        justifyContent: "center",
+        justifyContent: "flex-start",
         alignItems: "center",
     },
     airQualityStatus: {
@@ -82,9 +83,8 @@ const styles = StyleSheet.create({
         marginVertical: 12,
     },
     airQualityValue: {
-        position: "absolute",
         color: "#101010",
-        fontSize: 50,
+        fontSize: 62,
         fontWeight: "bold",
         marginHorizontal: 24,
         marginVertical: 12,

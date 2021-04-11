@@ -17,55 +17,111 @@
  */
 
 import * as React from "react";
-import Svg, { Path, Defs, LinearGradient, Stop } from "react-native-svg";
+import Svg, {
+    Path,
+    Defs,
+    ClipPath,
+    Image,
+    Circle,
+    Text,
+} from "react-native-svg";
+import { Dimensions } from "react-native";
 
-export default function SvgComponent(props) {
+const windowWidth = Dimensions.get("window").width;
+const strokeWidth = 10;
+
+const edgeRadius = strokeWidth / 2;
+const xStart = 0;
+const yStart = 0;
+const xEnd = 100;
+const yEnd = 50 + edgeRadius;
+
+const outerStartX = xStart;
+const outerEndX = xEnd;
+const innerEndX = xEnd - strokeWidth;
+const innerStartX = xStart + strokeWidth;
+const y = yEnd - edgeRadius;
+
+/**
+ * @constant {String} path
+ *  For rendering the clip path the arc
+ */
+const path =
+    `M ${outerStartX},${y} ` +
+    `A 1 1 0 1 1 ${outerEndX},${y} ` +
+    `A 1 1 0 1 1 ${innerEndX},${y} ` +
+    `A 1 1 0 1 0 ${innerStartX},${y} ` +
+    `A 1 1 0 1 1 ${outerStartX},${y}`;
+
+const viewBox = `${xStart} ${yStart} ${xEnd} ${yEnd}`;
+
+const sizeX = windowWidth * 0.7;
+const sizeY = (sizeX * yEnd) / xEnd;
+const max = 500;
+const min = 1;
+
+const dotRadius = edgeRadius;
+const centerX = (outerStartX + outerEndX) / 2;
+const centerY = y;
+const arcRadius = centerX - dotRadius;
+
+/**
+ * Calculates the coordinates to place the dot on the arc
+ * @param {number} value
+ * @param {number} min
+ * @param {number} max
+ * @returns Coordinates and radius size for rendering the dot on the arc
+ */
+function calculateDotPosition(value, min, max) {
+    const angle = ((value - min) / (max - min)) * Math.PI + Math.PI;
+    const dotX = arcRadius * Math.cos(angle) + centerX;
+    const dotY = arcRadius * Math.sin(angle) + centerY;
+    return [dotX, dotY, dotRadius];
+}
+
+/**
+ * Renders the arc gradient
+ * @param {number} value
+ * @returns {Svg} Arc gradient to indicate the indoor air quality
+ */
+export default function SvgComponent({ value }) {
+    const [dotX, dotY, dotRadius] = calculateDotPosition(value, min, max);
     return (
-        <Svg
-            xmlns="http://www.w3.org/2000/svg"
-            width={301}
-            height={225}
-            viewBox="0 0 301 225"
-            fill="none"
-            style={{ position: "absolute" }}
-            {...props}
-        >
-            <Path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M43.934 43.934A150 150 0 000 150h25A125 125 0 01150 25v125V0A150 150 0 0043.934 43.934z"
-                fill="url(#prefix__paint0_linear)"
-            />
-            <Path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M256.167 43.934A150.003 150.003 0 01300.101 150h-25a125 125 0 00-125-125V0a150.002 150.002 0 01106.066 43.934z"
-                fill="url(#prefix__paint1_linear)"
-            />
+        <Svg width={sizeX} height={sizeY} fill="none" viewBox={viewBox}>
             <Defs>
-                <LinearGradient
-                    id="prefix__paint0_linear"
-                    x1={135}
-                    y1={28}
-                    x2={32}
-                    y2={146}
-                    gradientUnits="userSpaceOnUse"
-                >
-                    <Stop offset={0.097} stopColor="#FFDD58" />
-                    <Stop offset={0.816} stopColor="#72C04C" />
-                </LinearGradient>
-                <LinearGradient
-                    id="prefix__paint1_linear"
-                    x1={161}
-                    y1={18}
-                    x2={275}
-                    y2={149}
-                    gradientUnits="userSpaceOnUse"
-                >
-                    <Stop offset={0.182} stopColor="#FFDC57" />
-                    <Stop offset={0.76} stopColor="#D12D2D" />
-                </LinearGradient>
+                <ClipPath id="clip">
+                    <Path d={path} />
+                </ClipPath>
             </Defs>
+
+            <Image
+                href={require("../assets/images/iaq-gradient.png")} // The image of the gradient
+                clipPath={`url(#clip)`}
+                x="0%"
+                y="0%"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="xMidYMid slice"
+            />
+            <Circle
+                fill="white"
+                stroke="black"
+                strokeWidth={1}
+                cx={dotX}
+                cy={dotY}
+                r={dotRadius}
+            />
+            <Text
+                x={centerX}
+                y={centerY}
+                textAnchor="middle"
+                fill="black"
+                fontFamily="Arial"
+                fontWeight="bold"
+                fontSize="22"
+            >
+                {value}
+            </Text>
         </Svg>
     );
 }
