@@ -1,4 +1,4 @@
-find_package(cppzmq)
+find_package(cppzmq QUIET)
 
 add_library(zmq_postman)
 
