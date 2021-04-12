@@ -3,7 +3,17 @@ add_library(SI1145)
 
 target_sources(SI1145
         PUBLIC
-        include/si1145/Device.h)
+        include/si1145/defs.h
+        include/si1145/Device.h
+        include/si1145/UVCoefficientPacket.h
+        include/si1145/UVMessage.h
+        include/si1145/UVSensor.h
+        include/si1145/VisibleMessage.h
+        include/si1145/VisibleSensor.h
+
+        src/Device.cpp
+        src/UVSensor.cpp
+        src/VisibleSensor.cpp)
 
 target_link_libraries(SI1145
         PRIVATE
