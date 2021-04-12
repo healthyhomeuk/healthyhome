@@ -6,6 +6,14 @@ export const levels = {
     BAD: 3,
 };
 
+export const units = {
+    pm25: "µg/m3",
+    pm10: "µg/m3",
+    co2: "ppm",
+    temp: "ºC",
+    humidity: "%",
+};
+
 export const getStyleFromLevel = (level) => {
     switch (level) {
         case levels.GOOD:
