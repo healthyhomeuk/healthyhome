@@ -76,8 +76,8 @@ void Postman::requestEndpoint()
 {
     Message zmqMsg;
 
-    try {
-        for (;;) {
+    for (;;) {
+        try {
             if (zmq::recv_multipart(requestsSkt, std::back_inserter(zmqMsg))
                     .has_value()) {
                 try {
@@ -112,14 +112,20 @@ void Postman::requestEndpoint()
 
                 zmqMsg.clear();
             }
+        } catch (const zmq::error_t& err) {
+            if (err.num() == ETERM) {
+                break;
+            } else if (err.num() != EINTR) {
+                fprintf(
+                    stderr,
+                    "Unexpected ZMQ error detected: %s\n",
+                    err.what());
+                throw err;
+            }
+        } catch (const std::exception& ex) {
+            fprintf(stderr, "Unexpected error detected: %s\n", ex.what());
+            throw ex;
         }
-    } catch (const zmq::error_t& err) {
-        if (err.num() != ETERM) {
-            throw err;
-        }
-    } catch (const std::exception& ex) {
-        fprintf(stderr, "Unexpected error detected: %s", ex.what());
-        throw ex;
     }
 }
 
