@@ -25,7 +25,11 @@
 #define SI1145_DEVICE_H
 
 #include <core/Device.h>
+#include <core/Sensor.h>
+#include <core/Timer.h>
 #include <core/comms/I2C.h>
+#include <si1145/UVSensor.h>
+#include <si1145/VisibleSensor.h>
 
 /**
  * @brief Namespace for the Silicon Labs SI1145 library.
@@ -33,19 +37,9 @@
 namespace SI1145 {
 /**
  * @brief Concrete class for the Silicon Labs SI1145 device.
- * @headerfile si1145/Device.h <si1145/Device.h>
  */
 class Device : public Core::Device {
 public:
-    /**
-     * @brief Configuration for the SI1145 Device.
-     */
-    struct Configuration {
-        Core::Comms::I2C* i2c; ///< Reference to an I2C implementation.
-    };
-
-    Device() = default;
-
     /**
      * @brief Constructor for a SI1145 Device.
      * @param config configuration data structure.
@@ -53,9 +47,34 @@ public:
     explicit Device(Configuration config);
 
     const char* getName() override;
+    Core::StatusCode setup() override;
+    Core::StatusCode halt() override;
+    std::unordered_map<std::string, Core::Sensor&> getSensors() override;
+    std::unique_ptr<Core::Message> handleMessage(
+        std::unique_ptr<Core::Message> message) override;
+
+    /**
+     * @brief Write parameter
+     * @param i2c Reference to the I2C API
+     * @param addr Parameter to write
+     * @param value Value to be written to the parameter
+     * @return value Current parameter value
+     */
+    static ParameterValue writeParameter(
+        Core::Comms::I2C& i2c,
+        Parameter addr,
+        ParameterValue value);
 
 private:
     Configuration config;
+
+    Core::StatusCode readSensor();
+    void reset();
+
+    std::unique_ptr<Core::Timer> timer;
+
+    UVSensor uv;
+    VisibleSensor vis;
 };
 
 }
