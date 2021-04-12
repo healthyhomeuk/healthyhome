@@ -11,7 +11,7 @@ target_sources(healthyhome-rpi
 
 target_link_libraries(healthyhome-rpi
         PRIVATE
-
+        SI1145
         Core
         SN-GCJA5
         linux_i2c
