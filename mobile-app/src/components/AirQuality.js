@@ -44,7 +44,6 @@ const messageGetters = (level) => {
  * Renders air quality.
  */
 function AirQuality({ level, value }) {
-    console.log(messageGetters(level));
     return (
         <View style={styles.airQualityContainer}>
             <Text style={Style.title}>Indoor Air Quality</Text>
