@@ -44,7 +44,14 @@ Core::StatusCode Device::setup()
 // Reads data from the sensor's registers
 Core::StatusCode Device::readSensor()
 {
+    static int readingNo = 0;
+    if (readingNo < 8) {
+        readingNo++;
+        return Core::SUCCESS;
+    }
+
     StatusPacket pck;
+
     config.i2c.read(I2C_ADDR, STATUS_CMD, pck);
 
     sensorStatus = pck.sensor;
