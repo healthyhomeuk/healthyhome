@@ -4,6 +4,8 @@ target_sources(healthyhome-rpi
         PUBLIC
         src/messages/Devices.cpp
         src/messages/Sensors.cpp
+        src/messages/si1145/UVMessage.cpp
+        src/messages/si1145/VisibleMessage.cpp
         src/messages/sn-gcja5/PM25Message.cpp
         src/messages/sn-gcja5/PM100Message.cpp
         src/messages/sn-gcja5/StatusMessage.cpp
