@@ -25,6 +25,7 @@
 #define CORE_COMMS_PACKET_H
 
 #include <core/defs.h>
+#include <cstddef>
 #include <cstdint>
 
 namespace Core::Comms {
