@@ -5,6 +5,8 @@ target_sources(Core
         PUBLIC
         include/core/comms/I2C.h
         include/core/comms/Packet.h
+        include/core/comms/BytePacket.h
+        include/core/comms/WordPacket.h
         include/core/events/MessageDelivery.h
         include/core/events/StopServer.h
         include/core/events/TimerTrigger.h
