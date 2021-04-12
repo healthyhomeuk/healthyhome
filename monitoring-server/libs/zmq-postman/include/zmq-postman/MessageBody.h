@@ -38,11 +38,11 @@ public:
      * @param value
      */
     void putTagged(std::string key, int value);
-    /// @copydoc putTagged(std::string ley, int value)
+    /// @copydoc putTagged(std::string key, int value)
     void putTagged(std::string key, float value);
-    /// @copydoc putTagged(std::string ley, int value)
+    /// @copydoc putTagged(std::string key, int value)
     void putTagged(std::string key, double value);
-    /// @copydoc putTagged(std::string ley, int value)
+    /// @copydoc putTagged(std::string key, int value)
     void putTagged(std::string key, bool value);
     /**
      * Put a new key-value pair in the body.
@@ -60,8 +60,9 @@ public:
      * @throws Core::Exception::InvalidArgument if no such member was found.
      */
     std::string get(const std::string& key) const;
+
     /**
-     * Fetch a value given a key and convert its type.
+     * Fetch a value given a key and convert its type to integer.
      * @param key
      * @return converted value if found
      * @throws Core::Exception::InvalidArgument if no such member was found.
@@ -69,11 +70,35 @@ public:
      * converted.
      */
     int getInteger(const std::string& key) const;
-    /// @copydoc getInteger(const std::string& key)
+
+    /**
+     * Fetch a value given a key and convert its type to float.
+     * @param key
+     * @return converted value if found
+     * @throws Core::Exception::InvalidArgument if no such member was found.
+     * @throws Core::Exception::InvalidArgument if the value could not be
+     * converted.
+     */
     float getFloat(const std::string& key) const;
-    /// @copydoc getInteger(const std::string& key)
+
+    /**
+     * Fetch a value given a key and convert its type to double.
+     * @param key
+     * @return converted value if found
+     * @throws Core::Exception::InvalidArgument if no such member was found.
+     * @throws Core::Exception::InvalidArgument if the value could not be
+     * converted.
+     */
     double getDouble(const std::string& key) const;
-    /// @copydoc getInteger(const std::string& key)
+
+    /**
+     * Fetch a value given a key and convert its type to boolean.
+     * @param key
+     * @return converted value if found
+     * @throws Core::Exception::InvalidArgument if no such member was found.
+     * @throws Core::Exception::InvalidArgument if the value could not be
+     * converted.
+     */
     bool getBoolean(const std::string& key) const;
 
     /**
@@ -89,7 +114,7 @@ public:
      * @brief Casts a ZeroMQ payload.
      */
     static const MessageBody* castPayload(const void* payload);
-    /// @copydoc MessageBody::castPayload(void *payload)
+    /// @copydoc MessageBody::castPayload(const void *payload)
     static MessageBody* castPayload(void* payload);
 };
 
