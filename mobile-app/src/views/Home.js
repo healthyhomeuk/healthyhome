@@ -24,7 +24,7 @@ import Style from "../assets/Style";
 import Header from "../components/Header";
 import Card from "../components/Card";
 import AirQuality from "../components/AirQuality";
-import { levels, getStyleFromLevel } from "../components/SensorData";
+import { levels, getStyleFromLevel, units } from "../components/SensorData";
 
 /**
  * Stack component to wrap around the screen and render Header
@@ -56,6 +56,14 @@ const levelGetters = {
         value < 60 ? levels.GOOD : value < 90 ? levels.MEDIUM : levels.BAD,
 };
 
+const unitGetters = {
+    co2: (name) => (name === "co2" ? units.co2 : ""),
+    pm25: (name) => (name === "pm25" ? units.pm25 : ""),
+    pm10: (name) => (name === "pm10" ? units.pm10 : ""),
+    temp: (name) => (name === "temp" ? units.temp : ""),
+    humidity: (name) => (name === "humidity" ? units.humidity : ""),
+};
+
 const data = [
     { name: "co2", value: 1000 },
     { name: "pm25", value: 14 },
@@ -65,8 +73,11 @@ const data = [
 
 const dataProps = data.map((datum) => {
     const get = levelGetters[datum.name];
+    const getUnits = unitGetters[datum.name];
+
     return {
         ...datum,
+        unit: getUnits ? getUnits(datum.name) : "",
         fetchLevel: get ? get(datum.value) : levels.UNKNOWN,
     };
 });

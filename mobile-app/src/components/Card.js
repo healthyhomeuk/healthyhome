@@ -30,16 +30,39 @@ const windowHeight = Dimensions.get("window").height;
  * @param {View} props
  * @returns {View}
  */
-function Card({ fetchLevel, value, isRectangle }) {
+function Card({ fetchLevel, value, isRectangle, name, unit }) {
     const shape = isRectangle ? styles.rectangle : styles.square;
-
+    const iaq = name === "iaq" ? name : "";
     return (
         <View style={[getStyleFromLevel(fetchLevel), styles.card, shape]}>
             <View style={[styles.cardContent]}>
-                {isRectangle ? (
+                {iaq && isRectangle ? (
                     <AirQuality value={value} level={fetchLevel} />
                 ) : (
-                    <Text style={{ color: "white" }}>{value}</Text>
+                    <View
+                        style={{
+                            flexDirection: "row",
+                            justifyContent: "space-between",
+                        }}
+                    >
+                        <Text
+                            style={{
+                                color: "white",
+                                fontSize: 48,
+                                fontWeight: "bold",
+                            }}
+                        >
+                            {value}
+                        </Text>
+                        <Text
+                            style={{
+                                color: "white",
+                                fontSize: 24,
+                            }}
+                        >
+                            {unit}
+                        </Text>
+                    </View>
                 )}
             </View>
         </View>
