@@ -22,19 +22,23 @@
 #include <evtq/Scheduler.h>
 #include <linux-i2c/Driver.h>
 #include <posix-timers/Factory.h>
+#include <si1145/Device.h>
 #include <sn-gcja5/Device.h>
 #include <zmq-postman/Postman.h>
 
 static LinuxI2C::Driver i2c;
 static EvtQ::Scheduler scheduler { 2 };
 static ZmqPostman::Postman postman { {
-    "ipc:///var/run/monitd/broadcast.sock",
-    "ipc:///var/run/monitd/entrypoint.sock",
+    "tcp://0.0.0.0:3456",
+    "tcp://0.0.0.0:3457",
     scheduler,
 } };
 static PosixTimers::Factory timersFactory { scheduler };
 
 static SNGCJA5::Device sngcja5 {
+    { i2c, std::bind(&PosixTimers::Factory::makeTimer, timersFactory), postman }
+};
+static SI1145::Device si1145 {
     { i2c, std::bind(&PosixTimers::Factory::makeTimer, timersFactory), postman }
 };
 
@@ -56,10 +60,10 @@ int main()
 
     postman.setup();
 
-    auto config
-        = new Core::Server::Configuration { scheduler,
-                                            postman,
-                                            { { "sn-gcja5", sngcja5 } } };
+    auto config = new Core::Server::Configuration { scheduler,
+                                                    postman,
+                                                    { { "sn-gcja5", sngcja5 },
+                                                      { "si1145", si1145 } } };
     Core::Server::setup(std::unique_ptr<Core::Server::Configuration>(config));
 
     Core::Server::start();
