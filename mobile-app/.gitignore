@@ -66,3 +66,6 @@ web-build/
 
 # VS Code
 .vscode/
+
+# Test snapshots
+*.snap
