@@ -1,5 +1,5 @@
 /*
- * This file is part of the HealthyHome project monitoring server
+ * This file is part of the HealthyHome project mobile app
  * available at <https://www.github.com/healthyhomeuk/healthyhome>.
  *
  * Copyright (C) 2021 the authors of the HealthyHome project.
