@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es2018",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "sourceRoot": "./src",
+    "outDir": "./dist",
+    "strict" : true
+  },
+  "lib": ["es2020", "esnext.asynciterable"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "tests"
+  ]
+}
