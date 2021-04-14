@@ -1,0 +1,18 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "plugins": [
+      "eslint-plugin-tsdoc"
+  ],
+  "extends": [
+      "plugin:@typescript-eslint/recommended",
+      "prettier"
+  ],
+  "rules": {
+    "tsdoc/syntax": "warn"
+  }
+}
