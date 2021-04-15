@@ -24,6 +24,7 @@
 #include <posix-timers/Factory.h>
 #include <si1145/Device.h>
 #include <sn-gcja5/Device.h>
+#include <unistd.h>
 #include <zmq-postman/Postman.h>
 
 static LinuxI2C::Driver i2c;
@@ -38,8 +39,12 @@ static PosixTimers::Factory timersFactory { scheduler };
 static SNGCJA5::Device sngcja5 {
     { i2c, std::bind(&PosixTimers::Factory::makeTimer, timersFactory), postman }
 };
+
 static SI1145::Device si1145 {
-    { i2c, std::bind(&PosixTimers::Factory::makeTimer, timersFactory), postman }
+    { i2c,
+      std::bind(&PosixTimers::Factory::makeTimer, timersFactory),
+      postman,
+      &usleep }
 };
 
 void signalHandler(int)
