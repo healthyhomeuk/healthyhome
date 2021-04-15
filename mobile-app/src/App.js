@@ -21,6 +21,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import NavBar from "./components/Navbar";
 import { client } from "./api/fetchers";
 import { ApolloProvider } from "@apollo/client/react";
+import { SensorsProvider } from "./SensorsProvider";
 
 /**
  * Renders all the components of the app.
@@ -28,9 +29,11 @@ import { ApolloProvider } from "@apollo/client/react";
 export default function App() {
     return (
         <ApolloProvider client={client}>
-        <NavigationContainer>
-            <NavBar />
-        </NavigationContainer>
+            <SensorsProvider>
+                <NavigationContainer>
+                    <NavBar />
+                </NavigationContainer>
+            </SensorsProvider>
         </ApolloProvider>
     );
 }
