@@ -34,13 +34,15 @@ using namespace PosixTimers;
 constexpr int MILLI = 1e3;
 constexpr int MICRO = 1e6;
 
-int setTime(timer_t tid, int s, int ns)
+int setTime(timer_t tid, int s, int ns, bool withInterval)
 {
     struct itimerspec in;
-    in.it_value.tv_sec     = s;
-    in.it_value.tv_nsec    = ns;
-    in.it_interval.tv_sec  = s;
-    in.it_interval.tv_nsec = ns;
+    in.it_value.tv_sec  = s;
+    in.it_value.tv_nsec = ns;
+    if (withInterval) {
+        in.it_interval.tv_sec  = s;
+        in.it_interval.tv_nsec = ns;
+    }
 
     return timer_settime(tid, 0, &in, nullptr);
 }
@@ -66,7 +68,7 @@ Core::StatusCode Timer::setCallback(Core::Timer::Callback callback)
     return Core::SUCCESS;
 }
 
-Core::StatusCode Timer::setInterval(int _interval)
+Core::StatusCode Timer::setInterval(int _interval, bool oneTimeOnly)
 {
     if (_interval <= 0) {
         return Core::E_PARAMS;
@@ -76,7 +78,7 @@ Core::StatusCode Timer::setInterval(int _interval)
     int s  = _interval / MILLI;
 
     if (running) {
-        int res = setTime(timerId, s, ns);
+        int res = setTime(timerId, s, ns, !oneTimeOnly);
         if (res != 0) {
             return Core::E_GENERIC;
         }
@@ -84,6 +86,7 @@ Core::StatusCode Timer::setInterval(int _interval)
 
     interval_ns = ns;
     interval_s  = s;
+    isTimeout   = oneTimeOnly;
 
     return Core::SUCCESS;
 }
@@ -99,7 +102,7 @@ Core::StatusCode Timer::remove()
         return Core::E_CONFLICT;
     }
 
-    int res = setTime(timerId, 0, 0);
+    int res = setTime(timerId, 0, 0, true);
     if (res != 0) {
         return Core::E_GENERIC;
     }
@@ -118,7 +121,7 @@ Core::StatusCode Timer::setup()
         return Core::E_PARAMS;
     }
 
-    int res = setTime(timerId, interval_s, interval_ns);
+    int res = setTime(timerId, interval_s, interval_ns, !isTimeout);
     if (res != 0) {
         return Core::E_GENERIC;
     }
@@ -129,5 +132,9 @@ Core::StatusCode Timer::setup()
 
 inline Core::StatusCode Timer::trigger()
 {
+    if (isTimeout) {
+        running = false;
+    }
+
     return cb();
 }
