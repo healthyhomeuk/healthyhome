@@ -23,8 +23,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Style from "../assets/Style";
 import Header from "../components/Header";
 import Card from "../components/Card";
-import AirQuality from "../components/AirQuality";
-import { levels, getStyleFromLevel, units } from "../components/SensorData";
+import { levels, units } from "../components/SensorData";
+import { useSensors } from "../SensorsProvider";
 
 /**
  * Stack component to wrap around the screen and render Header
@@ -68,7 +68,7 @@ const data = [
     { name: "co2", value: 1000 },
     { name: "pm25", value: 14 },
     { name: "pm10", value: 56 },
-    { name: "iaq", value: 77 },
+    { name: "iaq", value: 77, quality: "EXCELLENT" },
 ];
 
 const dataProps = data.map((datum) => {
@@ -86,7 +86,23 @@ const dataProps = data.map((datum) => {
  * Renders the home screen.
  */
 function Home() {
+    const { sensors, loading, error } = useSensors();
+    if (loading) {
+        return (
+            <View style={Style.container}>
+                <Text>Loading...</Text>
+            </View>
+        );
+    }
+    if (error) {
+        return (
+            <View style={Style.container}>
+                <Text>{`Error! ${error.message}`}</Text>
+            </View>
+        );
+    }
     const iaq = dataProps.find((element) => element.name === "iaq");
+
     return (
         <ScrollView style={{ flex: 1, backgroundColor: "#f2ffea" }}>
             <View style={Style.container}>
@@ -104,9 +120,11 @@ function Home() {
                         justifyContent: "center",
                     }}
                 >
-                    {dataProps.map((props) => (
-                        <Card {...props} />
-                    ))}
+                    {sensors
+                        .filter((value) => value.sensorId !== "iaq")
+                        .map((value) => (
+                            <Card key={value.name} {...value} />
+                        ))}
                 </View>
             </View>
             <StatusBar style="auto" />
