@@ -143,7 +143,7 @@ constexpr uint8_t MEASRATE_REG_ADDR = 0x08;
  * @brief Measurement rate
  * Measurement rate in seconds divided by 31.25uS.
  */
-constexpr uint16_t MEASRATE = 0x3E80; // 16,000 * 31.25uS = 500ms
+constexpr uint16_t MEASRATE = 0x7D00; // 32,000 * 31.25uS = 1s
 
 /**
  * @}
@@ -155,7 +155,7 @@ constexpr uint8_t GAIN = 4;
 constexpr uint8_t GAIN_MASK = 0b111;
 
 /// Timer interval (in ms) for reading the sensor values.
-constexpr int TIMER_INTERVAL = 500;
+constexpr int TIMER_INTERVAL = 1000;
 
 /**
  * @brief Configuration for the SI1145 Device.
