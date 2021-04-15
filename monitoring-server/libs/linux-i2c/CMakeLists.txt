@@ -8,7 +8,7 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
             src/Driver.cpp)
 
     target_link_libraries(linux_i2c
-            PRIVATE
+            PUBLIC
             Core
             project_warnings
             project_options)

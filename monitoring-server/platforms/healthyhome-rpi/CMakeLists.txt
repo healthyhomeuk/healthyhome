@@ -12,7 +12,7 @@ target_sources(healthyhome-rpi
         src/main.cpp)
 
 target_link_libraries(healthyhome-rpi
-        PRIVATE
+        PUBLIC
         SI1145
         Core
         SN-GCJA5

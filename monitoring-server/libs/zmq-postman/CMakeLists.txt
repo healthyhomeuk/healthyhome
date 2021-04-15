@@ -16,11 +16,10 @@ target_sources(zmq_postman
         src/Postman.cpp)
 
 target_link_libraries(zmq_postman
-        PRIVATE
+        PUBLIC
         Core
         project_warnings
         project_options
-        PUBLIC
         cppzmq)
 
 set_target_properties(zmq_postman PROPERTIES LINKER_LANGUAGE CXX)
