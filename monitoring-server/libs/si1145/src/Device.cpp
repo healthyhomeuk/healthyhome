@@ -85,11 +85,11 @@ void Device::reset()
 
     pck2.value = COMMAND_RESET;
     config.i2c.write(I2C_ADDR, COMMAND_REG_ADDR, pck2);
-    usleep(25000);
+    config.usleep(25000);
 
     pck2.value = 0x17;
     config.i2c.write(I2C_ADDR, HW_KEY_REG_ADDR, pck2);
-    usleep(10000);
+    config.usleep(10000);
 }
 
 // Reads data from the sensor and performs required corrections to the raw data

@@ -158,12 +158,19 @@ constexpr uint8_t GAIN_MASK = 0b111;
 constexpr int TIMER_INTERVAL = 1000;
 
 /**
+ * Sleep function pointer
+ * @param delay sleep in microseconds
+ */
+using USleepFnPtr = std::function<void(int)>;
+
+/**
  * @brief Configuration for the SI1145 Device.
  */
 struct Configuration {
     Core::Comms::I2C& i2c;          ///< Reference to an I2C implementation.
     Core::Timer::Factory makeTimer; ///< Timer factory.
     Core::Postman& postman;         ///< Reference to the postman.
+    USleepFnPtr usleep;             ///< Sleep function pointer.
 };
 
 }
