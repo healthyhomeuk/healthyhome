@@ -10,10 +10,11 @@ if (UNIX)
             src/Timer.cpp)
 
     target_link_libraries(posix_timers
-            PRIVATE
+            PUBLIC
             Core
             project_warnings
             project_options
+            PRIVATE
             rt)
 
     set_target_properties(posix_timers PROPERTIES LINKER_LANGUAGE CXX)

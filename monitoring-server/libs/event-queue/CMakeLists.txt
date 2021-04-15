@@ -9,11 +9,10 @@ target_sources(event_queue
 
 target_link_libraries(event_queue
         PUBLIC
-        concurrentqueue
+        Core
         project_options
         project_warnings
-        PRIVATE
-        Core)
+        concurrentqueue)
 
 set_target_properties(event_queue PROPERTIES LINKER_LANGUAGE CXX)
 

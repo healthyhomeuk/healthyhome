@@ -19,7 +19,7 @@ target_sources(SN-GCJA5
         src/PMSensor.cpp)
 
 target_link_libraries(SN-GCJA5
-        PRIVATE
+        PUBLIC
         Core
         project_warnings
         project_options)

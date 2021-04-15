@@ -16,7 +16,7 @@ target_sources(SI1145
         src/VisibleSensor.cpp)
 
 target_link_libraries(SI1145
-        PRIVATE
+        PUBLIC
         Core
         project_warnings
         project_options)
