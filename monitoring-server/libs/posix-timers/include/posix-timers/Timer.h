@@ -50,6 +50,7 @@ private:
     timer_t timerId;
     int interval_s  = 0;
     int interval_ns = 0;
+    bool isTimeout  = false;
     bool running    = false;
 
     Core::Timer::Callback cb;
@@ -66,7 +67,8 @@ public:
     Core::StatusCode trigger() override;
 
     int getInterval() override;
-    Core::StatusCode setInterval(int interval) override;
+    Core::StatusCode setInterval(int interval, bool oneTimeOnly = false)
+        override;
 
     Core::StatusCode setCallback(Core::Timer::Callback callback) override;
 

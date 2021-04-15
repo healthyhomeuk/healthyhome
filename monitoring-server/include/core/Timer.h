@@ -74,10 +74,12 @@ public:
     virtual int getInterval() = 0;
 
     /**
-     * @brief Setter for the time interval in seconds.
+     * @brief Setter for the time interval.
+     * @param interval Interval in seconds
+     * @param oneTimeOnly Should timer run once only? Default: false
      * @return Status operation code.
      */
-    virtual StatusCode setInterval(int interval) = 0;
+    virtual StatusCode setInterval(int interval, bool oneTimeOnly = false) = 0;
 
     /**
      * @brief Setter for the timer callback.
