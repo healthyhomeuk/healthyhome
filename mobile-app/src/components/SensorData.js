@@ -34,28 +34,48 @@ export const units = {
 
 export const getStyleFromLevel = (level) => {
     switch (level) {
-        case levels.GOOD:
+        case "EXCELLENT":
+            return sensorStyle.excellent;
+        case "GOOD":
             return sensorStyle.good;
-        case levels.MEDIUM:
-            return sensorStyle.medium;
-        case levels.BAD:
+        case "FAIR":
+            return sensorStyle.fair;
+        case "POOR":
+            return sensorStyle.poor;
+        case "BAD":
             return sensorStyle.bad;
+        case "VERY_BAD":
+            return sensorStyle.very_bad;
+        case "SEVERE":
+            return sensorStyle.severe;
         default:
             return sensorStyle.unknown;
     }
 };
 
 export const sensorStyle = StyleSheet.create({
-    good: {
-        backgroundColor: "#87c26a",
+    excellent: {
+        backgroundColor: "#008000",
     },
-    medium: {
-        backgroundColor: "#efc954",
+    good: {
+        backgroundColor: "#9ACD32",
+    },
+    fair: {
+        backgroundColor: "#FFFF00",
+    },
+    poor: {
+        backgroundColor: "#FFA500",
     },
     bad: {
-        backgroundColor: "#c84c4c",
+        backgroundColor: "#FF0000",
+    },
+    very_bad: {
+        backgroundColor: "#800080",
+    },
+    severe: {
+        backgroundColor: "#A52A2A",
     },
     unknown: {
-        backgroundColor: "#eee",
+        backgroundColor: "#a9a9a9",
     },
 });
