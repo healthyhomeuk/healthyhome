@@ -30,38 +30,46 @@ const windowHeight = Dimensions.get("window").height;
  * @param {View} props
  * @returns {View}
  */
-function Card({ fetchLevel, value, isRectangle, name, unit }) {
+function Card({ quality, value, isRectangle, name, unit }) {
     const shape = isRectangle ? styles.rectangle : styles.square;
     const iaq = name === "iaq" ? name : "";
     return (
-        <View style={[getStyleFromLevel(fetchLevel), styles.card, shape]}>
+        <View style={[getStyleFromLevel(quality), styles.card, shape]}>
             <View style={[styles.cardContent]}>
                 {iaq && isRectangle ? (
-                    <AirQuality value={value} level={fetchLevel} />
+                    <AirQuality value={value} level={quality} />
                 ) : (
                     <View
                         style={{
-                            flexDirection: "row",
-                            justifyContent: "space-between",
+                            justifyContent: "center",
+                            alignItems: "center",
                         }}
                     >
-                        <Text
+                        <View
                             style={{
-                                color: "white",
-                                fontSize: 48,
-                                fontWeight: "bold",
+                                flexDirection: "row",
+                                justifyContent: "space-between",
                             }}
                         >
-                            {value}
-                        </Text>
-                        <Text
-                            style={{
-                                color: "white",
-                                fontSize: 24,
-                            }}
-                        >
-                            {unit}
-                        </Text>
+                            <Text
+                                style={{
+                                    color: "white",
+                                    fontSize: 42,
+                                    fontWeight: "bold",
+                                }}
+                            >
+                                {value}
+                            </Text>
+                            <Text
+                                style={{
+                                    color: "white",
+                                    fontSize: 18,
+                                }}
+                            >
+                                {unit}
+                            </Text>
+                        </View>
+                        <Text>{name}</Text>
                     </View>
                 )}
             </View>
