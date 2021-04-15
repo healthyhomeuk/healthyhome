@@ -16,21 +16,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import NavBar from "./components/Navbar";
-import { client } from "./api/fetchers";
-import { ApolloProvider } from "@apollo/client/react";
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+
+export const client = new ApolloClient({
+    uri: "http://192.168.0.4:4000",
+    cache: new InMemoryCache(),
+});
 
 /**
- * Renders all the components of the app.
+ * The query to obtain all the sensors registered to the device and its last readings
+ *  @constant {DocumentNode}
  */
-export default function App() {
-    return (
-        <ApolloProvider client={client}>
-        <NavigationContainer>
-            <NavBar />
-        </NavigationContainer>
-        </ApolloProvider>
-    );
-}
+export const LAST_READINGS = gql`
+    query GetLastReadings {
+        sensors {
+            id
+            name
+            parameters {
+                name
+                unit
+                qualityTable {
+                    qualityValue
+                    lowerBoundary
+                    upperBoundary
+                }
+                valueType
+                currentValue
+                currentQuality
+            }
+        }
+    }
+`;
