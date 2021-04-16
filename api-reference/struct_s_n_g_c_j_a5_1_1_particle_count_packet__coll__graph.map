@@ -1,0 +1,4 @@
+<map id="SNGCJA5::ParticleCountPacket" name="SNGCJA5::ParticleCountPacket">
+<area shape="rect" id="node1" title="I2C packet for reading count values from the sensor." alt="" coords="5,175,221,281"/>
+<area shape="rect" id="node2" href="$class_core_1_1_comms_1_1_packet.html" title="An interface for a data structure containing information for a hardware&#45;based communication." alt="" coords="33,5,193,127"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="EvtQ::Scheduler" name="EvtQ::Scheduler">
+<area shape="rect" id="node1" title="Queue&#45;based event scheduler." alt="" coords="23,175,149,296"/>
+<area shape="rect" id="node2" href="$class_core_1_1_event_scheduler.html" title="Interface required to be implemented for an event scheduler." alt="" coords="5,5,167,127"/>
+</map>

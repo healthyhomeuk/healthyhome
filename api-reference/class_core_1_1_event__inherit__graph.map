@@ -1,0 +1,6 @@
+<map id="Core::Event" name="Core::Event">
+<area shape="rect" id="node1" title="Interface required to be implemented for any event that requires scheduling." alt="" coords="271,5,421,112"/>
+<area shape="rect" id="node2" href="$class_core_1_1_events_1_1_message_delivery.html" title="MessageDelivery event." alt="" coords="5,160,231,267"/>
+<area shape="rect" id="node3" href="$class_core_1_1_events_1_1_stop_server.html" title="StopServer event." alt="" coords="255,167,437,259"/>
+<area shape="rect" id="node4" href="$class_core_1_1_events_1_1_timer_trigger.html" title="TimerTrigger event." alt="" coords="462,160,657,267"/>
+</map>

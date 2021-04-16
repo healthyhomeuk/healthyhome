@@ -1,0 +1,22 @@
+<map id="Device.h" name="Device.h">
+<area shape="rect" id="node1" title=" " alt="" coords="297,5,375,32"/>
+<area shape="rect" id="node2" href="$include_2core_2_device_8h.html" title=" " alt="" coords="126,229,237,256"/>
+<area shape="rect" id="node9" href="$_sensor_8h.html" title=" " alt="" coords="293,304,403,331"/>
+<area shape="rect" id="node11" href="$include_2core_2_timer_8h.html" title=" " alt="" coords="35,379,138,405"/>
+<area shape="rect" id="node12" href="$_i2_c_8h.html" title=" " alt="" coords="624,304,763,331"/>
+<area shape="rect" id="node16" href="$_p_m100_sensor_8h.html" title=" " alt="" coords="509,80,689,107"/>
+<area shape="rect" id="node20" href="$_p_m25_sensor_8h.html" title=" " alt="" coords="313,80,485,107"/>
+<area shape="rect" id="node3" href="$include_2core_2_message_8h.html" title=" " alt="" coords="162,379,286,405"/>
+<area shape="rect" id="node4" href="$include_2core_2defs_8h.html" title=" " alt="" coords="327,453,422,480"/>
+<area shape="rect" id="node7" title=" " alt="" coords="5,453,83,480"/>
+<area shape="rect" id="node10" title=" " alt="" coords="105,304,167,331"/>
+<area shape="rect" id="node6" title=" " alt="" coords="107,453,194,480"/>
+<area shape="rect" id="node8" title=" " alt="" coords="219,453,277,480"/>
+<area shape="rect" id="node5" title=" " alt="" coords="337,528,412,555"/>
+<area shape="rect" id="node13" href="$_packet_8h.html" title=" " alt="" coords="603,379,763,405"/>
+<area shape="rect" id="node14" title=" " alt="" coords="647,453,718,480"/>
+<area shape="rect" id="node15" title=" " alt="" coords="755,453,821,480"/>
+<area shape="rect" id="node17" href="$_p_m_sensor_8h.html" title=" " alt="" coords="461,155,617,181"/>
+<area shape="rect" id="node18" href="$libs_2sn-gcja5_2include_2sn-gcja5_2defs_8h.html" title=" " alt="" coords="478,229,599,256"/>
+<area shape="rect" id="node19" href="$include_2core_2_postman_8h.html" title=" " alt="" coords="477,304,600,331"/>
+</map>

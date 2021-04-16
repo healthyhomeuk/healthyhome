@@ -1,0 +1,4 @@
+<map id="Core::Comms::WordPacket" name="Core::Comms::WordPacket">
+<area shape="rect" id="node1" title="Packet representing a word." alt="" coords="5,175,199,311"/>
+<area shape="rect" id="node2" href="$class_core_1_1_comms_1_1_packet.html" title="An interface for a data structure containing information for a hardware&#45;based communication." alt="" coords="22,5,182,127"/>
+</map>

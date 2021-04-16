@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$class_core_1_1_event.html" title="Interface required to be implemented for any event that requires scheduling." alt="" coords="5,56,103,83"/>
+<area shape="rect" id="node2" href="$class_core_1_1_events_1_1_message_delivery.html" title="MessageDelivery event." alt="" coords="151,5,376,32"/>
+<area shape="rect" id="node3" href="$class_core_1_1_events_1_1_stop_server.html" title="StopServer event." alt="" coords="172,56,355,83"/>
+<area shape="rect" id="node4" href="$class_core_1_1_events_1_1_timer_trigger.html" title="TimerTrigger event." alt="" coords="166,107,361,133"/>
+</map>

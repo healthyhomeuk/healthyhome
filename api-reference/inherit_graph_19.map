@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,100,57"/>
+<area shape="rect" id="node2" href="$class_zmq_postman_1_1_message.html" title="Adapter between a ZeroMQ multipart message and Core::Message." alt="" coords="148,31,323,57"/>
+<area shape="rect" id="node3" href="$class_zmq_postman_1_1_bad_request_message.html" title="Bad request response message." alt="" coords="371,5,624,32"/>
+<area shape="rect" id="node4" href="$class_zmq_postman_1_1_not_found_message.html" title="Not found response message." alt="" coords="379,56,616,83"/>
+</map>

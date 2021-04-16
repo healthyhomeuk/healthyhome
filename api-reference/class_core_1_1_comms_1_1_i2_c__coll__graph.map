@@ -1,0 +1,3 @@
+<map id="Core::Comms::I2C" name="Core::Comms::I2C">
+<area shape="rect" id="node1" title="Communication interface for I2C." alt="" coords="5,5,144,112"/>
+</map>

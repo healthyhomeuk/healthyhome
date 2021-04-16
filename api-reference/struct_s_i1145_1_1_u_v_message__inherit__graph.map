@@ -1,0 +1,4 @@
+<map id="SI1145::UVMessage" name="SI1145::UVMessage">
+<area shape="rect" id="node1" title="Message carrying the visible light values." alt="" coords="5,204,196,355"/>
+<area shape="rect" id="node2" href="$class_core_1_1_message.html" title="Message interface for the Postman messages." alt="" coords="41,5,160,156"/>
+</map>

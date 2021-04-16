@@ -1,0 +1,4 @@
+<map id="SI1145::UVCoefficientPacket" name="SI1145::UVCoefficientPacket">
+<area shape="rect" id="node1" title="Packet representing a UV coefficient." alt="" coords="5,175,211,296"/>
+<area shape="rect" id="node2" href="$class_core_1_1_comms_1_1_packet.html" title="An interface for a data structure containing information for a hardware&#45;based communication." alt="" coords="28,5,188,127"/>
+</map>

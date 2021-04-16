@@ -1,0 +1,4 @@
+<map id="SNGCJA5::DensityPacket" name="SNGCJA5::DensityPacket">
+<area shape="rect" id="node1" title="I2C packet for reading density values from the sensor." alt="" coords="5,175,185,281"/>
+<area shape="rect" id="node2" href="$class_core_1_1_comms_1_1_packet.html" title="An interface for a data structure containing information for a hardware&#45;based communication." alt="" coords="15,5,175,127"/>
+</map>

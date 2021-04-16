@@ -1,0 +1,4 @@
+<map id="SNGCJA5::StatusPacket" name="SNGCJA5::StatusPacket">
+<area shape="rect" id="node1" title="I2C packet for reading sensor status." alt="" coords="5,175,176,325"/>
+<area shape="rect" id="node2" href="$class_core_1_1_comms_1_1_packet.html" title="An interface for a data structure containing information for a hardware&#45;based communication." alt="" coords="11,5,171,127"/>
+</map>

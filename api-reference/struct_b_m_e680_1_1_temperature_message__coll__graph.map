@@ -1,0 +1,5 @@
+<map id="BME680::TemperatureMessage" name="BME680::TemperatureMessage">
+<area shape="rect" id="node1" title="Message carrying the Temperature sensor values." alt="" coords="5,344,228,480"/>
+<area shape="rect" id="node2" href="$struct_b_m_e680_1_1_b_s_e_c_sensor_message.html" title="Message carrying the BSEC sensor values." alt="" coords="7,204,226,296"/>
+<area shape="rect" id="node3" href="$class_core_1_1_message.html" title="Message interface for the Postman messages." alt="" coords="57,5,176,156"/>
+</map>

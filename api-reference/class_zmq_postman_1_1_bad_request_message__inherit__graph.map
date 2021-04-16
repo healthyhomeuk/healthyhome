@@ -1,0 +1,5 @@
+<map id="ZmqPostman::BadRequestMessage" name="ZmqPostman::BadRequestMessage">
+<area shape="rect" id="node1" title="Bad request response message." alt="" coords="5,315,259,392"/>
+<area shape="rect" id="node2" href="$class_zmq_postman_1_1_message.html" title="Adapter between a ZeroMQ multipart message and Core::Message." alt="" coords="45,131,219,267"/>
+<area shape="rect" id="node3" title=" " alt="" coords="67,5,197,83"/>
+</map>

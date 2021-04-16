@@ -1,0 +1,4 @@
+<map id="BME680::AdapterPacket" name="BME680::AdapterPacket">
+<area shape="rect" id="node1" title="I2C packet which adapts Core::Comms::I2C for the bme68x library." alt="" coords="5,175,181,340"/>
+<area shape="rect" id="node2" href="$class_core_1_1_comms_1_1_packet.html" title="An interface for a data structure containing information for a hardware&#45;based communication." alt="" coords="13,5,173,127"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="Core::Events::MessageDelivery" name="Core::Events::MessageDelivery">
+<area shape="rect" id="node1" title="MessageDelivery event." alt="" coords="5,160,231,267"/>
+<area shape="rect" id="node2" href="$class_core_1_1_event.html" title="Interface required to be implemented for any event that requires scheduling." alt="" coords="43,5,193,112"/>
+</map>

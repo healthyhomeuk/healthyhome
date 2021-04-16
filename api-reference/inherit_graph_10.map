@@ -1,0 +1,4 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$class_core_1_1_postman.html" title="Interface to implement a postman." alt="" coords="5,5,123,32"/>
+<area shape="rect" id="node2" href="$class_zmq_postman_1_1_postman.html" title="ZeroMQ implementation of Core::Postman." alt="" coords="171,5,345,32"/>
+</map>

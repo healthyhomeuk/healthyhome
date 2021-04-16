@@ -1,0 +1,4 @@
+<map id="Core::Timer" name="Core::Timer">
+<area shape="rect" id="node1" title="Interface to implement the timer functionality." alt="" coords="18,5,141,171"/>
+<area shape="rect" id="node2" href="$class_posix_timers_1_1_timer.html" title="Posix Timer class." alt="" coords="5,219,153,399"/>
+</map>

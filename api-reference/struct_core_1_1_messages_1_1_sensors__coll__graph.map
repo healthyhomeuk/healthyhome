@@ -1,0 +1,4 @@
+<map id="Core::Messages::Sensors" name="Core::Messages::Sensors">
+<area shape="rect" id="node1" title="Sensors server request message." alt="" coords="5,204,196,369"/>
+<area shape="rect" id="node2" href="$class_core_1_1_message.html" title="Message interface for the Postman messages." alt="" coords="41,5,160,156"/>
+</map>

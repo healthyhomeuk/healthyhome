@@ -1,0 +1,4 @@
+<map id="Core::Comms::I2C" name="Core::Comms::I2C">
+<area shape="rect" id="node1" title="Communication interface for I2C." alt="" coords="5,5,144,112"/>
+<area shape="rect" id="node2" href="$class_linux_i2_c_1_1_driver.html" title="Interface to use the Linux I2C device driver." alt="" coords="11,160,138,281"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="SNGCJA5::PMSensor" name="SNGCJA5::PMSensor">
+<area shape="rect" id="node1" title="Generic Sensor class representing any PM sensor." alt="" coords="113,189,268,369"/>
+<area shape="rect" id="node3" href="$class_s_n_g_c_j_a5_1_1_p_m100_sensor.html" title="Performs I2C read of PM10 count and density from the sensor." alt="" coords="5,417,181,495"/>
+<area shape="rect" id="node4" href="$class_s_n_g_c_j_a5_1_1_p_m25_sensor.html" title="Performs I2C read of PM2.5 count and density from the sensor." alt="" coords="205,417,373,495"/>
+<area shape="rect" id="node2" href="$class_core_1_1_sensor.html" title="Interface for a sensor." alt="" coords="116,5,265,141"/>
+</map>

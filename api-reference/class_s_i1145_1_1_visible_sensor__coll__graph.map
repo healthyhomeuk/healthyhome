@@ -1,0 +1,4 @@
+<map id="SI1145::VisibleSensor" name="SI1145::VisibleSensor">
+<area shape="rect" id="node1" title="Sensor class representing the visible sensor." alt="" coords="5,189,168,355"/>
+<area shape="rect" id="node2" href="$class_core_1_1_sensor.html" title="Interface for a sensor." alt="" coords="12,5,161,141"/>
+</map>

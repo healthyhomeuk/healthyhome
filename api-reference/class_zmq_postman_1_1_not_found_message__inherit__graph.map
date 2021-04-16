@@ -1,0 +1,5 @@
+<map id="ZmqPostman::NotFoundMessage" name="ZmqPostman::NotFoundMessage">
+<area shape="rect" id="node1" title="Not found response message." alt="" coords="5,315,243,392"/>
+<area shape="rect" id="node2" href="$class_zmq_postman_1_1_message.html" title="Adapter between a ZeroMQ multipart message and Core::Message." alt="" coords="37,131,211,267"/>
+<area shape="rect" id="node3" title=" " alt="" coords="59,5,189,83"/>
+</map>

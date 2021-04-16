@@ -1,0 +1,5 @@
+<map id="SNGCJA5::Configuration" name="SNGCJA5::Configuration">
+<area shape="rect" id="node1" title="Configuration for the SN&#45;GCJA5 Device." alt="" coords="117,189,291,267"/>
+<area shape="rect" id="node2" href="$class_core_1_1_postman.html" title="Interface to implement a postman." alt="" coords="5,5,208,127"/>
+<area shape="rect" id="node3" href="$class_core_1_1_comms_1_1_i2_c.html" title="Communication interface for I2C." alt="" coords="232,13,371,119"/>
+</map>

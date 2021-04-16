@@ -1,0 +1,5 @@
+<map id="BME680::IAQMessage" name="BME680::IAQMessage">
+<area shape="rect" id="node1" title="Message carrying the IAQ sensor values." alt="" coords="19,344,210,480"/>
+<area shape="rect" id="node2" href="$struct_b_m_e680_1_1_b_s_e_c_sensor_message.html" title="Message carrying the BSEC sensor values." alt="" coords="5,204,224,296"/>
+<area shape="rect" id="node3" href="$class_core_1_1_message.html" title="Message interface for the Postman messages." alt="" coords="55,5,174,156"/>
+</map>

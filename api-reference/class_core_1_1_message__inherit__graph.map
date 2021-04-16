@@ -1,0 +1,15 @@
+<map id="Core::Message" name="Core::Message">
+<area shape="rect" id="node1" title="Message interface for the Postman messages." alt="" coords="1136,5,1255,156"/>
+<area shape="rect" id="node2" href="$struct_b_m_e680_1_1_b_s_e_c_sensor_message.html" title="Message carrying the BSEC sensor values." alt="" coords="321,255,539,347"/>
+<area shape="rect" id="node7" href="$struct_core_1_1_messages_1_1_devices.html" title="Devices server request message." alt="" coords="564,219,755,384"/>
+<area shape="rect" id="node8" href="$struct_core_1_1_messages_1_1_sensors.html" title="Sensors server request message." alt="" coords="779,219,969,384"/>
+<area shape="rect" id="node9" href="$struct_s_i1145_1_1_u_v_message.html" title="Message carrying the visible light values." alt="" coords="993,226,1184,377"/>
+<area shape="rect" id="node10" href="$struct_s_i1145_1_1_visible_message.html" title="Message carrying the visible light values." alt="" coords="1208,226,1399,377"/>
+<area shape="rect" id="node11" href="$struct_s_n_g_c_j_a5_1_1_p_m100_message.html" title="Message carrying the PM10 sensor values." alt="" coords="1423,219,1613,384"/>
+<area shape="rect" id="node12" href="$struct_s_n_g_c_j_a5_1_1_p_m25_message.html" title="Message carrying the PM2.5 sensor values." alt="" coords="1637,219,1828,384"/>
+<area shape="rect" id="node13" href="$struct_s_n_g_c_j_a5_1_1_status_message.html" title="Message carrying the sensor status values." alt="" coords="1852,204,2043,399"/>
+<area shape="rect" id="node3" href="$struct_b_m_e680_1_1_c_o2e_message.html" title="Message carrying the CO2e sensor values." alt="" coords="5,447,196,583"/>
+<area shape="rect" id="node4" href="$struct_b_m_e680_1_1_humidity_message.html" title="Message carrying the Humidity sensor values." alt="" coords="220,447,421,583"/>
+<area shape="rect" id="node5" href="$struct_b_m_e680_1_1_i_a_q_message.html" title="Message carrying the IAQ sensor values." alt="" coords="445,447,636,583"/>
+<area shape="rect" id="node6" href="$struct_b_m_e680_1_1_temperature_message.html" title="Message carrying the Temperature sensor values." alt="" coords="660,447,883,583"/>
+</map>

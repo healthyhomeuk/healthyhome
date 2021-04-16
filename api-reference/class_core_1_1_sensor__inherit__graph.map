@@ -1,0 +1,9 @@
+<map id="Core::Sensor" name="Core::Sensor">
+<area shape="rect" id="node1" title="Interface for a sensor." alt="" coords="281,5,431,141"/>
+<area shape="rect" id="node2" href="$class_b_m_e680_1_1_b_s_e_c_sensor.html" title="Generic Sensor class representing any BSEC sensor." alt="" coords="5,189,168,369"/>
+<area shape="rect" id="node3" href="$class_s_i1145_1_1_u_v_sensor.html" title="Sensor class representing the visible sensor." alt="" coords="192,197,341,362"/>
+<area shape="rect" id="node4" href="$class_s_i1145_1_1_visible_sensor.html" title="Sensor class representing the visible sensor." alt="" coords="365,197,528,362"/>
+<area shape="rect" id="node5" href="$class_s_n_g_c_j_a5_1_1_p_m_sensor.html" title="Generic Sensor class representing any PM sensor." alt="" coords="552,189,707,369"/>
+<area shape="rect" id="node6" href="$class_s_n_g_c_j_a5_1_1_p_m100_sensor.html" title="Performs I2C read of PM10 count and density from the sensor." alt="" coords="443,417,619,495"/>
+<area shape="rect" id="node7" href="$class_s_n_g_c_j_a5_1_1_p_m25_sensor.html" title="Performs I2C read of PM2.5 count and density from the sensor." alt="" coords="643,417,811,495"/>
+</map>
