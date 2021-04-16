@@ -37,7 +37,7 @@ function Card({ quality, value, isRectangle, name, unit }) {
         <View style={[getStyleFromLevel(quality), styles.card, shape]}>
             <View style={[styles.cardContent]}>
                 {iaq && isRectangle ? (
-                    <AirQuality value={value} level={quality} />
+                    <AirQuality value={value} quality={quality} />
                 ) : (
                     <View
                         style={{
