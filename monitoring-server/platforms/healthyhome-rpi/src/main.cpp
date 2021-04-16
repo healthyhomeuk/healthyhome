@@ -17,6 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <bme680/Device.h>
+#include <bme680_defs.h>
 #include <core/Server.h>
 #include <core/events/StopServer.h>
 #include <evtq/Scheduler.h>
@@ -30,11 +32,25 @@
 static LinuxI2C::Driver i2c;
 static EvtQ::Scheduler scheduler { 2 };
 static ZmqPostman::Postman postman { {
-    "tcp://0.0.0.0:3456",
-    "tcp://0.0.0.0:3457",
+    "ipc:///var/run/monitd/broadcast.sock",
+    "ipc:///var/run/monitd/endpoint.sock",
     scheduler,
 } };
 static PosixTimers::Factory timersFactory { scheduler };
+
+static BME680::Device bme680 { BME680::Configuration {
+    BME680::SECONDARY,
+    0.0F,
+    bsec_config_iaq,
+    BSEC_CONFIG_IAQ_LENGTH,
+    &delay_us,
+    &loadState,
+    &saveState,
+    &getTimestamp,
+    i2c,
+    std::bind(&PosixTimers::Factory::makeTimer, timersFactory),
+    postman,
+} };
 
 static SNGCJA5::Device sngcja5 {
     { i2c, std::bind(&PosixTimers::Factory::makeTimer, timersFactory), postman }
@@ -65,10 +81,11 @@ int main()
 
     postman.setup();
 
-    auto config = new Core::Server::Configuration { scheduler,
-                                                    postman,
-                                                    { { "sn-gcja5", sngcja5 },
-                                                      { "si1145", si1145 } } };
+    auto config = new Core::Server::Configuration {
+        scheduler,
+        postman,
+        { { "bme680", bme680 }, { "sn-gcja5", sngcja5 }, { "si1145", si1145 } }
+    };
     Core::Server::setup(std::unique_ptr<Core::Server::Configuration>(config));
 
     Core::Server::start();
