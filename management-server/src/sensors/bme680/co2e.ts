@@ -38,7 +38,7 @@ const CO2E_VALUE_PARAM_NAME = "";
 /** CO2e value parameter measurement unit */
 const CO2E_VALUE_PARAM_UNIT = "ppm";
 /** CO2e value parameter value type */
-const CO2E_VALUE_PARAM_TYPE = NumberType.FLOAT;
+const CO2E_VALUE_PARAM_TYPE = NumberType.INTEGER;
 /** CO2e value parameter quality levels table */
 const CO2E_VALUE_PARAM_QUALITY_TABLE: QualityTable = [
     [Quality.EXCELLENT, 0, 600],
