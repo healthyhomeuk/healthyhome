@@ -32,8 +32,13 @@ void PMSensor::read()
     config.i2c.read(I2C_ADDR, densityRegister, densityPacket);
     config.i2c.read(I2C_ADDR, particleCountRegister, particlePacket);
 
-    density       = densityPacket.density;
-    particleCount = particlePacket.count;
+    if (densityPacket.density < DENSITY_LIMIT) {
+        density = densityPacket.density;
+    }
+
+    if (particlePacket.count < COUNT_LIMIT) {
+        particleCount = particlePacket.count
+    }
 }
 
 Core::StatusCode PMSensor::setup()

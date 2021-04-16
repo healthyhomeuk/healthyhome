@@ -56,6 +56,12 @@ constexpr float MILLI = 1000;
 /// Timer interval (in ms) for reading the sensor values.
 constexpr int TIMER_INTERVAL = 1000;
 
+/// Filter value for density data
+constexpr float DENSITY_LIMIT = 100.0;
+
+/// Filter value for count data
+constexpr int COUNT_LIMIT = 30000;
+
 /**
  * @brief Enumerator for the PDLD status.
  */
