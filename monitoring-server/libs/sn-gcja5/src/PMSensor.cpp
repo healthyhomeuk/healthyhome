@@ -37,7 +37,7 @@ void PMSensor::read()
     }
 
     if (particlePacket.count < COUNT_LIMIT) {
-        particleCount = particlePacket.count
+        particleCount = particlePacket.count;
     }
 }
 
