@@ -49,6 +49,10 @@ struct IAQMessage : public BSECSensorMessage {
     /// Static serializer codebase
     STATIC_SERIALIZER(IAQMessage);
 
+    /**
+     * Constructor
+     * @return IAQ message
+     */
     static std::unique_ptr<BSECSensorMessage> bsecSensorFactory()
     {
         return std::make_unique<IAQMessage>();

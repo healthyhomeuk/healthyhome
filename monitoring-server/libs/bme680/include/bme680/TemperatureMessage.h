@@ -49,6 +49,10 @@ struct TemperatureMessage : public BSECSensorMessage {
     /// Static serializer codebase
     STATIC_SERIALIZER(TemperatureMessage);
 
+    /**
+     * Constructor
+     * @return Temperature message
+     */
     static std::unique_ptr<BSECSensorMessage> bsecSensorFactory()
     {
         return std::make_unique<TemperatureMessage>();

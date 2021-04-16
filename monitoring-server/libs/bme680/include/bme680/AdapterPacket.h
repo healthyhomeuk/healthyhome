@@ -40,11 +40,21 @@ struct AdapterPacket : public Core::Comms::Packet {
     const uint8_t* writeBuffer; ///< Write buffer
     size_t size;                ///< Size of the buffer
 
+    /**
+     * Constructor
+     * @param _buffer buffer to read
+     * @param _size size of the buffer
+     */
     AdapterPacket(uint8_t* _buffer, size_t _size) :
         readBuffer(_buffer), size(_size)
     {
     }
 
+    /**
+     * Constructor
+     * @param _buffer buffer to write
+     * @param _size size of the buffer
+     */
     AdapterPacket(const uint8_t* _buffer, size_t _size) :
         writeBuffer(_buffer), size(_size)
     {
