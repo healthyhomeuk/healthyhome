@@ -55,9 +55,37 @@ const IAQ_INDEX_PARAMETER: Parameter = {
     qualityTable: IAQ_INDEX_PARAM_QUALITY_TABLE,
 };
 
+/** IAQ accuracy parameter identifier */
+const IAQ_ACCURACY_PARAM_ID = "accuracy";
+/** IAQ accuracy parameter textual name */
+const IAQ_ACCURACY_PARAM_NAME = "Accuracy";
+/** IAQ accuracy parameter measurement unit */
+const IAQ_ACCURACY_PARAM_UNIT = "";
+/** IAQ accuracy parameter value type */
+const IAQ_ACCURACY_PARAM_TYPE = NumberType.INTEGER;
+/** IAQ accuracy parameter quality levels table */
+const IAQ_ACCURACY_PARAM_QUALITY_TABLE: QualityTable = [
+    [Quality.BAD, 0, 1],
+    [Quality.POOR, 1, 2],
+    [Quality.GOOD, 2, 3],
+    [Quality.EXCELLENT, 3, 4],
+];
+
+/**
+ * IAQ accuracy parameter object
+ */
+const IAQ_ACCURACY_PARAMETER: Parameter = {
+    id: IAQ_ACCURACY_PARAM_ID,
+    name: IAQ_ACCURACY_PARAM_NAME,
+    unit: IAQ_ACCURACY_PARAM_UNIT,
+    valueType: IAQ_ACCURACY_PARAM_TYPE,
+    qualityTable: IAQ_ACCURACY_PARAM_QUALITY_TABLE,
+};
+
 /**
  * IAQ sensor object
  */
 export default new Sensor(IAQ_SENSOR_ID, IAQ_SENSOR_NAME, [
     IAQ_INDEX_PARAMETER,
+    IAQ_ACCURACY_PARAMETER,
 ]);

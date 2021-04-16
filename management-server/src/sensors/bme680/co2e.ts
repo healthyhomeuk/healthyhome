@@ -53,9 +53,37 @@ const CO2E_VALUE_PARAMETER: Parameter = {
     qualityTable: CO2E_VALUE_PARAM_QUALITY_TABLE,
 };
 
+/** CO2e accuracy parameter identifier */
+const CO2E_ACCURACY_PARAM_ID = "accuracy";
+/** CO2e accuracy parameter textual name */
+const CO2E_ACCURACY_PARAM_NAME = "Accuracy";
+/** CO2e accuracy parameter measurement unit */
+const CO2E_ACCURACY_PARAM_UNIT = "";
+/** CO2e accuracy parameter value type */
+const CO2E_ACCURACY_PARAM_TYPE = NumberType.INTEGER;
+/** CO2e accuracy parameter quality levels table */
+const CO2E_ACCURACY_PARAM_QUALITY_TABLE: QualityTable = [
+    [Quality.BAD, 0, 1],
+    [Quality.POOR, 1, 2],
+    [Quality.GOOD, 2, 3],
+    [Quality.EXCELLENT, 3, 4],
+];
+
+/**
+ * CO2e accuracy parameter object
+ */
+const CO2E_ACCURACY_PARAMETER: Parameter = {
+    id: CO2E_ACCURACY_PARAM_ID,
+    name: CO2E_ACCURACY_PARAM_NAME,
+    unit: CO2E_ACCURACY_PARAM_UNIT,
+    valueType: CO2E_ACCURACY_PARAM_TYPE,
+    qualityTable: CO2E_ACCURACY_PARAM_QUALITY_TABLE,
+};
+
 /**
  * CO2e sensor object
  */
 export default new Sensor(CO2E_SENSOR_ID, CO2E_SENSOR_NAME, [
     CO2E_VALUE_PARAMETER,
+    CO2E_ACCURACY_PARAMETER,
 ]);
