@@ -16,10 +16,41 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+import {
+    ApolloClient,
+    InMemoryCache,
+    gql,
+    split,
+    HttpLink,
+} from "@apollo/client";
+import { WebSocketLink } from "@apollo/client/link/ws";
+import { getMainDefinition } from "@apollo/client/utilities";
+
+const httpLink = new HttpLink({
+    uri: "http://DESKTOP-BAJSVOE.local:4000/graphql",
+});
+
+const wsLink = new WebSocketLink({
+    uri: "ws://DESKTOP-BAJSVOE.local:4000/subscriptions",
+    options: {
+        reconnect: true,
+    },
+});
+
+const splitLink = split(
+    ({ query }) => {
+        const definition = getMainDefinition(query);
+        return (
+            definition.kind === "OperationDefinition" &&
+            definition.operation === "subscription"
+        );
+    },
+    wsLink,
+    httpLink
+);
 
 export const client = new ApolloClient({
-    uri: "http://192.168.0.4:4000",
+    link: splitLink,
     cache: new InMemoryCache(),
 });
 
@@ -33,6 +64,7 @@ export const LAST_READINGS = gql`
             id
             name
             parameters {
+                id
                 name
                 unit
                 qualityTable {
@@ -43,6 +75,19 @@ export const LAST_READINGS = gql`
                 valueType
                 currentValue
                 currentQuality
+            }
+        }
+    }
+`;
+
+export const SENSOR_UPDATE = gql`
+    subscription GetSensorUpdate {
+        sensorUpdate {
+            id
+            parameters {
+                id
+                value
+                quality
             }
         }
     }
