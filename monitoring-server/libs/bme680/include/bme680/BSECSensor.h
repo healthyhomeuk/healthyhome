@@ -42,7 +42,8 @@ class BSECSensor : public Core::Sensor {
 public:
     /**
      * Constructor
-     * @param _name name of the BSEC sensor
+     * @param _name Name of the BSEC sensor
+     * @param factory Timer factory
      */
     explicit BSECSensor(const char* _name, BSECSensorMessage::Factory factory) :
         name(_name), messageFactory(std::move(factory))
@@ -55,9 +56,22 @@ public:
         std::unique_ptr<Core::Message> message) override;
     const char* getName() override;
 
+    /**
+     * Constructor
+     * @param value sensor read value
+     */
     void setValue(float value);
+
+    /**
+     * Constructor
+     * @param accuracy accuracy of read value
+     */
     void setValueAccuracy(SensorValueAccuracy accuracy);
 
+    /**
+     * Constructor
+     * @return msg
+     */
     std::unique_ptr<Core::Message> generateMessage();
 
 private:

@@ -49,6 +49,10 @@ struct HumidityMessage : public BSECSensorMessage {
     /// Static serializer codebase
     STATIC_SERIALIZER(HumidityMessage);
 
+    /**
+     * Constructor
+     * @return Humidity message
+     */
     static std::unique_ptr<BSECSensorMessage> bsecSensorFactory()
     {
         return std::make_unique<HumidityMessage>();

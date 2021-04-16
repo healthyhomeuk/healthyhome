@@ -49,6 +49,10 @@ struct CO2eMessage : public BSECSensorMessage {
     /// Static serializer codebase
     STATIC_SERIALIZER(CO2eMessage);
 
+    /**
+     * Constructor
+     * @return C02 message
+     */
     static std::unique_ptr<BSECSensorMessage> bsecSensorFactory()
     {
         return std::make_unique<CO2eMessage>();

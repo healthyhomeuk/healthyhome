@@ -38,6 +38,7 @@ namespace BME680 {
  * @headerfile bme680/BSECSensorMessage.h <bme680/BSECSensorMessage.h>
  */
 struct BSECSensorMessage : public Core::Message {
+    /// @copydoc Core::Message::Factory
     using Factory = std::function<std::unique_ptr<BSECSensorMessage>()>;
 
     BSECSensorMessage() = default;
