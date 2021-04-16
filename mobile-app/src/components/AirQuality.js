@@ -18,39 +18,52 @@
 
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
-import { levels, getStyleFromLevel } from "./SensorData";
+import { getStyleFromLevel } from "./SensorData";
 import ArcGradient from "./ArcGradient";
 import Style from "../assets/Style";
 
 const message = {
-    goodQuality: "Looking good!",
-    mediumQuality: "It's okay.",
-    badQuality: "Immediate changes required!",
+    excellent: "Excellent air quality!",
+    good: "Good!",
+    fair: "You might need to ventilate the room",
+    poor: "There a risk of irritation. Increase ventilation.",
+    bad: "The air is heavily polluted",
+    very_bad: "The air quality would cause severe health issues",
+    severe: "The air is extremely polluted, avoid presence in room",
 };
 
 const messageGetters = (level) => {
     switch (level) {
-        case levels.GOOD:
-            return message.goodQuality;
-        case levels.MEDIUM:
-            return message.mediumQuality;
-        case levels.BAD:
-            return message.badQuality;
+        case "EXCELLENT":
+            return message.excellent;
+        case "GOOD":
+            return message.good;
+        case "FAIR":
+            return message.fair;
+        case "POOR":
+            return message.poor;
+        case "BAD":
+            return message.bad;
+        case "VERY_BAD":
+            return message.very_bad;
+        case "SEVERE":
+            return message.severe;
         default:
-            return "";
+            return message.unknown;
     }
 };
+
 /**
  * Renders air quality.
  */
-function AirQuality({ level, value }) {
+function AirQuality({ quality, value }) {
     return (
         <View style={styles.airQualityContainer}>
             <Text style={Style.title}>Indoor Air Quality</Text>
             <ArcGradient value={value} />
-            <View style={[styles.airQualityStatus, getStyleFromLevel(level)]}>
+            <View style={[styles.airQualityStatus, getStyleFromLevel(quality)]}>
                 <Text style={styles.airQualityText}>
-                    {messageGetters(level)}
+                    {messageGetters(quality)}
                 </Text>
             </View>
         </View>
