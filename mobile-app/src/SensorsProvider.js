@@ -4,7 +4,9 @@ import { LAST_READINGS } from "./api/fetchers";
 const SensorsContext = createContext({});
 
 export const SensorsProvider = ({ children }) => {
-    const { loading, error, data, ...props } = useQuery(LAST_READINGS);
+    const { loading, error, data, ...props } = useQuery(LAST_READINGS, {
+        fetchPolicy: "no-cache",
+    });
     const [sensors, setSensors] = useState([]);
 
     useEffect(() => {
@@ -17,6 +19,7 @@ export const SensorsProvider = ({ children }) => {
                                 sensorId: sensor.id,
                                 paramId: param.id,
                                 value: param.currentValue,
+                                valueType: param.valueType,
                                 quality: param.currentQuality,
                                 qualityTable: param.qualityTable,
                                 name: param.name
