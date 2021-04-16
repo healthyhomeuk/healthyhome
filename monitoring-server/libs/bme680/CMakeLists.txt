@@ -23,7 +23,10 @@ target_link_libraries(BME680
         Core
         bme68x
         project_warnings
-        project_options)
+        project_options
+        PRIVATE
+        m
+        algobsec)
 
 set_target_properties(BME680 PROPERTIES LINKER_LANGUAGE CXX)
 
