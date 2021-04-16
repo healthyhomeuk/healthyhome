@@ -17,7 +17,7 @@
  */
 
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, View, ScrollView, FlatList } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Style from "../assets/Style";
@@ -25,6 +25,8 @@ import Header from "../components/Header";
 import Card from "../components/Card";
 import { levels, units } from "../components/SensorData";
 import { useSensors } from "../SensorsProvider";
+import { useSubscription } from "@apollo/client";
+import { SENSOR_UPDATE } from "../api/fetchers";
 
 /**
  * Stack component to wrap around the screen and render Header
@@ -64,14 +66,14 @@ const unitGetters = {
     humidity: (name) => (name === "humidity" ? units.humidity : ""),
 };
 
-const data = [
+const _data = [
     { name: "co2", value: 1000 },
     { name: "pm25", value: 14 },
     { name: "pm10", value: 56 },
     { name: "iaq", value: 77, quality: "EXCELLENT" },
 ];
 
-const dataProps = data.map((datum) => {
+const dataProps = _data.map((datum) => {
     const get = levelGetters[datum.name];
     const getUnits = unitGetters[datum.name];
 
@@ -86,8 +88,20 @@ const dataProps = data.map((datum) => {
  * Renders the home screen.
  */
 function Home() {
-    const { sensors, loading, error } = useSensors();
-    if (loading) {
+    const { sensors, updateSensor, loading, error } = useSensors();
+    const {
+        data: updates,
+        loading: subscriptionLoading,
+        error: subscriptionError,
+    } = useSubscription(SENSOR_UPDATE);
+
+    useEffect(() => {
+        if (!subscriptionLoading && updates && updates.sensorUpdate) {
+            updateSensor(updates.sensorUpdate);
+        }
+    }, [subscriptionLoading, updates]);
+
+    if (loading && !sensors) {
         return (
             <View style={Style.container}>
                 <Text>Loading...</Text>

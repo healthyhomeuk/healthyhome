@@ -4,7 +4,7 @@ import { LAST_READINGS } from "./api/fetchers";
 const SensorsContext = createContext({});
 
 export const SensorsProvider = ({ children }) => {
-    const { loading, error, data } = useQuery(LAST_READINGS);
+    const { loading, error, data, ...props } = useQuery(LAST_READINGS);
     const [sensors, setSensors] = useState([]);
 
     useEffect(() => {
@@ -33,9 +33,8 @@ export const SensorsProvider = ({ children }) => {
 
     const updateSensor = (sensorUpdate) => {
         const newSensors = [...sensors];
-
         sensorUpdate.parameters.forEach((paramUpdate) => {
-            const param = sensor.parameters.find(
+            const param = newSensors.find(
                 (el) =>
                     el.sensorId === sensorUpdate.id &&
                     el.paramId === paramUpdate.id
