@@ -32,7 +32,7 @@ const VIS_INTENSITY_PARAM_NAME = "Intensity";
 /** Visible light intensity parameter measurement unit */
 const VIS_INTENSITY_PARAM_UNIT = "lux";
 /** Visible light intensity parameter value type */
-const VIS_INTENSITY_PARAM_TYPE = NumberType.FLOAT;
+const VIS_INTENSITY_PARAM_TYPE = NumberType.INTEGER;
 /** Visible light intensity parameter quality levels table */
 const VIS_INTENSITY_PARAM_QUALITY_TABLE: QualityTable = [];
 

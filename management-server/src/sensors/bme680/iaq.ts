@@ -32,7 +32,7 @@ const IAQ_SENSOR_ID = "iaq";
 const IAQ_SENSOR_NAME = "IAQ";
 
 /** IAQ Index value parameter identifier */
-const IAQ_INDEX_PARAM_ID = "index";
+const IAQ_INDEX_PARAM_ID = "value";
 /** IAQ Index value parameter textual name */
 const IAQ_INDEX_PARAM_NAME = "Index";
 /** IAQ Index value parameter measurement unit */
