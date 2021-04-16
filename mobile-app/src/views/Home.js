@@ -115,8 +115,7 @@ function Home() {
             </View>
         );
     }
-    const iaq = dataProps.find((element) => element.name === "iaq");
-
+    const iaq = sensors.find((element) => element.sensorId === "iaq");
     return (
         <ScrollView style={{ flex: 1, backgroundColor: "#f2ffea" }}>
             <View style={Style.container}>
