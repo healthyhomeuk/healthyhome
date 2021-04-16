@@ -85,7 +85,9 @@ function calculateDotPosition(value, min, max) {
  * @returns {Svg} Arc gradient to indicate the indoor air quality
  */
 export default function SvgComponent({ value }) {
-    const [dotX, dotY, dotRadius] = calculateDotPosition(value, min, max);
+    const [dotX, dotY, dotRadius] = value
+        ? calculateDotPosition(value, min, max)
+        : [];
     return (
         <Svg
             width={sizeX}
@@ -109,14 +111,16 @@ export default function SvgComponent({ value }) {
                 height="100%"
                 preserveAspectRatio="xMidYMid slice"
             />
-            <Circle
-                fill="white"
-                stroke="black"
-                strokeWidth={1}
-                cx={dotX}
-                cy={dotY}
-                r={dotRadius}
-            />
+            {value ? (
+                <Circle
+                    fill="white"
+                    stroke="black"
+                    strokeWidth={1}
+                    cx={dotX}
+                    cy={dotY}
+                    r={dotRadius}
+                />
+            ) : undefined}
             <Text
                 x={centerX}
                 y={centerY}
@@ -126,7 +130,7 @@ export default function SvgComponent({ value }) {
                 fontWeight="bold"
                 fontSize="22"
             >
-                {value}
+                {value ?? "-"}
             </Text>
         </Svg>
     );
