@@ -61,13 +61,13 @@ export const sensorStyle = StyleSheet.create({
         backgroundColor: "#9ACD32",
     },
     fair: {
-        backgroundColor: "#FFFF00",
+        backgroundColor: "#F8E115",
     },
     poor: {
         backgroundColor: "#FFA500",
     },
     bad: {
-        backgroundColor: "#FF0000",
+        backgroundColor: "#EF0000",
     },
     very_bad: {
         backgroundColor: "#800080",
