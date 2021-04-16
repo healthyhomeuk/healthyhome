@@ -2,17 +2,24 @@ add_executable(healthyhome-rpi)
 
 target_sources(healthyhome-rpi
         PUBLIC
+        include/bme680_defs.h
         src/messages/Devices.cpp
         src/messages/Sensors.cpp
+        src/messages/bme680/CO2eMessage.cpp
+        src/messages/bme680/HumidityMessage.cpp
+        src/messages/bme680/IAQMessage.cpp
+        src/messages/bme680/TemperatureMessage.cpp
         src/messages/si1145/UVMessage.cpp
         src/messages/si1145/VisibleMessage.cpp
         src/messages/sn-gcja5/PM25Message.cpp
         src/messages/sn-gcja5/PM100Message.cpp
         src/messages/sn-gcja5/StatusMessage.cpp
+        src/bme680_defs.cpp
         src/main.cpp)
 
 target_link_libraries(healthyhome-rpi
         PUBLIC
+        BME680
         SI1145
         Core
         SN-GCJA5
