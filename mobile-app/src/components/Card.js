@@ -30,46 +30,68 @@ const windowHeight = Dimensions.get("window").height;
  * @param {View} props
  * @returns {View}
  */
-function Card({ quality, value, isRectangle, name, unit }) {
+function Card({ quality, value, isRectangle, name, unit, valueType }) {
     const shape = isRectangle ? styles.rectangle : styles.square;
-    const iaq = name === "iaq" ? name : "";
+    const isValueValid = Number.isFinite(value);
     return (
         <View style={[getStyleFromLevel(quality), styles.card, shape]}>
             <View style={[styles.cardContent]}>
-                {iaq && isRectangle ? (
+                {isRectangle ? (
                     <AirQuality value={value} quality={quality} />
                 ) : (
                     <View
                         style={{
-                            justifyContent: "center",
-                            alignItems: "center",
+                            flex: 1,
+                            flexDirection: "column",
+                            justifyContent: "space-between",
+                            padding: 15,
                         }}
                     >
                         <View
                             style={{
+                                flex: 1,
                                 flexDirection: "row",
                                 justifyContent: "space-between",
+                                flexWrap: "wrap",
                             }}
                         >
                             <Text
                                 style={{
                                     color: "white",
-                                    fontSize: 42,
+                                    fontSize: 48,
                                     fontWeight: "bold",
                                 }}
                             >
-                                {value}
+                                {isValueValid ? value.toFixed() : "-"}
                             </Text>
+                            {isValueValid && valueType === "FLOAT" && (
+                                <Text
+                                    style={{
+                                        color: "white",
+                                        fontSize: 24,
+                                        paddingTop: 23,
+                                    }}
+                                >
+                                    {(value % 1)
+                                        .toFixed(2)
+                                        .toString()
+                                        .substring(1)}
+                                </Text>
+                            )}
                             <Text
                                 style={{
                                     color: "white",
-                                    fontSize: 18,
+                                    fontSize: 24,
+                                    marginLeft: "auto",
+                                    opacity: 0.8,
                                 }}
                             >
                                 {unit}
                             </Text>
                         </View>
-                        <Text>{name}</Text>
+                        <Text style={{ color: "white", fontSize: 22 }}>
+                            {name}
+                        </Text>
                     </View>
                 )}
             </View>
@@ -90,8 +112,6 @@ const styles = StyleSheet.create({
     },
     cardContent: {
         flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
     },
     square: {
         width: 0.45 * windowWidth,
