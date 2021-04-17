@@ -4,6 +4,8 @@ Description=HealthyHome monitoring server
 [Service]
 Type=simple
 User=root
+Environment="BROADCAST_SOCKET=ipc:///var/run/monitd/broadcast.sock"
+Environment="ENDPOINT_SOCKET=ipc:///var/run/monitd/endpoint.sock"
 ExecStart=/usr/local/bin/monitd
 
 [Install]
