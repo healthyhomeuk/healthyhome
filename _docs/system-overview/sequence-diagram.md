@@ -1,7 +1,7 @@
 ---
 title: Sequence Diagram
 category: System Overview
-order: 2
+order: 3
 ---
 
 The following sequence diagram lays out the operation of the device registration process which takes place in the monitoring server.

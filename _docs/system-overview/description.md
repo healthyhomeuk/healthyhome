@@ -4,7 +4,7 @@ category: System Overview
 order: 1
 ---
 
-There are various tasks which need to be performed in order to realise this project. These tasks can be categorised by its function in relation to the project. So, the operation of the system has been split into three different segments. In each of these segments, tasks related to a specific function of the system are performed.  These segments are **Monitoring Server**, **Management Server** and the **Mobile App**.
+There are various tasks which need to be performed in order to realise this project. These tasks can be categorised by its function in relation to the project. So, the operation of the system has been split into three different segments. In each of these segments, tasks related to a specific function of the system are performed.  These segments are **[Monitoring Server](#monitoring-server)**, **[Management Server](#management-server)** and the **[Mobile App](#mobile-app)**.
 
 <div align = "center">
 <img src="/images/block-diagram.svg">
