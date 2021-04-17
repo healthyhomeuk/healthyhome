@@ -21,6 +21,7 @@
 #include <bme680_defs.h>
 #include <core/Server.h>
 #include <core/events/StopServer.h>
+#include <cstdlib>
 #include <evtq/Scheduler.h>
 #include <linux-i2c/Driver.h>
 #include <posix-timers/Factory.h>
@@ -32,8 +33,8 @@
 static LinuxI2C::Driver i2c;
 static EvtQ::Scheduler scheduler { 2 };
 static ZmqPostman::Postman postman { {
-    "ipc:///var/run/monitd/broadcast.sock",
-    "ipc:///var/run/monitd/endpoint.sock",
+    std::getenv("BROADCAST_SOCKET"),
+    std::getenv("ENDPOINT_SOCKET"),
     scheduler,
 } };
 static PosixTimers::Factory timersFactory { scheduler };
