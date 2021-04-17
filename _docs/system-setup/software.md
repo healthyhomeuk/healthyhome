@@ -11,3 +11,5 @@ This section will provide instructions on how to setup the software required for
 `git clone https://github.com/healthyhome/healthyhome.git`
 
 ## 2. Install Dependencies
+ 
+More instructions coming soon!

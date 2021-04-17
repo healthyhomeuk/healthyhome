@@ -31,3 +31,10 @@ The Mobile App is responsable for retrieving the data from the Management Server
 For the Indoor Air Quality Index, the app creates a pointer on a scale which ranges from 0 to 500. The colour of the scale is also dependant on the desireability of the value.
 
 The app then constantly pings the management server to recieve new data values to present to the user, and the colour of the tiles gets updated accordingly.
+
+<div align = "center">
+<img width="250" src="/images/app-iaq.jpg">
+<img width="250" src="/images/app-parameters.jpg">
+</div>
+<a>
+</a>
