@@ -5,6 +5,8 @@ project(MonitoringServer CXX C)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+set(CMAKE_SKIP_INSTALL_ALL_DEPENDENCY true)
+
 ## Add project options
 add_library(project_options INTERFACE)
 
