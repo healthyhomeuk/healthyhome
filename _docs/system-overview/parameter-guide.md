@@ -286,28 +286,28 @@ The ambient light level is not associated with colours. This is because it is no
   <tbody>
     <tr>
       <td>0 - 2</td>
-      <td>Excellent</td>
-      <td bgColor="green"></td>
+      <td>Good</td>
+      <td bgColor="yellowgreen"></td>
     </tr>
 	<tr>
 	  <td>3 - 5</td>
-      <td>Good</td>
-      <td bgColor="yellowgreen"></td>
-	</tr>
-	<tr>
-	  <td>6 - 7</td>
       <td>Fair</td>
       <td bgColor="yellow"></td>
 	</tr>
 	<tr>
-	  <td>8 - 10</td>
+	  <td>6 - 7</td>
       <td>Poor</td>
       <td bgColor="orange"></td>
 	</tr>
 	<tr>
-	  <td>>11</td>
+	  <td>8 - 10</td>
       <td>Bad</td>
       <td bgColor="red"></td>
+	</tr>
+	<tr>
+	  <td>>11</td>
+      <td>Very Bad</td>
+      <td bgColor="purple"></td>
 	</tr>
   </tbody>
 </table>
