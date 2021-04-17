@@ -1,0 +1,10 @@
+[Unit]
+Description=HealthyHome monitoring server
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/bin/monitd
+
+[Install]
+WantedBy=multi-user.target

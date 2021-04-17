@@ -1,4 +1,4 @@
-add_subdirectory(vendor/concurrentqueue)
+add_subdirectory(vendor/concurrentqueue EXCLUDE_FROM_ALL)
 
 add_library(event_queue)
 
