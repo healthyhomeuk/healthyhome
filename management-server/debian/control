@@ -1,0 +1,7 @@
+Architecture: all
+Description: HealthyHome management server
+Maintainer: HealthyHome
+Package: mgmtd
+Priority: optional
+Version: 1.0.0
+Depends: nodejs (>= 12.0.0)

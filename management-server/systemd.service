@@ -1,0 +1,16 @@
+[Unit]
+Description=HealthyHome management server
+After=network.target monitd.service
+Requires=monitd.service
+
+[Service]
+Type=simple
+User=root
+Environment="MONITD_BROADCAST_ADDRESS=ipc:///var/run/monitd/broadcast.sock"
+Environment="MONITD_ENDPOINT_ADDRESS=ipc:///var/run/monitd/endpoint.sock"
+Environment="DOCSTORE_FILEPATH=/var/lib/mgmtd"
+Environment="SETTINGS_FILEPATH=/var/lib/mgmtd"
+ExecStart=/usr/local/bin/mgmtd
+
+[Install]
+WantedBy=multi-user.target

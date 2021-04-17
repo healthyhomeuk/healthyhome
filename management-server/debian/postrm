@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+systemctl stop mgmtd
+systemctl restart avahi-daemon
+systemctl daemon-reload

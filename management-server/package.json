@@ -1,10 +1,11 @@
 {
   "name": "management-server",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "",
   "main": "dist/server.js",
   "scripts": {
     "build": "tsc",
+    "bundle": "./bundle.sh",
     "start": "node ./dist/server.js",
     "lint": "eslint './src/**/*.{js,ts}'",
     "clean": "rm -rf ./dist",
