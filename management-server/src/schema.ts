@@ -21,6 +21,14 @@ import { gql } from "apollo-server";
 import { NumberType, Quality } from "./sensors/types";
 
 /**
+ * Change server name mutation request body
+ */
+ export interface ChangeServerNameMutation {
+    /** Server new name */
+    newName: string;
+}
+
+/**
  * Toggle notifications mutation request body
  */
 export interface ToggleNotificationsMutation {
@@ -213,6 +221,8 @@ export default gql`
     }
 
     type Query {
+        "The name of the server"
+        serverName: String
         "Queries all the available devices"
         devices: [String]
         "Queries all the available sensors or the specified one."
@@ -224,6 +234,8 @@ export default gql`
     type Mutation {
         "Register/unregister recipient to push notifications"
         toggleNotifications(recipientId: String!, pushToken: String): Boolean
+        "Change the name of the server"
+        changeServerName(newName: String!): Boolean
     }
 
     type Subscription {
