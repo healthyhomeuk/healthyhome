@@ -22,18 +22,35 @@ import { hasRecipient, toggleRecipient } from "./notifications";
 import { getDevices } from "./messages";
 import { getSensors } from "./sensors";
 import { NumberType, Quality } from "./sensors/types";
+import { ChangeServerNameMutation } from "./schema";
+import { settings } from "./settings";
+
+/**
+ * GraphQL resolver to change the server name
+ * @param _ - unused
+ * @param newName - new server name
+ */
+function changeServerName(
+    _: unknown,
+    { newName }: ChangeServerNameMutation
+): boolean {
+    settings.serverName = newName;
+    return true;
+}
 
 /**
  * GraphQL resolvers object
  */
 export default {
     Query: {
+        serverName: () => settings.serverName ?? "HealthyHome",
         devices: getDevices,
         sensors: getSensors,
         hasNotifications: hasRecipient,
     },
     Mutation: {
         toggleNotifications: toggleRecipient,
+        changeServerName
     },
     Subscription: {
         sensorUpdate: {
