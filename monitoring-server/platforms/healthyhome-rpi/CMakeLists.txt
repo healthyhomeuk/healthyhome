@@ -61,7 +61,7 @@ set(CPACK_PACKAGE_VERSION_MAJOR "1")
 set(CPACK_PACKAGE_VERSION_MINOR "0")
 set(CPACK_PACKAGE_VERSION_PATCH "0")
 
-set(CPACK_DEBIAN_PACKAGE_MAINTAINER "HealhyHome")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "HealthyHome")
 include(CPack)
 
 cpack_add_component_group(monitd)
