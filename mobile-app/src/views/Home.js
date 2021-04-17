@@ -18,7 +18,7 @@
 
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect } from "react";
-import { Text, View, ScrollView, FlatList } from "react-native";
+import { Text, View, ScrollView } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Style from "../assets/Style";
 import Header from "../components/Header";
@@ -49,40 +49,6 @@ function HomeStackScreen() {
         </HomeStack.Navigator>
     );
 }
-
-const levelGetters = {
-    co2: (value) => (value < 60 ? levels.GOOD : levels.BAD),
-    pm25: (value) => (value < 20 ? levels.GOOD : levels.BAD),
-    pm10: (value) => (value < 60 ? levels.GOOD : levels.BAD),
-    iaq: (value) =>
-        value < 60 ? levels.GOOD : value < 90 ? levels.MEDIUM : levels.BAD,
-};
-
-const unitGetters = {
-    co2: (name) => (name === "co2" ? units.co2 : ""),
-    pm25: (name) => (name === "pm25" ? units.pm25 : ""),
-    pm10: (name) => (name === "pm10" ? units.pm10 : ""),
-    temp: (name) => (name === "temp" ? units.temp : ""),
-    humidity: (name) => (name === "humidity" ? units.humidity : ""),
-};
-
-const _data = [
-    { name: "co2", value: 1000 },
-    { name: "pm25", value: 14 },
-    { name: "pm10", value: 56 },
-    { name: "iaq", value: 77, quality: "EXCELLENT" },
-];
-
-const dataProps = _data.map((datum) => {
-    const get = levelGetters[datum.name];
-    const getUnits = unitGetters[datum.name];
-
-    return {
-        ...datum,
-        unit: getUnits ? getUnits(datum.name) : "",
-        fetchLevel: get ? get(datum.value) : levels.UNKNOWN,
-    };
-});
 
 /**
  * Renders the home screen.
