@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+    configure)
+    cd /usr/local/share/mgmtd/
+    npm install --only=prod
+    ln -s /usr/local/share/mgmtd/start.sh /usr/local/bin/mgmtd
+    systemctl enable mgmtd
+    systemctl restart avahi-daemon
+    ;;
+esac
