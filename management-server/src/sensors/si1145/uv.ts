@@ -18,7 +18,13 @@
  */
 
 import Sensor from "../Sensor";
-import { NumberType, Parameter, Quality, QualityTable } from "../types";
+import {
+    DegradationNotifications,
+    NumberType,
+    Parameter,
+    Quality,
+    QualityTable,
+} from "../types";
 
 /** UV sensor identifier */
 const UV_SENSOR_ID = "uv";
@@ -41,6 +47,19 @@ const UV_INDEX_PARAM_QUALITY_TABLE: QualityTable = [
     [Quality.BAD, 8, 11],
     [Quality.VERY_BAD, 11, Infinity],
 ];
+/** UV Index value parameter notifications */
+const UV_INDEX_PARAM_NOTIFICATIONS: DegradationNotifications = {
+    UNKNOWN: "",
+    SEVERE: "",
+    VERY_BAD:
+        "☀️ The UV index is dangerously high. You must limit the sunlight entering the room. Close the blinds/curtains.",
+    BAD: "☀️ The UV index is high. Limit the sunlight entering the room.",
+    POOR:
+        "️☀️ The UV index is quite high. Consider limiting the sunlight entering the room.",
+    FAIR: "",
+    GOOD: "",
+    EXCELLENT: "",
+};
 
 /**
  * UV Index parameter object
@@ -51,6 +70,7 @@ const UV_INDEX_PARAMETER: Parameter = {
     unit: UV_INDEX_PARAM_UNIT,
     valueType: UV_INDEX_PARAM_TYPE,
     qualityTable: UV_INDEX_PARAM_QUALITY_TABLE,
+    notifications: UV_INDEX_PARAM_NOTIFICATIONS,
 };
 
 /**
