@@ -30,9 +30,20 @@ const windowHeight = Dimensions.get("window").height;
  * @param {View} props
  * @returns {View}
  */
-function Card({ quality, value, isRectangle, name, unit, valueType }) {
+function Card({
+    quality: originalQuality,
+    value: originalValue,
+    updatedValue,
+    isRectangle,
+    name,
+    unit,
+    valueType,
+}) {
     const shape = isRectangle ? styles.rectangle : styles.square;
+    const value = updatedValue ? updatedValue.value : originalValue;
+    const quality = updatedValue ? updatedValue.quality : originalQuality;
     const isValueValid = Number.isFinite(value);
+
     return (
         <View style={[getStyleFromLevel(quality), styles.card, shape]}>
             <View style={[styles.cardContent]}>
@@ -63,21 +74,22 @@ function Card({ quality, value, isRectangle, name, unit, valueType }) {
                                 }}
                             >
                                 {isValueValid ? value.toFixed() : "-"}
+                                {isValueValid && valueType === "FLOAT" && (
+                                    <Text
+                                        style={{
+                                            color: "white",
+                                            fontSize: 24,
+                                            paddingTop: 23,
+                                            fontWeight: "normal",
+                                        }}
+                                    >
+                                        {(value % 1)
+                                            .toFixed(2)
+                                            .toString()
+                                            .substring(1)}
+                                    </Text>
+                                )}
                             </Text>
-                            {isValueValid && valueType === "FLOAT" && (
-                                <Text
-                                    style={{
-                                        color: "white",
-                                        fontSize: 24,
-                                        paddingTop: 23,
-                                    }}
-                                >
-                                    {(value % 1)
-                                        .toFixed(2)
-                                        .toString()
-                                        .substring(1)}
-                                </Text>
-                            )}
                             <Text
                                 style={{
                                     color: "white",
