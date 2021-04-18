@@ -15,6 +15,10 @@
     "@react-navigation/native": "^5.9.3",
     "@react-navigation/stack": "^5.14.3",
     "expo": "~40.0.0",
+    "expo-application": "~2.4.1",
+    "expo-constants": "~9.3.3",
+    "expo-notifications": "~0.8.2",
+    "expo-secure-store": "~9.3.0",
     "expo-splash-screen": "~0.8.0",
     "expo-status-bar": "~1.0.3",
     "expo-updates": "~0.4.0",
@@ -23,6 +27,7 @@
     "react-dom": "16.13.1",
     "react-native": "~0.63.4",
     "react-native-gesture-handler": "^1.8.0",
+    "react-native-get-random-values": "^1.7.0",
     "react-native-reanimated": "^1.13.2",
     "react-native-safe-area-context": "^3.1.9",
     "react-native-screens": "^2.15.2",
@@ -31,8 +36,7 @@
     "react-native-vector-icons": "^8.1.0",
     "react-native-web": "~0.13.12",
     "subscriptions-transport-ws": "^0.9.18",
-    "expo-notifications": "~0.8.2",
-    "expo-constants": "~9.3.3"
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
