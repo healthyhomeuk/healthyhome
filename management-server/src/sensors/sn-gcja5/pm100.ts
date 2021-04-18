@@ -17,7 +17,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Parameter, Quality, QualityTable } from "../types";
+import {
+    DegradationNotifications,
+    Parameter,
+    Quality,
+    QualityTable,
+} from "../types";
 import { DENSITY_PARAMETER, PARTICLE_COUNT_PARAMETER } from "./params";
 import Sensor from "../Sensor";
 
@@ -33,6 +38,19 @@ const PM100_COUNT_PARAM_QUALITY_TABLE: QualityTable = [
     [Quality.BAD, 171, Infinity],
 ];
 
+/** PM10 density parameter notifications */
+const PM100_DENSITY_PARAM_NOTIFICATIONS: DegradationNotifications = {
+    UNKNOWN: "",
+    SEVERE: "",
+    VERY_BAD: "",
+    BAD: "The PM10 density in your air is high. Ventilate the room.",
+    POOR:
+        "️The PM10 density in your air is quite high. Consider ventilating the room.",
+    FAIR: "",
+    GOOD: "",
+    EXCELLENT: "",
+};
+
 /**
  * PM10 parameters table
  */
@@ -41,7 +59,10 @@ const PM100_PARAMETERS: Parameter[] = [
         ...PARTICLE_COUNT_PARAMETER,
         qualityTable: PM100_COUNT_PARAM_QUALITY_TABLE,
     },
-    DENSITY_PARAMETER,
+    {
+        ...DENSITY_PARAMETER,
+        notifications: PM100_DENSITY_PARAM_NOTIFICATIONS,
+    },
 ];
 
 /**

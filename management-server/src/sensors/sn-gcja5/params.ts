@@ -17,7 +17,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { NumberType, Quality, QualityTable } from "../types";
+import {
+    DegradationNotifications,
+    NumberType,
+    Quality,
+    QualityTable,
+} from "../types";
 
 /** Particle count parameter identifier */
 const PARTICLE_COUNT_PARAM_ID = "particleCount";
