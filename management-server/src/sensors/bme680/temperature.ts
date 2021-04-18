@@ -17,7 +17,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { NumberType, Parameter, Quality, QualityTable } from "../types";
+import {
+    DegradationNotifications,
+    NumberType,
+    Parameter,
+    Quality,
+    QualityTable,
+} from "../types";
 import Sensor from "../Sensor";
 
 /** Temperature sensor identifier */
@@ -41,7 +47,27 @@ const TEMP_VALUE_PARAM_QUALITY_TABLE: QualityTable = [
     [Quality.POOR, 15, 24],
     [Quality.BAD, -Infinity, Infinity],
 ];
-
+/** Temperature value parameter notifications */
+const TEMP_PARAM_NOTIFICATIONS: DegradationNotifications = {
+    UNKNOWN: "",
+    SEVERE: "",
+    VERY_BAD: "",
+    BAD: {
+        LOWER:
+            "❄️ The temperature in the room is low. Turn on your heating system.",
+        UPPER:
+            "🔥 The temperature in the room is high. Open some windows or doors to reduce the heat.",
+    },
+    POOR: {
+        LOWER:
+            "️❄️ The temperature in the room is quite low. You may begin to feel cold",
+        UPPER:
+            "🔥 The temperature in the room is quite high. You may begin to feel warm",
+    },
+    FAIR: "",
+    GOOD: "",
+    EXCELLENT: "",
+};
 /**
  * Temperature value parameter object
  */
@@ -51,6 +77,7 @@ const TEMP_VALUE_PARAMETER: Parameter = {
     unit: TEMP_VALUE_PARAM_UNIT,
     valueType: TEMP_VALUE_PARAM_TYPE,
     qualityTable: TEMP_VALUE_PARAM_QUALITY_TABLE,
+    notifications: TEMP_PARAM_NOTIFICATIONS,
 };
 
 /**

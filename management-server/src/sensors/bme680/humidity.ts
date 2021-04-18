@@ -17,7 +17,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { NumberType, Parameter, Quality, QualityTable } from "../types";
+import {
+    DegradationNotifications,
+    NumberType,
+    Parameter,
+    Quality,
+    QualityTable,
+} from "../types";
 import Sensor from "../Sensor";
 
 /** Humidity sensor identifier */
@@ -41,7 +47,25 @@ const HUM_VALUE_PARAM_QUALITY_TABLE: QualityTable = [
     [Quality.POOR, 10, 90],
     [Quality.BAD, -Infinity, Infinity],
 ];
-
+/** Humidity value parameter notifications */
+const HUM_PARAM_NOTIFICATIONS: DegradationNotifications = {
+    UNKNOWN: "",
+    SEVERE: "",
+    VERY_BAD: "",
+    BAD: {
+        LOWER: "🌵 The humidity in your air is low. Use a humidifier",
+        UPPER: "💧 The humidity in your air is high. Use a dehumidifier",
+    },
+    POOR: {
+        LOWER:
+            "🌵 The humidity in your air is quite low. You may begin to feel cold.",
+        UPPER:
+            "💧 The humidity in your air is quite high. You may begin to feel uncomfortable.",
+    },
+    FAIR: "",
+    GOOD: "",
+    EXCELLENT: "",
+};
 /**
  * Humidity value parameter object
  */
@@ -51,6 +75,7 @@ const HUM_VALUE_PARAMETER: Parameter = {
     unit: HUM_VALUE_PARAM_UNIT,
     valueType: HUM_VALUE_PARAM_TYPE,
     qualityTable: HUM_VALUE_PARAM_QUALITY_TABLE,
+    notifications: HUM_PARAM_NOTIFICATIONS,
 };
 
 /**

@@ -17,7 +17,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { NumberType, Parameter, Quality, QualityTable } from "../types";
+import {
+    DegradationNotifications,
+    NumberType,
+    Parameter,
+    Quality,
+    QualityTable,
+} from "../types";
 import Sensor from "../Sensor";
 
 /** CO2e sensor identifier */
@@ -41,6 +47,18 @@ const CO2E_VALUE_PARAM_QUALITY_TABLE: QualityTable = [
     [Quality.POOR, 1500, 1800],
     [Quality.BAD, 1800, Infinity],
 ];
+/** CO2e value parameter notifications */
+const CO2E_VALUE_PARAM_NOTIFICATIONS: DegradationNotifications = {
+    UNKNOWN: "",
+    SEVERE: "",
+    VERY_BAD: "",
+    BAD: "⚠️ The CO2e in your air is bad. Ventilate the room.",
+    POOR:
+        "⚠️ The CO2e in your air is quite poor. Please consider ventilating the room.",
+    FAIR: "",
+    GOOD: "",
+    EXCELLENT: "",
+};
 
 /**
  * CO2e value parameter object
@@ -51,6 +69,7 @@ const CO2E_VALUE_PARAMETER: Parameter = {
     unit: CO2E_VALUE_PARAM_UNIT,
     valueType: CO2E_VALUE_PARAM_TYPE,
     qualityTable: CO2E_VALUE_PARAM_QUALITY_TABLE,
+    notifications: CO2E_VALUE_PARAM_NOTIFICATIONS,
 };
 
 /** CO2e accuracy parameter identifier */
