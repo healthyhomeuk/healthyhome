@@ -13,7 +13,7 @@ The hardware which we have been using for this project is as follows:
 
 -   [Silicon Labs Si1145](https://www.silabs.com/sensors/optical/si114x) - A UV index and ambient light sensor which measures the local UV index and ambient light levels (in luminous flux).
 
--   [RaspberryPi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/) - A single board computer which will be used to control the sensors and manage their data.
+-   [RaspberryPi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/) - A single board computer which is used to control the sensors and manage their data.
 	- You will also need the microSD card and power adaptor.
 	- The later 4 model B can also be used.
 	- To control the RaspberryPi, you can either setup a secure shell connection using your own computer or use the GUI by connecting a monitor via HDMI and a mouse via USB.
@@ -21,10 +21,8 @@ The hardware which we have been using for this project is as follows:
 <div align = "center">
 <img src="/images/DSCF1502_square.jpg">
 <br>
-<a> <b>The Hardware</b> </a>
+<b>The Hardware</b>
 </div>
-<a>
-</a>
 
 ## 2. Setup Instructions
 
@@ -43,7 +41,5 @@ You can use a breadboard or a Veroboard to help with the placement and connectio
 <div align = "center">
 <img src="/images/DSCF1505_square.jpg">
 <br>
-<a> <b>The Hardware Connected Together</b> </a>
+<b>The Hardware Connected Together</b>
 </div>
-<a>
-</a>
