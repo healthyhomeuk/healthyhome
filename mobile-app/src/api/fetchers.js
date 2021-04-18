@@ -92,3 +92,15 @@ export const SENSOR_UPDATE = gql`
         }
     }
 `;
+
+export const HAS_NOTIFICATIONS = gql`
+    query HasNotifications($deviceId: string) {
+        hasNotifications(recipientId: $deviceId)
+    }
+`;
+
+export const DEVICES_NAME = gql`
+    query GetDeviceNames {
+        devices
+    }
+`;
