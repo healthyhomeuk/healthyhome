@@ -21,6 +21,7 @@ import Message from "./messages/Message";
 import sensors from "./sensors";
 import { PubSub } from "apollo-server";
 import { SensorUpdate } from "./schema";
+import { push as pushNotification } from "./notifications";
 
 const pubsub = new PubSub();
 
@@ -38,6 +39,9 @@ export function process(msg: Message): void {
         if (sensor) {
             if (msg.body) {
                 sensor.parseIncomingUpdate(msg.body);
+
+                const notifications = sensor.getDegradationNotifications();
+                notifications.forEach(pushNotification);
 
                 pubsub.publish(triggerName, {
                     sensorUpdate: sensor.generateOutgoingUpdate(),
