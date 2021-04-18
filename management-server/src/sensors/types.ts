@@ -39,6 +39,17 @@ export enum Quality {
     EXCELLENT = "EXCELLENT",
 }
 
+export enum QualityLevel {
+    UNKNOWN = -1,
+    SEVERE,
+    VERY_BAD,
+    BAD,
+    POOR,
+    FAIR,
+    GOOD,
+    EXCELLENT,
+}
+
 /**
  * Number type enumeration
  */
@@ -79,6 +90,28 @@ export type ValueQualityPair = {
 };
 
 /**
+ * Notifications for a range-type value.
+ */
+export interface NotificationOuterRange {
+    LOWER: string;
+    UPPER: string;
+}
+
+/**
+ * Table of push notifications to quality level.
+ */
+export interface DegradationNotifications {
+    UNKNOWN: NotificationOuterRange | string;
+    SEVERE: NotificationOuterRange | string;
+    VERY_BAD: NotificationOuterRange | string;
+    BAD: NotificationOuterRange | string;
+    POOR: NotificationOuterRange | string;
+    FAIR: NotificationOuterRange | string;
+    GOOD: NotificationOuterRange | string;
+    EXCELLENT: NotificationOuterRange | string;
+}
+
+/**
  * Definition of a sensor parameter
  */
 export interface Parameter {
@@ -92,4 +125,6 @@ export interface Parameter {
     readonly qualityTable: QualityTable;
     /** Parameter value number type */
     readonly valueType: NumberType;
+    /** List of degradation notifications */
+    readonly notifications?: DegradationNotifications;
 }

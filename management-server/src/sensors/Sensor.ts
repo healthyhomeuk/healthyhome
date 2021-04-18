@@ -19,7 +19,17 @@
 
 import { Body as MessageBody } from "../messages/Message";
 import { SensorUpdate, Sensor as SensorSchema } from "../schema";
-import { Parameter, Quality, QualityTable, ValueQualityPair } from "./types";
+import {
+    NotificationOuterRange,
+    Parameter,
+    Quality,
+    QualityBoundary,
+    QualityLevel,
+    QualityTable,
+    ValueQualityPair,
+} from "./types";
+
+const SUBPAR_QUALITY_THRESHOLD_LEVEL = QualityLevel.POOR;
 
 /**
  * Sensor class
@@ -37,6 +47,7 @@ export default class Sensor {
     readonly parameters: Parameter[];
 
     private values: { [paramId: string]: ValueQualityPair };
+    private previousQuality: { [paramId: string]: Quality };
 
     /**
      * Constructor of a Sensor object
@@ -53,6 +64,10 @@ export default class Sensor {
             params.map((param) => {
                 return [param.id, { value: NaN, quality: Quality.UNKNOWN }];
             })
+        );
+
+        this.previousQuality = Object.fromEntries(
+            params.map((param) => [param.id, Quality.UNKNOWN])
         );
     }
 
@@ -85,6 +100,8 @@ export default class Sensor {
 
             const value = <number>body[param.id];
 
+            this.previousQuality[param.id] = this.values[param.id].quality;
+
             values[param.id] = {
                 value,
                 quality: Sensor.matchQuality(param.qualityTable, value),
@@ -92,6 +109,47 @@ export default class Sensor {
         }
 
         this.values = values;
+    }
+
+    /**
+     * Checks if the quality has degraded to a sub-par level and returns the
+     * notifications to push.
+     *
+     * @returns a list containing degradation notifications if there are
+     * any available. Otherwise returns an empty list.
+     */
+    getDegradationNotifications(): string[] {
+        const notifications: string[] = [];
+
+        for (const paramId in this.values) {
+            const currentLevel = QualityLevel[this.values[paramId].quality];
+            const previousLevel = QualityLevel[this.previousQuality[paramId]];
+            if (
+                (currentLevel < previousLevel ||
+                    previousLevel === QualityLevel.UNKNOWN) &&
+                currentLevel !== QualityLevel.UNKNOWN &&
+                currentLevel <= SUBPAR_QUALITY_THRESHOLD_LEVEL
+            ) {
+                const param = this.parameters.find((el) => el.id === paramId)!;
+                if (!param.notifications) continue;
+
+                const notificationEntry =
+                    param.notifications[this.values[paramId].quality];
+
+                const notification =
+                    typeof notificationEntry === "string"
+                        ? notificationEntry
+                        : Sensor.getRangeNotification(
+                              notificationEntry,
+                              param.qualityTable,
+                              this.values[paramId]
+                          );
+
+                notifications.push(notification);
+            }
+        }
+
+        return notifications;
     }
 
     /**
@@ -128,6 +186,24 @@ export default class Sensor {
                 };
             }),
         };
+    }
+
+    static getRangeNotification(
+        entry: NotificationOuterRange,
+        table: QualityTable,
+        pair: ValueQualityPair
+    ): string {
+        const boundaries = table.find((el) => el[0] === pair.quality);
+        if (!boundaries) throw Error("Expected quality not present in table");
+
+        const [_, lower, upper] = boundaries;
+        const mid = (upper + lower) / 2;
+
+        if (pair.value < mid) {
+            return entry.LOWER;
+        }
+
+        return entry.UPPER;
     }
 
     /**
