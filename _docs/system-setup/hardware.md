@@ -16,10 +16,12 @@ The hardware which we have been using for this project is as follows:
 -   [RaspberryPi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/) - A single board computer which will be used to control the sensors and manage their data.
 	- You will also need the microSD card and power adaptor.
 	- The later 4 model B can also be used.
-	- To control the RaspberryPi, you can either setup a secure shell connection with the device using your own computer or use the GUI by connecting a monitor via HDMI and a mouse via USB.
+	- To control the RaspberryPi, you can either setup a secure shell connection using your own computer or use the GUI by connecting a monitor via HDMI and a mouse via USB.
 
 <div align = "center">
 <img src="/images/DSCF1502_square.jpg">
+<br>
+<a> <b>The Hardware</b> </a>
 </div>
 <a>
 </a>
@@ -30,7 +32,7 @@ The hardware which we have been using for this project is as follows:
 
 2. Connect the SDA (pin 2), SCL (pin 3), Vdd (pin 5) and GND (pin 4) pins of the sn-gcja 5 to GPIO 2 (pin 3), GPIO 3 (pin 5), 3v3 Power (pin 1) and a ground pin (e.g. pin 9) of the raspberry pi respectively.
 
-3. Connect the SDA (pin 1), SCL (pin 2), Vdd (pin 3) and GND (pin 8) pins of the si1145 to GPIO 2, GPIO 3, 5V (pin 2) and a ground pin of the raspberry pi respectively.
+3. Connect the SDA (pin 1), SCL (pin 2), Vdd (pin 3) and GND (pin 8) pins of the si1145 to GPIO 2, GPIO 3, 5V (pin 2) Power and a ground pin of the raspberry pi respectively.
 
 4. Connect the SDA (pin 3), SCL (pin 4), Vdd (pin 8) and GND (pin 1) pins of the bme680 to GPIO 2, GPIO 3, 3v3 Power and a ground pin of the raspberry pi respectively.
 
@@ -40,6 +42,8 @@ You can use a breadboard or a Veroboard to help with the placement and connectio
 
 <div align = "center">
 <img src="/images/DSCF1505_square.jpg">
+<br>
+<a> <b>The Hardware Connected Together</b> </a>
 </div>
 <a>
 </a>
