@@ -21,6 +21,9 @@ import * as Application from "expo-application";
 import "react-native-get-random-values";
 import { v4 as uuidv4 } from "uuid";
 import * as SecureStore from "expo-secure-store";
+import { AsyncStorage } from "react-native";
+import Constants from "expo-constants";
+import * as Notifications from "expo-notifications";
 
 export async function getDeviceId() {
     if (Platform.OS === "android") {
@@ -35,4 +38,72 @@ export async function getDeviceId() {
             return uuid;
         }
     }
+}
+
+export function lastServer() {
+    return AsyncStorage.getItem("lastServerHostname");
+}
+
+export function saveServerAsLast(hostname) {
+    AsyncStorage.setItem("lastServerHostname", hostname);
+}
+
+export function getSavedServers() {
+    return AsyncStorage.getItem("savedServers").then((item) => {
+        return item !== null ? JSON.parse(item) : [];
+    });
+}
+
+export async function saveServer(server) {
+    const savedServers = await getSavedServers();
+    const idx = savedServers.findIndex((el) => el.hostname === server.hostname);
+
+    if (idx > -1) {
+        savedServers[idx] = server;
+    } else {
+        savedServers.push(server);
+    }
+
+    await AsyncStorage.setItem("savedServers", JSON.stringify(savedServers));
+    return true;
+}
+
+export async function deleteServer(hostname) {
+    const savedServers = await getSavedServers();
+    if (!savedServers.find((el) => el === hostname)) return false;
+    const newList = savedServers.filter((el) => el !== hostname);
+    await AsyncStorage.setItem("savedServers", JSON.stringify(savedServers));
+    return true;
+}
+
+export async function registerForPushNotificationsAsync() {
+    let token;
+    if (Constants.isDevice) {
+        const {
+            status: existingStatus,
+        } = await Notifications.getPermissionsAsync();
+        let finalStatus = existingStatus;
+        if (existingStatus !== "granted") {
+            const { status } = await Notifications.requestPermissionsAsync();
+            finalStatus = status;
+        }
+        if (finalStatus !== "granted") {
+            alert("Failed to get push token for push notification!");
+            return;
+        }
+        token = (await Notifications.getExpoPushTokenAsync()).data;
+    } else {
+        alert("Must use physical device for Push Notifications");
+    }
+
+    if (Platform.OS === "android") {
+        Notifications.setNotificationChannelAsync("default", {
+            name: "default",
+            importance: Notifications.AndroidImportance.MAX,
+            vibrationPattern: [0, 250, 250, 250],
+            lightColor: "#FF231F7C",
+        });
+    }
+
+    return token;
 }
