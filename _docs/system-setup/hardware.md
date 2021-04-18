@@ -30,7 +30,7 @@ The hardware which we have been using for this project is as follows:
 
 2. Connect the SDA (pin 2), SCL (pin 3), Vdd (pin 5) and GND (pin 4) pins of the sn-gcja 5 to GPIO 2 (pin 3), GPIO 3 (pin 5), 3v3 Power (pin 1) and a ground pin (e.g. pin 9) of the raspberry pi respectively.
 
-3. Connect the SDA (pin 1), SCL (pin 2), Vdd (pin 3) and GND (pin 8) pins of the si1145 to GPIO 2, GPIO 3, 3v3 Power and a ground pin of the raspberry pi respectively.
+3. Connect the SDA (pin 1), SCL (pin 2), Vdd (pin 3) and GND (pin 8) pins of the si1145 to GPIO 2, GPIO 3, 5V (pin 2) and a ground pin of the raspberry pi respectively.
 
 4. Connect the SDA (pin 3), SCL (pin 4), Vdd (pin 8) and GND (pin 1) pins of the bme680 to GPIO 2, GPIO 3, 3v3 Power and a ground pin of the raspberry pi respectively.
 
