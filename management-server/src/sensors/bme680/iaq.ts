@@ -17,7 +17,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { NumberType, Parameter, Quality, QualityTable } from "../types";
+import {
+    DegradationNotifications,
+    NumberType,
+    Parameter,
+    Quality,
+    QualityTable,
+} from "../types";
 import Sensor from "../Sensor";
 
 /** IAQ sensor identifier */
@@ -43,6 +49,20 @@ const IAQ_INDEX_PARAM_QUALITY_TABLE: QualityTable = [
     [Quality.VERY_BAD, 251, 351],
     [Quality.SEVERE, 351, Infinity],
 ];
+/** IAQ Index value parameter notifications */
+const IAQ_INDEX_PARAM_NOTIFICATIONS: DegradationNotifications = {
+    UNKNOWN: "",
+    SEVERE:
+        "⚠️ The IAQ of your air is at a dangerously high level. If you cannot ventilate the room with clean air, consider leaving the room.",
+    VERY_BAD:
+        "⚠️ The IAQ of your air is very bad. You must ventilate the room.",
+    BAD: "⚠️ The IAQ of your air is bad. Ventilate the room.",
+    POOR:
+        "⚠️ The IAQ of your air is quite poor. Consider ventilating the room.",
+    FAIR: "",
+    GOOD: "",
+    EXCELLENT: "",
+};
 
 /**
  * IAQ Index value parameter object
@@ -53,6 +73,7 @@ const IAQ_INDEX_PARAMETER: Parameter = {
     unit: IAQ_INDEX_PARAM_UNIT,
     valueType: IAQ_INDEX_PARAM_TYPE,
     qualityTable: IAQ_INDEX_PARAM_QUALITY_TABLE,
+    notifications: IAQ_INDEX_PARAM_NOTIFICATIONS,
 };
 
 /** IAQ accuracy parameter identifier */
