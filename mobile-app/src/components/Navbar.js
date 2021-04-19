@@ -45,7 +45,7 @@ function NavBar() {
         >
             <Tab.Screen name="Settings" component={SettingsStackScreen} />
             <Tab.Screen name="Home" component={HomeStackScreen} />
-            <Tab.Screen name="Data" component={DataStackScreen} />
+            {/* <Tab.Screen name="Data" component={DataStackScreen} /> */}
         </Tab.Navigator>
     );
 }
