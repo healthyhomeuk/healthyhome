@@ -188,7 +188,7 @@ const ServerSettings = React.forwardRef((props, ref) => {
                             )}
                         </View>
                         <Text style={{ marginBottom: 10 }}>
-                            Push notifications will warn you istantaneously
+                            Push notifications will warn you instantaneously
                             whenever a parameter will degrade to a subpar level.
                             You can disable them later in the server settings.
                         </Text>
