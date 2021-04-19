@@ -28,13 +28,14 @@ import { getMainDefinition } from "@apollo/client/utilities";
 import { getDeviceId } from "./helpers";
 
 export default class Device {
-    hostname;
     link;
     client;
 
     constructor(hostname) {
-        this.hostname = hostname;
+        this.connect(hostname);
+    }
 
+    async connect(hostname = "localhost") {
         this.link = split(
             ({ query }) => {
                 const definition = getMainDefinition(query);
@@ -58,6 +59,10 @@ export default class Device {
             link: this.link,
             cache: new InMemoryCache(),
         });
+    }
+
+    async disconnect() {
+        await this.client.stop();
     }
 
     async getSensors() {

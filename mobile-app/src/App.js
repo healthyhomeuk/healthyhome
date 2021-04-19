@@ -22,18 +22,40 @@ import NavBar from "./components/Navbar";
 import { client } from "./api/fetchers";
 import { ApolloProvider } from "@apollo/client/react";
 import { SensorsProvider } from "./SensorsProvider";
+import * as Notifications from "expo-notifications";
+import DeviceProvider from "./DeviceProvider";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+
+Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+        shouldShowAlert: true,
+        shouldPlaySound: true,
+        shouldSetBadge: false,
+    }),
+});
 
 /**
  * Renders all the components of the app.
  */
 export default function App() {
     return (
-        <ApolloProvider client={client}>
-            <SensorsProvider>
+        <BottomSheetModalProvider>
+            <DeviceProvider>
                 <NavigationContainer>
                     <NavBar />
                 </NavigationContainer>
-            </SensorsProvider>
-        </ApolloProvider>
+            </DeviceProvider>
+        </BottomSheetModalProvider>
     );
 }
+
+/*
+
+            <ApolloProvider client={client}>
+                <SensorsProvider>
+                    <NavigationContainer>
+                        <NavBar />
+                    </NavigationContainer>
+                </SensorsProvider>
+            </ApolloProvider>
+            */
