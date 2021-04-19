@@ -199,9 +199,9 @@ A cool temperature is important in allowing the human body to function normally.
 
 ### PM2.5 Particle Count
 
-The PM2.5 particle count is a measure of liquid and solid particles present in the air which are at a diameter of between 1 and 2.5µm. 
+The PM2.5 particle count is a measure of liquid and solid particles present in the air which are at a diameter of between 1 and 2.5µm. An example of a PM2.5 particulate is vehcile exhaust.[^4]
 
-It is important to understand the levels of particulates in the air as they are easily able to penetrate sensitive parts within the human body and cause respiratory diseases and heart attacks.[^4]
+It is important to understand the levels of particulates in the air as they are easily able to penetrate sensitive parts within the human body and cause respiratory diseases and heart attacks.[^5]
 
 <table>
   <thead>
@@ -230,7 +230,7 @@ It is important to understand the levels of particulates in the air as they are 
 
 ### PM10 Particle Count
 
-The PM10 particle count is a measure of liquid and solid particles present in the air which are at a diameter of between 7.5 and 10µm.
+The PM10 particle count is a measure of liquid and solid particles present in the air which are at a diameter of between 7.5 and 10µm. An example of a PM10 particulate is dust.[^4]
 
 <table>
   <thead>
@@ -342,4 +342,5 @@ The UV index is a measure of the strength of the UV radiation from the sun. Sunl
 [^1]: Rabo, Olga (2020) [Cooler Future](https://coolerfuture.com/en/blog/co2e). *What is CO2e and how is it calculated?*. [Accessed 18/04/21]
 [^2]: Vanvuren, Christina (2018) [MOLEKULE](https://molekule.science/what-is-relative-humidity/). *What Is Relative Humidity, and What’s an Ideal Level for Your Home?*. [Accessed 18/04/21]
 [^3]: [World Health Organisation](https://www.who.int/globalchange/publications/heat-and-health/en/#:~:text=Even%20small%20differences%20from%20seasonal,has%20important%20indirect%20health%20effects.), *Information and public health advice: heat and health*. [Accessed 18/04/21]
-[^4]: [United States Environmental Protection Agency](https://www.epa.gov/pm-pollution/health-and-environmental-effects-particulate-matter-pm), *Health and Environmental Effects of Particulate Matter (PM)*. [Accessed 18/04/21]
+[^4]: Smith, Dianna (2020) [kaiterra](https://learn.kaiterra.com/en/air-academy/three-types-of-particulate-matter). *The Three Types of Particulate Matter: All About PM10, PM2.5, and PM0.1*. [Accessed 19/04/21]
+[^5]: [United States Environmental Protection Agency](https://www.epa.gov/pm-pollution/health-and-environmental-effects-particulate-matter-pm), *Health and Environmental Effects of Particulate Matter (PM)*. [Accessed 18/04/21]
