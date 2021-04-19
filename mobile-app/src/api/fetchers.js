@@ -25,6 +25,10 @@ import {
 } from "@apollo/client";
 import { WebSocketLink } from "@apollo/client/link/ws";
 import { getMainDefinition } from "@apollo/client/utilities";
+import { getDeviceId } from "../helpers";
+// import Zeroconf from "react-native-zeroconf";
+
+// const zeroconf = new Zeroconf();
 
 const httpLink = new HttpLink({
     uri: "http://DESKTOP-BAJSVOE.local:4000/graphql",
@@ -80,6 +84,28 @@ export const LAST_READINGS = gql`
     }
 `;
 
+const GET_SENSORS = gql`
+    query GetSensors {
+        sensors {
+            id
+            name
+            parameters {
+                id
+                name
+                unit
+                qualityTable {
+                    qualityValue
+                    lowerBoundary
+                    upperBoundary
+                }
+                valueType
+                currentValue
+                currentQuality
+            }
+        }
+    }
+`;
+
 export const SENSOR_UPDATE = gql`
     subscription GetSensorUpdate {
         sensorUpdate {
@@ -96,6 +122,24 @@ export const SENSOR_UPDATE = gql`
 export const HAS_NOTIFICATIONS = gql`
     query HasNotifications($deviceId: string) {
         hasNotifications(recipientId: $deviceId)
+    }
+`;
+
+export const TOGGLE_NOTIFICATIONS = gql`
+    mutation ToggleNotifications($deviceId: string, $pushToken: string) {
+        toggleNotifications(recipientId: $deviceId, pushToken: $pushToken)
+    }
+`;
+
+export const GET_SERVER_NAME = gql`
+    query GetServerName {
+        serverName
+    }
+`;
+
+export const SET_SERVER_NAME = gql`
+    mutation SetServerName($name: string) {
+        changeServerName(newName: $name)
     }
 `;
 
