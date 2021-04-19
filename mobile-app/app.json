@@ -2,7 +2,7 @@
   "name": "HealthyHome",
   "displayName": "HealthyHome",
   "expo": {
-    "owner":"healthyhomeuk",
+    "owner": "healthyhomeuk",
     "name": "HealthyHome",
     "slug": "healthyhome",
     "version": "1.0.0",
@@ -10,6 +10,8 @@
     "icon": "./src/assets/images/icon.png",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "description": "HealthyHome is an open-source project centred around a smart home device which monitors the indoor environment conditions of a user's home and helps them make better decisions to improve it! ",
+    "githubUrl": "https://github.com/healthyhomeuk/healthyhome"
   }
 }
