@@ -40,8 +40,8 @@ function Card({
     valueType,
 }) {
     const shape = isRectangle ? styles.rectangle : styles.square;
-    const value = updatedValue ? updatedValue.value : originalValue;
-    const quality = updatedValue ? updatedValue.quality : originalQuality;
+    const value = updatedValue?.value ?? originalValue;
+    const quality = updatedValue?.quality ?? originalQuality;
     const isValueValid = Number.isFinite(value);
 
     return (
@@ -73,7 +73,7 @@ function Card({
                                     fontWeight: "bold",
                                 }}
                             >
-                                {isValueValid ? value.toFixed() : "-"}
+                                {isValueValid ? Math.floor(value) : "-"}
                                 {isValueValid && valueType === "FLOAT" && (
                                     <Text
                                         style={{
