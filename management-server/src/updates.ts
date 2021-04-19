@@ -41,7 +41,9 @@ export function process(msg: Message): void {
                 sensor.parseIncomingUpdate(msg.body);
 
                 const notifications = sensor.getDegradationNotifications();
-                notifications.forEach(pushNotification);
+                notifications.forEach((notification) => {
+                    pushNotification(notification).catch(console.error)
+                });
 
                 pubsub.publish(triggerName, {
                     sensorUpdate: sensor.generateOutgoingUpdate(),
