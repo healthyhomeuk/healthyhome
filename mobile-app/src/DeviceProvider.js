@@ -17,49 +17,65 @@
  */
 
 import React, { useState, useEffect, createContext, useContext } from "react";
+import { ApolloClient } from "@apollo/client";
 import { ApolloProvider } from "@apollo/client/react";
 import Device from "./Device";
 import * as helpers from "./helpers";
 
 const Ctx = createContext({});
 
+const disconnectedState = {
+    hostname: undefined,
+    name: "",
+    devices: [],
+    sensors: [],
+    hasNotifications: undefined,
+};
+
+export const instance = new Device();
+
 function DeviceProvider({ children }) {
-    const [server, setServer] = useState({
-        hostname: undefined,
-        name: "",
-        devices: [],
-        sensors: [],
-        object: undefined,
-    });
+    const [server, setServer] = useState(disconnectedState);
     const [servers, setServers] = useState([]);
 
     const [connecting, setConnecting] = useState(false);
     const [loading, setLoading] = useState(false);
 
+    async function disconnect() {
+        await instance.disconnect();
+        setServer(disconnectedState);
+    }
+
     async function connectToServer(hostname) {
+        if (server.hostname) {
+            await disconnect();
+        }
+
         setConnecting(hostname);
 
-        const object = new Device(hostname);
-        const name = await object.getName();
-        const devices = await object.getSensorsDevices();
-        const sensors = await object.getSensors();
+        await instance.connect(hostname);
+        const name = await instance.getName();
+        const devices = await instance.getSensorsDevices();
+        const sensors = await instance.getSensors();
+        const hasNotifications = await instance.hasNotifications();
 
         setServer({
             hostname,
-            object,
             name,
             devices,
             sensors,
+            hasNotifications,
         });
 
         await helpers.saveServerAsLast(hostname);
         await helpers.saveServer({ hostname, name });
+
         setServers(await helpers.getSavedServers());
     }
 
     async function setServerName(name) {
         setServer({ ...server, name });
-        server.object.setName(name);
+        await instance.setName(name);
         await helpers.saveServer({ hostname: server.hostname, name });
         setServers(await helpers.getSavedServers());
     }
@@ -80,26 +96,41 @@ function DeviceProvider({ children }) {
             .finally(() => setConnecting(false));
     }, []);
 
+    async function deleteServer(hostname) {
+        if (server.hostname === hostname) {
+            await disconnect();
+        }
+        await helpers.deleteServer(hostname);
+        setServers(await helpers.getSavedServers());
+    }
+
+    async function registerNotifications(token) {
+        const hasNotifications = await instance.toggleNotifications(token);
+        setServer({ ...server, hasNotifications });
+        return hasNotifications;
+    }
+
     const state = {
         server,
         connecting,
         servers,
         connectToServer,
-        deleteServer: helpers.deleteServer,
+        deleteServer,
+        disconnect,
         setServerName,
+        setConnecting,
+        registerNotifications,
     };
 
     return (
         <Ctx.Provider value={state}>
-            {server.object ? (
-                <ApolloProvider client={server.object.client}>
-                    {children}
-                </ApolloProvider>
-            ) : (
-                children
-            )}
+            <ApolloProvider client={instance.client}>{children}</ApolloProvider>
         </Ctx.Provider>
     );
+}
+
+export function ConnectedProvider({ children }) {
+    return children;
 }
 
 export default DeviceProvider;
