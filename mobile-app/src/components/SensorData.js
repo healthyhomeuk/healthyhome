@@ -53,7 +53,7 @@ export const getStyleFromLevel = (level) => {
     }
 };
 
-export const sensorStyle = StyleSheet.create({
+export const sensorColors = {
     excellent: {
         backgroundColor: "#008000",
     },
@@ -78,4 +78,6 @@ export const sensorStyle = StyleSheet.create({
     unknown: {
         backgroundColor: "#a9a9a9",
     },
-});
+};
+
+export const sensorStyle = StyleSheet.create(sensorColors);
