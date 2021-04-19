@@ -30,10 +30,11 @@ export default function DevicesList({ devices }) {
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "flex-start",
-                borderRadius: 12,
-                borderColor: "#ddd",
-                borderWidth: 1,
+                // borderRadius: 12,
+                // borderColor: "#ddd",
+                // borderWidth: 1,
                 width: "100%",
+                padding: 5,
             }}
         >
             {devices.map((device, idx) => (
