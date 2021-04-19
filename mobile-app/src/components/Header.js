@@ -17,8 +17,9 @@
  */
 
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, Image } from "react-native";
 import Style from "../assets/Style";
+import AppIcon from "../assets/Icon";
 
 /**
  * This component renders the header of the app.
@@ -27,6 +28,7 @@ import Style from "../assets/Style";
 function Header() {
     return (
         <View style={Style.headerContainer}>
+            <AppIcon />
             <Text style={Style.headerTitle}>HealthyHome</Text>
         </View>
     );
