@@ -21,7 +21,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import NavBar from "./components/Navbar";
 import { client } from "./api/fetchers";
 import { ApolloProvider } from "@apollo/client/react";
-import { SensorsProvider } from "./SensorsProvider";
 import * as Notifications from "expo-notifications";
 import DeviceProvider from "./DeviceProvider";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
@@ -48,14 +47,3 @@ export default function App() {
         </BottomSheetModalProvider>
     );
 }
-
-/*
-
-            <ApolloProvider client={client}>
-                <SensorsProvider>
-                    <NavigationContainer>
-                        <NavBar />
-                    </NavigationContainer>
-                </SensorsProvider>
-            </ApolloProvider>
-            */
