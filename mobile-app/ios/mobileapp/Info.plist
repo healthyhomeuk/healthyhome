@@ -55,5 +55,11 @@
 	<false/>
   <key>UIStatusBarStyle</key>
   <string>UIStatusBarStyleDefault</string>
+  <key>NSBonjourServices</key>
+	<array>
+		<string>_mgmtd._tcp.</string>
+	</array>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Auto-discovery of HealthyHome devices</string>
 </dict>
 </plist>
