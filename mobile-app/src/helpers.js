@@ -70,9 +70,9 @@ export async function saveServer(server) {
 
 export async function deleteServer(hostname) {
     const savedServers = await getSavedServers();
-    if (!savedServers.find((el) => el === hostname)) return false;
-    const newList = savedServers.filter((el) => el !== hostname);
-    await AsyncStorage.setItem("savedServers", JSON.stringify(savedServers));
+    if (!savedServers.find((el) => el.hostname === hostname)) return false;
+    const newList = savedServers.filter((el) => el.hostname !== hostname);
+    await AsyncStorage.setItem("savedServers", JSON.stringify(newList));
     return true;
 }
 
