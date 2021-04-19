@@ -54,6 +54,7 @@ export default StyleSheet.create({
         fontSize: 20,
         color: "black",
         letterSpacing: 0.5,
+        marginLeft: 5,
     },
     headerContainer: {
         width: "100%",
