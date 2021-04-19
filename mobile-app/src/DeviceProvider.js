@@ -129,10 +129,6 @@ function DeviceProvider({ children }) {
     );
 }
 
-export function ConnectedProvider({ children }) {
-    return children;
-}
-
 export default DeviceProvider;
 
 export function useDevice() {
